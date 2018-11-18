@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /*----*****---- << Responsive >> ----*****----*/
@@ -21,8 +21,10 @@
 	
 	.header7 .main-menu-container { width:900px; }
 	
-	/*----*****---- << Header >> ----*****----*/	
-	#logo { width:23%; }
+	/*----*****---- << Header >> ----*****----*/
+        #logo {
+            width: 29%;
+        }
 	.top-right { width:33%; }
 	
 	.top-contact-details li { margin:0 11px 0 0; }
@@ -200,7 +202,7 @@
 	.shopping-cart { top:61px; }
 	
 	#logo { width: 21%; padding:27px 0 21px; }
-	#logo a img { max-width:99%; }
+	#logo a img { max-width:43%; }
 	#main-menu > ul > li > a, .header.header2 #main-menu > ul.menu > li > a, .header.header4 #main-menu > ul.menu > li > a, .header.header5 #main-menu > ul.menu > li > a { padding:28px 13px; font-size:13px; }
 	.header6 #main-menu > ul > li > a { padding:20px 19px; }
 	.header.header5 #logo { padding:22px 0 21px 20px; }

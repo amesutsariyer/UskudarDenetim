@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /*----*****---- << Shortcodes >> ----*****----*/
@@ -793,7 +793,7 @@
 	
 	/*----*****---- << Consultation Form >> ----*****----*/
 	.dt-sc-consultation { float:left; width:100%; background-color:#fff; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; padding:30px 25px 20px; position:relative; border:2px solid #e3e5e8; margin-top:-115px; }
-	.dt-sc-consultation:after { position:absolute; content:""; width:100%; height:77px; bottom:-77px; background:url(images/attorney/form-bg.png) no-repeat; left:0; background-size:100%; }
+	.dt-sc-consultation:after { position:absolute; content:""; width:100%; height:77px; bottom:-77px; background:url(../Images/attorney/form-bg.png) no-repeat; left:0; background-size:100%; }
 	.dt-sc-consultation input[type=text], .dt-sc-consultation input[type=email], .dt-sc-consultation input[type=text], .dt-sc-consultation textarea { background-color:inherit; border-width: 0 0 1px 0; padding:5px 10px; }
 	.dt-sc-consultation textarea { height:80px; }
 	.dt-sc-consultation input[type=submit] { float:none; min-width:190px; text-transform:uppercase; }

@@ -201,15 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\additional-css\attorney\style.css" />
-    <Content Include="Content\additional-css\church\style.css" />
-    <Content Include="Content\additional-css\education\style.css" />
-    <Content Include="Content\additional-css\fitness\style.css" />
-    <Content Include="Content\additional-css\hosting\style.css" />
-    <Content Include="Content\additional-css\medic\style.css" />
-    <Content Include="Content\additional-css\real-estate\style.css" />
-    <Content Include="Content\additional-css\restaurant\style.css" />
-    <Content Include="Content\additional-css\spa\style.css" />
-    <Content Include="Content\additional-css\travel\style.css" />
     <Content Include="Content\animations.css" />
     <Content Include="Content\dark\dark.css" />
     <Content Include="Content\dark\images\bordered-circle-dark.png" />
@@ -223,7 +214,7 @@
     <Content Include="Content\layerslider.css" />
     <Content Include="Content\meanmenu.css" />
     <Content Include="Content\prettyPhoto.css" />
-    <Content Include="Content\reset.css" />
+    <Content Include="Content\css\reset.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\shortcodes.css" />
     <Content Include="Content\skins\blueturquoise\style.css" />
@@ -242,7 +233,6 @@
     <Content Include="Content\skins\skyblue\style.css" />
     <Content Include="Content\skins\yellow\style.css" />
     <Content Include="Content\style.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -254,6 +244,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Images\8.gif" />
     <Content Include="Images\about-mac-image.png" />
     <Content Include="Images\admin%402x.png" />
     <Content Include="Images\admin-hover%402x.png" />
@@ -263,6 +254,9 @@
     <Content Include="Images\admin1-hover%402x.png" />
     <Content Include="Images\admin1-hover.png" />
     <Content Include="Images\admin1.png" />
+    <Content Include="Images\attorney\form-bg.png" />
+    <Content Include="Images\attorney\logo%402x.png" />
+    <Content Include="Images\attorney\logo.png" />
     <Content Include="Images\battery%402x.png" />
     <Content Include="Images\battery.png" />
     <Content Include="Images\bg.jpg" />
@@ -387,6 +381,8 @@
     <Content Include="Images\title-pattern.png" />
     <Content Include="Images\trophy-icon%402x.png" />
     <Content Include="Images\trophy-icon.png" />
+    <Content Include="Images\ud-logo%402x.png" />
+    <Content Include="Images\ud-logo.png" />
     <Content Include="Images\ui.totop%402x.png" />
     <Content Include="Images\ui.totop.png" />
     <Content Include="Images\watch%402x.png" />
@@ -501,6 +497,7 @@
     <Content Include="Scripts\twitter\jquery.tweet.min.js" />
     <Content Include="Scripts\twitter\lib\tmhOAuth.php" />
     <Content Include="Scripts\twitter\lib\tmhUtilities.php" />
+    <Content Include="favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -519,6 +516,16 @@
     <Content Include="Scripts\images\Thumbs.db" />
     <Content Include="Scripts\layerslider\skins\borderlessdark\Thumbs.db" />
     <Content Include="Scripts\twitter\bd050bd04ac22145102943a594cf98fa.json" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_TopBar.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Banner.cshtml" />
+    <Content Include="Views\Shared\_OurServices.cshtml" />
+    <Content Include="Views\Shared\_Employees.cshtml" />
+    <Content Include="Views\Shared\_ReachUS.cshtml" />
+    <Content Include="Views\Shared\_ContactUS.cshtml" />
+    <Content Include="Views\Shared\_WhatWeDo.cshtml" />
+    <Content Include="Views\Shared\_FAQAndMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -539,6 +546,10 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

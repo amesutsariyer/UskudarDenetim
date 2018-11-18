@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 @import "css/reset.css";
@@ -450,8 +450,16 @@
 	.boxed .wrapper, .boxed #main, .boxed .inner-wrapper { background-color:#ffffff; }
 	
 	/*----*****---- << 2.2. Top Bar >> ----*****----*/
-	#loader-image { background:#fff; z-index: 999991; width:100%; height:100%; float:left; top: 0; left: 0; right:0; bottom:0; margin:auto; position:absolute; }
-	.loader-wrapper { background: none repeat scroll 0 0 #fff; height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 9999999; }
+	#loader-image { background:transparent; z-index: 999991; width:100%; height:100%; float:left; top: 0; left: 0; right:0; bottom:0; margin:auto; position:absolute; }
+.loader-wrapper {
+    background: none repeat scroll 0 0 #ffffffd6;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+}
 	
 	.top-bar { width:100%; clear:both; float:left; padding:0px; line-height:50px;  border-bottom:1px dashed #ededed; border-top:1px dashed #ededed; background-color:#fff; position:relative; }
 	
@@ -574,7 +582,7 @@
 	
 	#logo { float:left; display:inline; padding:22px 0px 19px 0px; margin:0px; }
 	#logo a { width:100%; display:block; }
-	#logo a img { max-width:100%; }
+	#logo a img { max-width:16%; }
 	.header5 #logo { padding-left:20px; }
 	.header5 #main-menu { margin-right:20px; }
 	
@@ -1056,8 +1064,8 @@
 		 
 		.feature-bg { background:url(http://www.placehold.it/1920x483&text=Parallax) repeat-y; height:auto; padding:65px 0 0px 0; color:#fff; }
 		.full-section-bg { background:url(images/presentation-bg.jpg) 50% 0 repeat-y fixed; height:auto; padding:70px 0; }
-		.pattern-bg { background:url(images/pattern-bg1.jpg) repeat fixed; float:left; width:100%; }
-		.pattern-bg2 { background:url(images/pattern2.jpg) repeat fixed; float:left; width:100%; }
+		.pattern-bg { background:url(../Images/pattern-bg.jpg) repeat fixed; float:left; width:100%; }
+		.pattern-bg2 { background:url(../Images/pattern-bg.jpg) repeat fixed; float:left; width:100%; }
 		.full-width-semi-bg { background:url(http://www.placehold.it/1920x600&text=Image) no-repeat; background-position: center center; }
 		.bg-content h3, .bg-content p, .bg-content p a { color:#fff; }
 		.bg-content { display:inline-block; line-height:normal; float:left; width:50%; position:relative; text-align:right; vertical-align:middle; padding:100px 50px 100px 0px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; }
@@ -1469,8 +1477,17 @@
 	.bottom-image { margin:230px 0 0 0; }
 	
 	/*----*****---- << Go To Top >> ----*****----*/
-	#toTop { display:none; text-decoration:none; position:fixed; bottom:30px; right:30px; overflow:hidden; width:40px; height:40px; border:none; text-indent:100%; background:url(images/ui.totop.png) no-repeat left top; z-index:9999; }	
-	#toTopHover { background:url(images/ui.totop.png) no-repeat left -40px; width:40px; height:40px; display:block; overflow:hidden; float:left; opacity: 0; -moz-opacity: 0; }	
+	#toTop { display:none; text-decoration:none; position:fixed; bottom:30px; right:30px; overflow:hidden; width:40px; height:40px; border:none; text-indent:100%; background:url(../Images/ui.totop.png) no-repeat left top; z-index:9999; }
+#toTopHover {
+    background: url(../Images/ui.totop.png) no-repeat left -40px;
+    width: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    float: left;
+    opacity: 0;
+    -moz-opacity: 0;
+}	
 	#toTop:active, #toTop:focus { outline:none;	}
 	
 	/*----*****---- << Style Picker >> ----*****----*/
@@ -1532,6 +1549,6 @@
 	
 	#searchform .search-icon { background-image:url("images/search@2x.png"); background-size:15px 16px; }
 	
-	#toTop { background-image:url(images/ui.totop@2x.png); background-size:40px 81px; }
+	#toTop { background-image:url(../images/ui.totop@2x.png); background-size:40px 81px; }
 		
 	}

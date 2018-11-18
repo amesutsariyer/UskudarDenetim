@@ -1,9 +1,9 @@
-var cSpeed=9;
-var cWidth=128;
-var cHeight=128;
+var cSpeed=100;
+var cWidth = 102;
+var cHeight=102;
 var cTotalFrames=20;
-var cFrameWidth=128;
-var cImageSrc='images/sprites.png';
+var cFrameWidth = 105;
+var cImageSrc='../Images/8.gif';
 
 var cImageTimeout=false;
 var cIndex=0;
@@ -38,7 +38,7 @@ function continueAnimation(){
 	}
 	
 	if(document.getElementById('loader-image'))
-		document.getElementById('loader-image').style.backgroundPosition=(-cXpos)+'px 0';
+		//document.getElementById('loader-image').style.backgroundPosition=(-cXpos)+'px 0';
 	
 	cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES*1000);
 }
