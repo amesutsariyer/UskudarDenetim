@@ -188,6 +188,8 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -314,11 +316,13 @@
     <Content Include="Images\power-gears1-hover%402x.png" />
     <Content Include="Images\power-gears1-hover.png" />
     <Content Include="Images\power-gears1.png" />
-    <Content Include="Images\presentation-bg.jpg" />
+    <Content Include="Images\presentation-bg-dark.jpg" />
+    <Content Include="Images\presentation-bg-eski.jpg" />
     <Content Include="Images\prev-arrow%402x.png" />
     <Content Include="Images\prev-arrow.png" />
     <Content Include="Images\prev-arrow1%402x.png" />
     <Content Include="Images\prev-arrow1.png" />
+    <Content Include="Images\presentation-bg.jpg" />
     <Content Include="Images\product-presentation-bg.jpg" />
     <Content Include="Images\search%402x.png" />
     <Content Include="Images\search.png" />
@@ -526,9 +530,16 @@
     <Content Include="Views\Shared\_ContactUS.cshtml" />
     <Content Include="Views\Shared\_WhatWeDo.cshtml" />
     <Content Include="Views\Shared\_FAQAndMaster.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\Register.cshtml" />
+    <Content Include="Views\Shared\_Subscribe.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

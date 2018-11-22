@@ -9,11 +9,18 @@ using UskudarDenetim.Business.Entity;
 using UskudarDenetim.Core;
 using UskudarDenetim.UI.Identity;
 
+
 namespace UskudarDenetim.UI.Controllers
 {
-    public class HomeController : BaseController
+    public class AdminController : BaseController
     {
+        // GET: Admin
         public ActionResult Index()
+        {
+            return View("Home");
+        }
+
+        public ActionResult Login()
         {
             var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
@@ -22,20 +29,14 @@ namespace UskudarDenetim.UI.Controllers
                 roleManager.Create(new IDRole("admin"));
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult LogOut()
         {
-            //Address tablosunu GetAddresses methodu yardımıyla businesstan talep ettik.Business katmanı repo katmanına istek atarak Tüm adresleri çekti.
-            AddressBusiness business = new AddressBusiness();
-            var model =   business.GetAddresses().FirstOrDefault();
-            return View(model);
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+
         }
     }
 }
