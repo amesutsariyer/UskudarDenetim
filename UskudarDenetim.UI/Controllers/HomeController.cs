@@ -11,31 +11,28 @@ using UskudarDenetim.UI.Identity;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-            var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
+            //var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            //var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
 
-            if (!roleManager.RoleExists("admin"))
-                roleManager.Create(new IDRole("admin"));
+            //if (!roleManager.RoleExists("admin"))
+            //    roleManager.Create(new IDRole("admin"));
             return View();
         }
 
         public ActionResult About()
         {
-            //Address tablosunu GetAddresses methodu yardımıyla businesstan talep ettik.Business katmanı repo katmanına istek atarak Tüm adresleri çekti.
-            AddressBusiness business = new AddressBusiness();
-            var model =   business.GetAddresses().FirstOrDefault();
-            return View(model);
+            return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+
     }
 }

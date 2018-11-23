@@ -12,15 +12,15 @@
                     </div>
                     <ul class="menu">
                         <li class="current_page_item menu-item-simple-parent">
-                            <a href="@Url.Action("Index","Home")">Ana Sayfa</a>
+                            <a href="@Url.Action("Index","Admin")">Ana Sayfa</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                            <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
+                            <a href="@Url.Action("TeamMember","Admin")">Ekip Yapısı</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("Index","Services")">Hizmetlerimiz</a>
+                            <a href="@Url.Action("Services","Admin")">Hizmetlerimiz</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
@@ -44,6 +44,10 @@
                         </li>
                         <li class="menu-item-simple-parent">
                             <a href="@Url.Action("","")">Randevu</a>
+                            <a class="dt-menu-expand">+</a>
+                        </li>
+                        <li class="menu-item-simple-parent">
+                            <a href="@Url.Action("","")">Çıkış Yap</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                     </ul>
