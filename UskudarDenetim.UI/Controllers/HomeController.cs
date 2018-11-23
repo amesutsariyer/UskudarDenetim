@@ -15,11 +15,11 @@ namespace UskudarDenetim.UI.Controllers
     {
         public ActionResult Index()
         {
-            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-            var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
+            //var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            //var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
 
-            if (!roleManager.RoleExists("admin"))
-                roleManager.Create(new IDRole("admin"));
+            //if (!roleManager.RoleExists("admin"))
+            //    roleManager.Create(new IDRole("admin"));
             return View();
         }
 
