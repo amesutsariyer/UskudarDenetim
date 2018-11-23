@@ -411,10 +411,6 @@
     <Content Include="Scripts\preloader.js" />
     <Content Include="Scripts\responsive-nav.js" />
     <Content Include="Scripts\retina.js" />
-    <Content Include="Scripts\twitter\index.php" />
-    <Content Include="Scripts\twitter\jquery.tweet.min.js" />
-    <Content Include="Scripts\twitter\lib\tmhOAuth.php" />
-    <Content Include="Scripts\twitter\lib\tmhUtilities.php" />
     <Content Include="favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -433,7 +429,6 @@
     <Content Include="Scripts\.DS_Store" />
     <Content Include="Scripts\images\Thumbs.db" />
     <Content Include="Scripts\layerslider\skins\borderlessdark\Thumbs.db" />
-    <Content Include="Scripts\twitter\bd050bd04ac22145102943a594cf98fa.json" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
