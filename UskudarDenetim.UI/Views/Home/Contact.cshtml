@@ -1,26 +1,122 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
+<div id="main">
+    <div class="parallax full-width-bg">
+        <div class="container">
+            <div class="main-title">
+                <h1>İletişim</h1>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+            </div>
+        </div>
+    </div>
+    <div class="dt-sc-margin100"></div>
+    <!-- Container starts-->
+    <div class="container">
+        <!-- Primary Starts -->
+        <section id="primary" class="content-full-width">
+            <div class="column dt-sc-three-fourth first">
+                <div id="map" class="type2"></div>
+            </div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            <div class="column dt-sc-one-fourth">
+                <h3>İletişim Bilgileri</h3>
+                <div class="dt-sc-margin15"></div>
+                <p class="dt-sc-contact-detail"> We are located in Melbourne, serving clients worldwide. Shoot us an email, give us a call, or fill out our Project Brief if you're interested in getting started.  </p>
+                <!-- **dt-sc-contact-info - Starts** -->
+                <div class="dt-sc-contact-info">
+                    <p> <i class="fa fa-location-arrow"></i> 121 King St, Melbourne VIC 3000,<br /> Australia </p>
+                    <p> <i class="fa fa-phone"></i> +61 3 8376 6284 </p>
+                    <p> <i class="fa fa-globe"></i> <a href="#"> envato.com </a> </p>
+                    <p> <i class="fa fa-envelope"></i> <a href="#"> grandjade@gmail.com </a> </p>
+                </div> <!-- **dt-sc-contact-info - Ends** -->
+            </div>
+
+            <div class="dt-sc-margin45"></div>
+            <div class="grey2"></div>
+            <div class="dt-sc-margin55"></div>
+            <div class="column dt-sc-three-fourth first">
+                <div class="hr-title dt-sc-margin35">
+                    <h3>Mesaj Bırakın</h3>
+                    <div class="title-sep">
+                    </div>
+                </div>
+                <form method="post" class="dt-sc-contact-form" action="php/send.php" name="frmcontact">
+                    <div class="column dt-sc-one-third first">
+                        <p> <span> <input type="text" placeholder="Name*" name="txtname" value="" required /> </span> </p>
+                    </div>
+                    <div class="column dt-sc-one-third">
+                        <p> <span> <input type="email" placeholder="Email*" name="txtemail" value="" required /> </span> </p>
+                    </div>
+                    <div class="column dt-sc-one-third">
+                        <p> <span> <input type="text" placeholder="Phone" name="txtphone" value="" /> </span> </p>
+                    </div>
+                    <p> <textarea placeholder="Message*" name="txtmessage" required></textarea> </p>
+                    <p> <input type="submit" value="Send Message" name="submit" /> </p>
+                </form>
+                <div id="ajax_contact_msg"></div>
+            </div>
+
+            <div class="column dt-sc-one-fourth">
+                <h3>Client testimonials</h3>
+                <div class="dt-sc-margin15"></div>
+                <!-- **dt-sc-testimonial-wrapper type2 - Starts** -->
+                <div class="dt-sc-testimonial-wrapper type3">
+                    <!-- **testimonial-carousel - Starts** -->
+                    <ul class="dt-sc-testimonial-carousel">
+                        <li>
+                            <!-- **dt-sc-testimonial - Starts** -->
+                            <div class="dt-sc-testimonial">
+                                <h5>"This template is composed of colors. A great deal if you want a colorful & vibrant website for your business or portfolio. I highly recommend it."</h5>
+                                <!-- **author - Starts** -->
+                                <div class="author">
+                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
+                                </div> <!-- **author - Ends** -->
+                                <h6>Jeniffer Conolley</h6>
+                                <cite>Callahan Industry</cite>
+                            </div> <!-- **dt-sc-testimonial - Ends** -->
+                        </li>
+
+                        <li>
+                            <!-- **dt-sc-testimonial - Starts** -->
+                            <div class="dt-sc-testimonial">
+                                <h5>" This template is composed of colors. A great deal if you want a colorful &amp; vibrant website for your business or portfolio.I highly recommend it. A great deal."</h5>
+                                <!-- **author - Starts** -->
+                                <div class="author">
+                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
+                                </div> <!-- **author - Ends** -->
+                                <h6>Sean Bean</h6>
+                                <cite>Callahan Industry</cite>
+                            </div> <!-- **dt-sc-testimonial - Ends** -->
+                        </li>
+
+                        <li>
+                            <!-- **dt-sc-testimonial - Starts** -->
+                            <div class="dt-sc-testimonial">
+                                <h5>" This template is composed of colors. A great deal if you want a colorful &amp; vibrant website for your business or portfolio.I highly recommend it. Website for your business."</h5>
+                                <!-- **author - Starts** -->
+                                <div class="author">
+                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
+                                </div> <!-- **author - Ends** -->
+                                <h6>Mathew Braveheart</h6>
+                                <cite>Callahan Industry</cite>
+                            </div> <!-- **dt-sc-testimonial - Ends** -->
+                        </li>
+
+                    </ul> <!-- **testimonial-carousel - Ends** -->
+                </div> <!-- **dt-sc-testimonial-wrapper type3 - Ends** -->
+            </div>
+
+            <div class="dt-sc-margin80"></div>
+        </section>
+
+    </div> <!-- **container - Ends** -->
+</div> <!-- **Main - Ends** -->
+
 
 @section scripts{
-    
-<script type="text/javascript"> 
-   
 
-</script>
+    <script type="text/javascript">
+
+
+    </script>
 
 }

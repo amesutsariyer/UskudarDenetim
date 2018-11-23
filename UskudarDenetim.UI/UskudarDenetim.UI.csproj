@@ -189,6 +189,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -536,6 +538,8 @@
     <Content Include="Views\Admin\Home.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_AdminHeader.cshtml" />
+    <Content Include="Views\TeamMember\Index.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
