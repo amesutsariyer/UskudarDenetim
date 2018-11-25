@@ -14,7 +14,7 @@
         <!-- Primary Starts -->
         <section id="primary" class="content-full-width">
             <div class="column dt-sc-three-fourth first">
-                <div id="map" class="type2"></div>
+                <div id="map" ></div>
             </div>
 
             <div class="column dt-sc-one-fourth">
@@ -114,9 +114,24 @@
 
 @section scripts{
 
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=47db6dfa-1322-4e0c-857c-691c6e89500b&lang=tr_TR" type="text/javascript"></script>
     <script type="text/javascript">
+        ymaps.ready(init);
+        var myMap,
+            myPlacemark;
 
+        function init() {
+            myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 7
+            });
 
+            myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+                hintContent: 'Moscow!', balloonContent: 'Capital of Russia'
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        }
     </script>
 
 }

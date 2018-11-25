@@ -1,0 +1,126 @@
+﻿@model UskudarDenetim.UI.Models.ModelContact
+@{
+    ViewBag.Title = "İletişim Bilgileri Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="dt-sc-clear"></div>
+        <div class="form-wrapper register">
+            @using (Ajax.BeginForm("UpdateContact", "Home", new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccessUpdateContact",
+                OnFailure = "OnFailureUpdateContact",
+                OnBegin = "OnBegiUpdateContact"
+            }))
+            {
+                @*Adres Tablosuyla alakalı inputlar*@
+                @Html.HiddenFor(x => x.Address.Id)
+                <h4>Adres Bilgileri</h4>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Address.Name, new { @placeholder = "Adres Adını Giriniz", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.Address.Header, new { @placeholder = "Adres Açıklamasını Giriniz", @required = "required" })
+                </p>
+                <div class="row-wrapper" style="background-color:transparent !important">
+                    <p class="dt-sc-one-half column first">
+                        @Html.DropDownListFor(x => x.Address.CityId, Model.Address.CitySelectList, "Seçiniz", new { @required = "required" })
+                    </p>
+                    <p class="dt-sc-one-half column">
+                        @Html.DropDownListFor(x => x.Address.DistrictId, Model.Address.DistrictSelectList, "Seçiniz", new { @required = "required" })
+                    </p>
+
+                </div>
+                <p class="dt-sc-one-column">
+                    @Html.TextAreaFor(x => x.Address.AddressDetail, new {@class="mt-10", @placeholder = "Adresi Giriniz", @required = "required" })
+                </p>
+
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.AddressId)
+                <h4>İletişim Bilgileri</h4>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Cep Telefon Numarasını Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.LocalePhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.FaxNumber, new { @placeholder = "Fax Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.EmailAddress, new { @placeholder = "Birincil E-Posta Adresi", @required = "required" })
+                </p>
+                <input class="button bg-button-color-success " value="Kaydet" type="submit">
+            }
+
+        </div>
+        <div class="form-wrapper register">
+            <form>
+                <h4>Sosyal Medya Bilgileri</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ad</th>
+                            <th scope="col">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var socialMediaModel in Model.ContactSocialMedias)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@socialMediaModel.SocialMediaName</td>
+                                <td>
+                                    <input type="button" value="Değiştir" onclick="openUpdateSocialMediaModal('@socialMediaModel.SocialMediaId','@socialMediaModel.SocialMediaName','@socialMediaModel.Url')" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+@Html.Partial("admin/UpdateSocialMediaModal",new UskudarDenetim.UI.Models.ModelSocialMedia())
+@section scripts{
+
+    <script type="text/javascript">
+
+        function OnSuccessUpdateContact(response) {
+            debugger;
+        }
+        function OnFailureUpdateContact(response) {
+            debugger;
+        }
+        function OnBegiUpdateContact() {
+
+        }
+        function OnSuccessUpdateSocialMedia() {
+
+        }
+        function OnFailureUpdateSocialMedia() {
+
+        }
+        function OnBeginUpdateSocialMedia() {
+
+        }
+        function openUpdateSocialMediaModal(id,name,url) {
+            debugger; 
+            $('#social-label').text(name)
+            $('#Url').val(url);
+            $('#SocialMediaId').val(id);
+
+            $('#updateSocialMedia').modal();
+
+        }
+
+    </script>
+
+}

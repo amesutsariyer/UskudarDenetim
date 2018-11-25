@@ -480,22 +480,7 @@ jQuery(document).ready(function($){
 		});
 	}
 	
-	//Google Map
-	if( $('#map').length ) {
-		$("#map").gMap({ 
-			controls: false,
-			scrollwheel: false,
-			markers: [{ 
-					  address : 'No: 58 A, East Madison St, Baltimore, MD, USA',
-					  html: 'No: 58 A, East Madison St, Baltimore, MD, USA',
-					  icon: { 
-							image: "js/images/mapicon.png",
-							iconsize: [45, 41],
-						} 
-					}],
-			zoom: 16 
-		});
-	}
+	
 	
 	//Accordion & Toggle
 	$('.dt-sc-toggle').toggle(function(){ $(this).addClass('active'); },function(){ $(this).removeClass('active'); });
