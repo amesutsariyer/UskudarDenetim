@@ -3066,7 +3066,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 /*----*****---- << 2.4.1. Fullwidth - Page Title >> ----*****----*/
 
 .full-width-bg {
-    background: url(images/bg.jpg) 50% 0 repeat-y fixed;
+    background: url(../../Images/bg.jpg) 50% 0 repeat-y fixed;
     height: auto;
     padding: 48px 0px 50px;
 }
@@ -3566,12 +3566,12 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
     .blog-entry .bx-controls a.bx-prev {
-        background: url(images/prev-arrow1.png) no-repeat;
+        background: url(../Images/prev-arrow1.png) no-repeat;
         left: 0;
     }
 
     .blog-entry .bx-controls a.bx-next {
-        background: url(images/next-arrow1.png) no-repeat;
+        background: url(../Images/next-arrow1.png) no-repeat;
         right: 0;
     }
 
@@ -4742,12 +4742,12 @@ ul.commentlist li .reply {
 }
 
     .recent-gallery-container .bx-controls a.bx-prev {
-        background: url(images/prev-arrow.png) no-repeat;
+        background: url(../Images/prev-arrow.png) no-repeat;
         left: 0;
     }
 
     .recent-gallery-container .bx-controls a.bx-next {
-        background: url(images/next-arrow.png) no-repeat;
+        background: url(../Images/next-arrow.png) no-repeat;
         right: 0;
     }
 
@@ -6740,32 +6740,32 @@ ul.products li .product-wrapper.product-two-column {
     }
 
     .blog-entry .bx-controls a.bx-prev {
-        background-image: url(images/prev-arrow1.png);
+        background-image: url(../Images/prev-arrow1.png);
         background-size: 45px 45px;
     }
 
     .blog-entry .bx-controls a.bx-next {
-        background-image: url(images/next-arrow1.png);
+        background-image: url(../Images/next-arrow1.png);
         background-size: 45px 45px;
     }
 
     .recent-gallery-container .bx-controls a.bx-prev {
-        background-image: url(images/prev-arrow@2x.png);
+        background-image: url(../Images/prev-arrow@2x.png);
         background-size: 18px 34px;
     }
 
     .recent-gallery-container .bx-controls a.bx-next {
-        background-image: url(images/next-arrow@2x.png);
+        background-image: url(../Images/next-arrow@2x.png);
         background-size: 18px 34px;
     }
 
     #searchform .search-icon {
-        background-image: url("images/search@2x.png");
+        background-image: url("../Images/search@2x.png");
         background-size: 15px 16px;
     }
 
     #toTop {
-        background-image: url(../images/ui.totop@2x.png);
+        background-image: url(../Images/ui.totop@2x.png);
         background-size: 40px 81px;
     }
 }
@@ -6804,4 +6804,19 @@ ul.products li .product-wrapper.product-two-column {
 
 .mt-90 {
     margin-top: 90px !important;
+}
+
+.float-inherit{
+    float:inherit !important;
+}
+.bg-button-color-success {
+    background-color: #6cac05 !important;
+}
+
+.bg-button-color-danger {
+    background-color: #c90000 !important;
+}
+
+.bg-button-color-info {
+    background-color: #ecd50a !important;
 }

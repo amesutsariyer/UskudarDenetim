@@ -23,12 +23,11 @@ namespace UskudarDenetim.Repository.EF
         public System.Guid Id { get; set; }
         public string Header { get; set; }
         public string Name { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
-        public string District { get; set; }
-        public string Longitute { get; set; }
-        public string Latitute { get; set; }
+        public Nullable<int> DistrictId { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public string AddressDetail { get; set; }
     
+        public virtual District District { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contact> Contacts { get; set; }
     }

@@ -302,8 +302,8 @@
 	.dt-sc-testimonial-wrapper.type3 .dt-sc-testimonial h6 { font-size:15px; margin-bottom:0px; }
 	.dt-sc-testimonial-wrapper.type3 .dt-sc-testimonial cite { color:#92a7bb; font-size:12px; font-style:italic; font-family:'lato', sans-serif; }
 		
-	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-prev { background:url(images/prev-arrow.png) no-repeat; left:0; }
-	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-next { background:url(images/next-arrow.png) no-repeat; right:0; position:absolute; top:0; }
+	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-prev { background:url(../Images/prev-arrow.png) no-repeat; left:0; }
+	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-next { background:url(../Images/next-arrow.png) no-repeat; right:0; position:absolute; top:0; }
 	.dt-sc-testimonial-wrapper .carousel-arrows { position:absolute; bottom:50px; left: 0; margin: auto; right: 0; width: 255px; }
 	.dt-sc-testimonial-wrapper.type3 .carousel-arrows { bottom:100px; }
 	.dt-sc-testimonial-wrapper .carousel-arrows a { width:23px; height:35px; font-size:0; }
@@ -921,8 +921,8 @@
 	
 	/*----*****---- << Retina Images >> ----*****----*/
 	@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
-	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-prev { background-image:url(images/prev-arrow@2x.png); background-size:18px 34px; }
-	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-next { background-image:url(images/next-arrow@2x.png); background-size:18px 34px; } 
+	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-prev { background-image:url(../Images/prev-arrow@2x.png); background-size:18px 34px; }
+	.dt-sc-testimonial-wrapper .carousel-arrows a.testimonial-next { background-image:url(../Images/next-arrow@2x.png); background-size:18px 34px; } 
 	}
 	
 	
