@@ -1,0 +1,35 @@
+﻿<!-- Modal -->
+@model UskudarDenetim.UI.Models.ModelSocialMedia
+<div class="modal fade mt-80" id="updateSocialMedia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="social-label"></h4>
+            </div>
+            @using (Ajax.BeginForm("UpdateSocialMedia", "Home", new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccessUpdateSocialMedia",
+                OnFailure = "OnFailureUpdateSocialMedia",
+                OnBegin = "OnBeginUpdateSocialMedia"
+            }))
+            {
+                <div class="modal-body">
+                    @Html.HiddenFor(x => x.SocialMediaId)
+                    @Html.TextBoxFor(x => x.Url, new { @placeholder = "URL" })
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="button bg-button-color-danger" style="margin-left:5px !important" data-dismiss="modal">Kapat</button>
+                    &nbsp;&nbsp;
+                    <button type="submit" class="button bg-button-color-success">Kaydet</button>
+                </div>
+            }
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+
+
+</script>

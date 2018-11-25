@@ -1,7 +1,7 @@
 ﻿<div id="header-wrapper">
     <header class="header">
         <div class="container">
-            <div id="logo">
+            <div id="logo" style="padding:0px !important">
                 <a href="/Home/Index" title="Attorney"> <img src="../Images/ud-logo.png" alt="logo" /> </a>
             </div>
             <div id="menu-container">
@@ -12,14 +12,14 @@
                     </div>
                     <ul class="menu">
                         <li class="current_page_item menu-item-simple-parent">
-                            <a href="@Url.Action("Index","Admin")">Ana Sayfa</a>
+                            <a href="@Url.Action("Index","Admin")">Ana Sayfaya Git</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
+                        @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
                             <a href="@Url.Action("TeamMember","Admin")">Ekip Yapısı</a>
                             <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-simple-parent">
+                        </li>*@
+                        @*<li class="menu-item-simple-parent">
                             <a href="@Url.Action("Services","Admin")">Hizmetlerimiz</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
@@ -37,19 +37,19 @@
                         <li class="menu-item-simple-parent">
                             <a href="@Url.Action("About","Home")">Hakkımızda</a>
                             <a class="dt-menu-expand">+</a>
-                        </li>
+                        </li>*@
                         <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("Contact","Home")">İletişim</a>
+                            <a href="@Url.Action("UpdateContact","Home")">İletişim</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+                        @*<li class="menu-item-simple-parent">
                             <a href="@Url.Action("","")">Randevu</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent">
                             <a href="@Url.Action("","")">Çıkış Yap</a>
                             <a class="dt-menu-expand">+</a>
-                        </li>
+                        </li>*@
                     </ul>
                 </nav>
             </div>

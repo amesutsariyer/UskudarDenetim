@@ -22,9 +22,9 @@ namespace UskudarDenetim.Repository.EF
     
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> AddressId { get; set; }
-        public Nullable<long> PhoneNumber { get; set; }
-        public Nullable<long> LocalePhoneNumber { get; set; }
-        public Nullable<long> FaxNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public string LocalePhoneNumber { get; set; }
+        public string FaxNumber { get; set; }
         public string EmailAddress { get; set; }
         public string EmailAddress2 { get; set; }
         public System.DateTime CreatedDate { get; set; }

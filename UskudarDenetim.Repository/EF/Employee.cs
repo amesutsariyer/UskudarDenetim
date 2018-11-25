@@ -22,5 +22,6 @@ namespace UskudarDenetim.Repository.EF
         public string Title { get; set; }
         public Nullable<long> PhoneNumber { get; set; }
         public byte[] Photo { get; set; }
+        public bool IsParent { get; set; }
     }
 }
