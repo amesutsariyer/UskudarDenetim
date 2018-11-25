@@ -19,19 +19,28 @@ namespace UskudarDenetim.Repository.EF
             : base("name=UskudarDenetimEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
+        public virtual DbSet<ActivityArea> ActivityAreas { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<AppointmentRequest> AppointmentRequests { get; set; }
+        public virtual DbSet<BoardOfDirector> BoardOfDirectors { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<ContactSocialMedia> ContactSocialMedias { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<HRApplyForm> HRApplyForms { get; set; }
+        public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<SharedLink> SharedLinks { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
+        public virtual DbSet<Subscribe> Subscribes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

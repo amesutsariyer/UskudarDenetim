@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityModel\ModelAddress.cs" />
+    <Compile Include="Enums\UskudarDenetimEnums.cs" />
     <Compile Include="IdentityViewModel\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
