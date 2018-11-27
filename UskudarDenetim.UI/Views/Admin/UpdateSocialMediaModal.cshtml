@@ -7,7 +7,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="social-label"></h4>
             </div>
-            @using (Ajax.BeginForm("UpdateSocialMedia", "Home", new AjaxOptions()
+            @using (Ajax.BeginForm("UpdateSocialMedia", "Admin", new AjaxOptions()
             {
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessUpdateSocialMedia",

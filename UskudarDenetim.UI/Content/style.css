@@ -2508,7 +2508,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     }
 
         #logo a img {
-            max-width: 16%;
+            max-width: 100%;
         }
 
 .header5 #logo {
@@ -4557,19 +4557,19 @@ ul.commentlist li .reply {
 }
 
 .icon-content-bg {
-    background: url(http://www.placehold.it/1920x1318&text=Parallax) 50% 0 repeat-y fixed;
+    background: url(../Images/presentation-bg.jpg) 50% 0 repeat-y fixed;
     height: auto;
     padding: 55px 0px 45px 0px;
 }
 
 .about-features-bg {
-    background: url(http://www.placehold.it/1920x780&text=Parallax) 50% 0 repeat-y fixed;
+    background: url(../Images/presentation-bg.jpg) 50% 0 repeat-y fixed;
     height: auto;
     padding: 55px 0px 45px 0px;
 }
 
 .full-width-progress {
-    background: url(http://www.placehold.it/1920x483&text=Parallax) 50% 0 repeat-y fixed;
+    background: url(../Images/presentation-bg.jpg) 50% 0 repeat-y fixed;
     height: auto;
     padding: 40px 0 45px 0;
     color: #fff;
@@ -4584,7 +4584,7 @@ ul.commentlist li .reply {
     }
 
 .feature-bg {
-    background: url(http://www.placehold.it/1920x483&text=Parallax) repeat-y;
+    background: url(../Images/presentation-bg.jpg) repeat-y;
     height: auto;
     padding: 65px 0 0px 0;
     color: #fff;
@@ -4609,7 +4609,7 @@ ul.commentlist li .reply {
 }
 
 .full-width-semi-bg {
-    background: url(http://www.placehold.it/1920x600&text=Image) no-repeat;
+    background: url(../Images//test4.jpg) no-repeat;
     background-position: center center;
 }
 
@@ -4819,7 +4819,7 @@ ul.commentlist li .reply {
 }
 
 .fullwidth-testimonial, .parallax-content-bg {
-    background: url(http://www.placehold.it/1920x483&text=Parallax) 50% 0 repeat-y fixed;
+    background: url(../Images//test4.jpg) 50% 0 repeat-y fixed;
     height: auto;
     text-align: center;
     padding: 70px 0px 60px 0px;
@@ -4839,7 +4839,7 @@ ul.commentlist li .reply {
     }
 
 .parallax-bg {
-    background: url(http://www.placehold.it/1920x483&text=Parallax) 50% 0 repeat-y fixed;
+    background: url(../Images//test4.jpg) 50% 0 repeat-y fixed ;
     height: auto;
     padding: 70px 0px 60px 0px;
     position: relative;

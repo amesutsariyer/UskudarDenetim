@@ -2,7 +2,7 @@
     <header class="header">
         <div class="container">
             <div id="logo" style="padding:0px !important">
-                <a href="/Home/Index" title="Attorney"> <img src="../Images/ud-logo.png" alt="logo" /> </a>
+                <a href="/Home/Index" title="Attorney"> <img src="/Images/ud-logo.png" alt="logo" /> </a>
             </div>
             <div id="menu-container">
                 <nav id="main-menu">
@@ -16,40 +16,44 @@
                             <a class="dt-menu-expand">+</a>
                         </li>
                         @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                            <a href="@Url.Action("TeamMember","Admin")">Ekip Yapısı</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>*@
+            <a href="@Url.Action("TeamMember","Admin")">Ekip Yapısı</a>
+            <a class="dt-menu-expand">+</a>
+        </li>*@
                         @*<li class="menu-item-simple-parent">
-                            <a href="@Url.Action("Services","Admin")">Hizmetlerimiz</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                            <a href="#">İnsan Kaynakları</a>
+            <a href="@Url.Action("Services","Admin")">Hizmetlerimiz</a>
+            <a class="dt-menu-expand">+</a>
+        </li>
+        <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0"
+            <a href="#">İnsan Kaynakları</a>
+            <a class="dt-menu-expand">+</a>
+        </li>
+        <li class="menu-item-simple-parent">
+            <a href="tabs-accordions.html">Sirküler</a>
+            <ul class="sub-menu">
+                <li><a href="404-page.html">Vergi Sirkülerİ</a></li>
+            </ul>
+            <a class="dt-menu-expand">+</a>
+        </li>
+        <li class="menu-item-simple-parent">
+            <a href="@Url.Action("About","Home")">Hakkımızda</a>
+            <a class="dt-menu-expand">+</a>
+        </li>*@
+                        <li class="menu-item-simple-parent">
+                            <a href="@Url.Action("UpdateContact","Admin")">İletişim</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent">
-                            <a href="tabs-accordions.html">Sirküler</a>
-                            <ul class="sub-menu">
-                                <li><a href="404-page.html">Vergi Sirkülerİ</a></li>
-                            </ul>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("About","Home")">Hakkımızda</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>*@
-                        <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("UpdateContact","Home")">İletişim</a>
+                            <a href="@Url.Action("Employees","Admin")">Çalışanlar</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         @*<li class="menu-item-simple-parent">
-                            <a href="@Url.Action("","")">Randevu</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("","")">Çıkış Yap</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>*@
+            <a href="@Url.Action("","")">Randevu</a>
+            <a class="dt-menu-expand">+</a>
+        </li>
+        <li class="menu-item-simple-parent">
+            <a href="@Url.Action("","")">Çıkış Yap</a>
+            <a class="dt-menu-expand">+</a>
+        </li>*@
                     </ul>
                 </nav>
             </div>

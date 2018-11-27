@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
@@ -202,6 +203,8 @@
     <Compile Include="Identity\IDUser.cs" />
     <Compile Include="Models\ModelAddress.cs" />
     <Compile Include="Models\ModelContact.cs" />
+    <Compile Include="Models\ModelContactUS.cs" />
+    <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -285,6 +288,7 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\magic-heat%402x.png" />
     <Content Include="Images\magic-heat.png" />
+    <Content Include="Images\message-parallax-bg.jpg" />
     <Content Include="Images\mobile.png" />
     <Content Include="Images\next-arrow%402x.png" />
     <Content Include="Images\next-arrow.png" />
@@ -517,14 +521,17 @@
     <Content Include="Views\Shared\_AdminHeader.cshtml" />
     <Content Include="Views\TeamMember\Index.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
-    <Content Include="Views\Home\admin\UpdateContact.cshtml" />
+    <Content Include="Views\Admin\UpdateContact.cshtml" />
     <Content Include="Views\Modal\SuccessMessageModal.cshtml" />
     <Content Include="Views\Modal\ErrorMessageModal.cshtml" />
-    <Content Include="Views\Home\admin\UpdateSocialMediaModal.cshtml" />
+    <Content Include="Views\Admin\UpdateSocialMediaModal.cshtml" />
+    <Content Include="Views\Admin\Employees.cshtml" />
+    <Content Include="Views\Admin\UpdateEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\ContactController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

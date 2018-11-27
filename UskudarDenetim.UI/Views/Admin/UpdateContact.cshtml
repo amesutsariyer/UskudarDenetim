@@ -8,7 +8,7 @@
     <div class="container">
         <div class="dt-sc-clear"></div>
         <div class="form-wrapper register">
-            @using (Ajax.BeginForm("UpdateContact", "Home", new AjaxOptions()
+            @using (Ajax.BeginForm("UpdateContact", "Admin", new AjaxOptions()
             {
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessUpdateContact",
@@ -88,7 +88,7 @@
         </div>
     </div>
 </div>
-@Html.Partial("admin/UpdateSocialMediaModal",new UskudarDenetim.UI.Models.ModelSocialMedia())
+@Html.Partial("UpdateSocialMediaModal",new UskudarDenetim.UI.Models.ModelSocialMedia())
 @section scripts{
 
     <script type="text/javascript">

@@ -44,7 +44,7 @@ namespace UskudarDenetim.UI
                    "~/Scripts/bootstrap.js",
                       "~/Scripts/jquery.unobtrusive-ajax.min.js",
                    "~/Scripts/jquery-migrate.min.js",
-                   "~/Scripts/preloader.js",
+                   //"~/Scripts/preloader.js",
                    "~/Scripts/pace.min.js",
                    "~/Scripts/jquery.tabs.min.js",
                    "~/Scripts/jquery.tipTip.minified.js",

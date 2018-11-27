@@ -1,4 +1,4 @@
-﻿
+﻿@model UskudarDenetim.UI.Models.ModelContact
 <div id="main">
     <div class="parallax full-width-bg">
         <div class="container">
@@ -14,7 +14,7 @@
         <!-- Primary Starts -->
         <section id="primary" class="content-full-width">
             <div class="column dt-sc-three-fourth first">
-                <div id="map" ></div>
+                <div id="map"></div>
             </div>
 
             <div class="column dt-sc-one-fourth">
@@ -33,78 +33,54 @@
             <div class="dt-sc-margin45"></div>
             <div class="grey2"></div>
             <div class="dt-sc-margin55"></div>
+            <div class="dt-sc-margin55"></div> 
             <div class="column dt-sc-three-fourth first">
                 <div class="hr-title dt-sc-margin35">
                     <h3>Mesaj Bırakın</h3>
                     <div class="title-sep">
                     </div>
                 </div>
-                <form method="post" class="dt-sc-contact-form" action="php/send.php" name="frmcontact">
+                @using (Ajax.BeginForm("CreateContactUS", "Contact", new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                    OnSuccess = "OnSuccessCreateContactUS",
+                    OnFailure = "OnFailureCreateContactUS",
+                    OnBegin = "OnBeginCreateContactUS"
+                }))
+                {
                     <div class="column dt-sc-one-third first">
-                        <p> <span> <input type="text" placeholder="Name*" name="txtname" value="" required /> </span> </p>
+                        <p>
+                            <span>
+                                @*<input type="text" placeholder="Name*" name="txtname" value="" required />*@
+                                @Html.TextBoxFor(x => x.ContactUS.Name, new { @required = "required", @placeholder = "Ad*" })
+                            </span>
+                        </p>
                     </div>
                     <div class="column dt-sc-one-third">
-                        <p> <span> <input type="email" placeholder="Email*" name="txtemail" value="" required /> </span> </p>
+                        <p>
+                            <span>
+                                @*<input type="email" placeholder="Email*" name="txtemail" value="" required />*@
+                                @Html.TextBoxFor(x => x.ContactUS.Email, new { @required = "required", @placeholder = "E-Posta*" })
+                            </span>
+                        </p>
                     </div>
                     <div class="column dt-sc-one-third">
-                        <p> <span> <input type="text" placeholder="Phone" name="txtphone" value="" /> </span> </p>
+                        <p>
+                            <span>
+                                @*<input type="text" placeholder="Phone" name="txtphone" value="" />*@
+                                @Html.TextBoxFor(x => x.ContactUS.PhoneNumber, new { @placeholder = "Telefon" })
+                            </span>
+                        </p>
                     </div>
-                    <p> <textarea placeholder="Message*" name="txtmessage" required></textarea> </p>
-                    <p> <input type="submit" value="Send Message" name="submit" /> </p>
-                </form>
+                    <p>
+                        @*<textarea placeholder="Message*" name="txtmessage" required></textarea>*@
+                        @Html.TextAreaFor(x => x.ContactUS.Message, new { @required = "required", @placeholder = "Mesaj*" })
+                    </p>
+
+                    <p> <input type="submit" value="Mesaj Gönder" name="submit" /> </p>
+                }
                 <div id="ajax_contact_msg"></div>
             </div>
-
-            <div class="column dt-sc-one-fourth">
-                <h3>Client testimonials</h3>
-                <div class="dt-sc-margin15"></div>
-                <!-- **dt-sc-testimonial-wrapper type2 - Starts** -->
-                <div class="dt-sc-testimonial-wrapper type3">
-                    <!-- **testimonial-carousel - Starts** -->
-                    <ul class="dt-sc-testimonial-carousel">
-                        <li>
-                            <!-- **dt-sc-testimonial - Starts** -->
-                            <div class="dt-sc-testimonial">
-                                <h5>"This template is composed of colors. A great deal if you want a colorful & vibrant website for your business or portfolio. I highly recommend it."</h5>
-                                <!-- **author - Starts** -->
-                                <div class="author">
-                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
-                                </div> <!-- **author - Ends** -->
-                                <h6>Jeniffer Conolley</h6>
-                                <cite>Callahan Industry</cite>
-                            </div> <!-- **dt-sc-testimonial - Ends** -->
-                        </li>
-
-                        <li>
-                            <!-- **dt-sc-testimonial - Starts** -->
-                            <div class="dt-sc-testimonial">
-                                <h5>" This template is composed of colors. A great deal if you want a colorful &amp; vibrant website for your business or portfolio.I highly recommend it. A great deal."</h5>
-                                <!-- **author - Starts** -->
-                                <div class="author">
-                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
-                                </div> <!-- **author - Ends** -->
-                                <h6>Sean Bean</h6>
-                                <cite>Callahan Industry</cite>
-                            </div> <!-- **dt-sc-testimonial - Ends** -->
-                        </li>
-
-                        <li>
-                            <!-- **dt-sc-testimonial - Starts** -->
-                            <div class="dt-sc-testimonial">
-                                <h5>" This template is composed of colors. A great deal if you want a colorful &amp; vibrant website for your business or portfolio.I highly recommend it. Website for your business."</h5>
-                                <!-- **author - Starts** -->
-                                <div class="author">
-                                    <img src="http://www.placehold.it/80x80&text=Image" alt="image" />
-                                </div> <!-- **author - Ends** -->
-                                <h6>Mathew Braveheart</h6>
-                                <cite>Callahan Industry</cite>
-                            </div> <!-- **dt-sc-testimonial - Ends** -->
-                        </li>
-
-                    </ul> <!-- **testimonial-carousel - Ends** -->
-                </div> <!-- **dt-sc-testimonial-wrapper type3 - Ends** -->
-            </div>
-
             <div class="dt-sc-margin80"></div>
         </section>
 
@@ -132,6 +108,18 @@
 
             myMap.geoObjects.add(myPlacemark);
         }
+    </script>
+    <script>
+        function OnSuccessCreateContactUS() {
+
+        }
+        function OnFailureCreateContactUS() {
+
+        }
+        function OnBeginCreateContactUS() {
+
+        }
+
     </script>
 
 }

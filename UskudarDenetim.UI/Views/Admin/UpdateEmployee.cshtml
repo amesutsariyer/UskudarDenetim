@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Çalışan Düzenleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model UskudarDenetim.UI.Models.ModelEmployee
+
+<div class="full-width-section parallax full-section-bg">
+    @using (Ajax.BeginForm("UpdateEmployee", "Admin", new AjaxOptions()
+    {
+        HttpMethod = "Post",
+        OnSuccess = "OnSuccessUpdateEmployee",
+        OnFailure = "OnFailureUpdateEmployee",
+        OnBegin = "OnBeginUpdateEmployee"
+    }))
+    {
+        <div class="form-wrapper register">
+            <div class="container">
+                <div class="dt-sc-clear"></div>
+
+                @*Adres Tablosuyla alakalı inputlar*@
+                @Html.HiddenFor(Model => Model.Id)
+                <h4>Kişi Bilgileri</h4>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Adı Giriniz", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Soyadı Giriniz", @required = "required" })
+                </p>
+
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Title, new { @placeholder = "Ünvanı Giriniz", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.Profession, new { @placeholder = "Uzmanlık Alanı Giriniz", @required = "required" })
+                </p>
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required" })
+                </p>
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.BirthDate, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @type = "date" })
+                </p>
+                <p class="dt-sc-one-half column">
+
+                </p>
+
+            </div>
+            <div class="form-wrapper register">
+                <input class="button bg-button-color-success " value="Kaydet" type="submit">
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+    function OnSuccessUpdateEmployee() {
+}
+
+    function OnFailureUpdateEmployee() {
+
+    }
+
+    function OnBeginUpdateEmployee() {
+    }
+
+
+</script>  
+             

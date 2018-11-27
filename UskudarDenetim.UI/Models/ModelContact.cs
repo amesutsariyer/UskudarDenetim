@@ -11,6 +11,7 @@ namespace UskudarDenetim.UI.Models
         {
             ContactSocialMedias = new List<ModelSocialMedia>();
             Address = new ModelAddress();
+            ContactUS = new ModelContactUS();
         }
 
         public System.Guid Id { get; set; }
@@ -25,6 +26,7 @@ namespace UskudarDenetim.UI.Models
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public  ModelAddress Address { get; set; }
-        public virtual List<ModelSocialMedia> ContactSocialMedias { get; set; }
+        public  List<ModelSocialMedia> ContactSocialMedias { get; set; }
+        public ModelContactUS ContactUS{ get; set; }
     }
 }

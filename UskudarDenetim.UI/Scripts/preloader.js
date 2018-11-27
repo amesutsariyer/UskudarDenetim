@@ -3,7 +3,7 @@ var cWidth = 102;
 var cHeight=102;
 var cTotalFrames=20;
 var cFrameWidth = 105;
-var cImageSrc='../Images/8.gif';
+var cImageSrc='~/Images/8.gif';
 
 var cImageTimeout=false;
 var cIndex=0;

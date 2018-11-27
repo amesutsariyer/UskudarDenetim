@@ -1,0 +1,44 @@
+﻿@model System.Collections.Generic.List<UskudarDenetim.UI.Models.ModelEmployee>
+@{
+    ViewBag.Title = "Çalışanlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Çalışanlar Listesi</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ad/Soyad</th>
+                            <th scope="col">Telefon Numarası</th>
+                            <th scope="col">Mail Adresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var employee in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@employee.FirstName @employee.LastName</td>
+                                <td>@employee.PhoneNumber</td>
+                                <td>
+                                    <input type="button" value="Kişi Düzenle" onclick="window.location.href='@Url.Action("UpdateEmployee","Admin",new {id=employee.Id.ToString() })'" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+

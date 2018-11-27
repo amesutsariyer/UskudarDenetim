@@ -1,23 +1,59 @@
-﻿<div class="parallax full-width-section parallax-bg">
+﻿@model UskudarDenetim.UI.Models.ModelContact
+<div class="parallax full-width-section parallax-bg">
     <div class="container">
         <div class="column dt-sc-one-half first">
         </div>
         <div class="column dt-sc-one-half">
             <div class="dt-sc-consultation">
-                <h3>Biz sizi arayalım.</h3>
-                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante sembre ost.</p>
+                <h3>Mesaj Bırakın</h3>
                 <div class="dt-sc-margin10"></div>
-                <form class="dt-sc-contact-form" method="post" action="php/send.php" name="frmcontact">
-                    <p> <span> <input type="text" placeholder="Name*" name="your-name" required /> </span> </p>
-                    <p> <span> <input type="email" placeholder="Email*" name="email" required /> </span> </p>
-                    <p> <span> <input type="text" placeholder="Phone" name="phone" /> </span> </p>
-                    <p> <textarea placeholder="Message*" name="your-meassage" required></textarea> </p>
-                    <div class="dt-sc-margin50"></div>
-                    <p> <input type="submit" value="Send" name="submit" /> </p>
-                </form>
+
+              @*  <form class="dt-sc-contact-form" method="post" action="php/send.php" name="frmcontact">*@
+                    @using (Ajax.BeginForm("CreateContactUS", "Contact",null, new AjaxOptions()
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "OnSuccessCreateContactUSHome",
+                        OnFailure = "OnFailureCreateContactUSHome",
+                        OnBegin = "OnBeginCreateContactUSHome"
+                    },new { @class="dt-sc-contact-form"}))
+                    {
+                        <p>
+                            <span>
+                                @Html.TextBoxFor(x => x.ContactUS.Name, new { @required = "required", @placeholder = "Ad*" })
+                            </span>
+                        </p>
+                        <p>
+                            @Html.TextBoxFor(x => x.ContactUS.PhoneNumber, new { @placeholder = "Telefon" })
+                        </p>
+                        <p>
+                            <span>
+                                @Html.TextBoxFor(x => x.ContactUS.Email, new { @required = "required", @placeholder = "E-Posta*" })
+                            </span>
+                        </p>
+                        <p>
+                            @Html.TextAreaFor(x => x.ContactUS.Message, new { @required = "required", @placeholder = "Mesaj*" })
+                        </p>
+
+                        <div class="dt-sc-margin50"></div>
+                        <p> <input type="submit" value="Gönder" name="submit" /> </p>
+                    }
+                    @*</form>*@
                 <div id="ajax_contact_msg"></div>
+
             </div>
         </div>
         <div class="dt-sc-margin50"></div>
     </div>
-</div><!-- **Full-width-section - Ends** -->
+</div>
+
+<script>
+    function OnSuccessCreateContactUSHome() {
+
+    }
+    function OnFailureCreateContactUSHome() {
+
+    }
+    function OnBeginCreateContactUSHome() {
+
+    }
+</script>
