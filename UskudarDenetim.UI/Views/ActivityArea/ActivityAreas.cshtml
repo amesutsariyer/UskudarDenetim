@@ -1,0 +1,81 @@
+﻿@model System.Collections.Generic.List<UskudarDenetim.UI.Models.ModelActivityArea>
+@{
+    ViewBag.Title = "Faaliyet Alanları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Çalışanlar Listesi</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Faaliet Alanı</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="CreateActivityArea()" class="dt-sc-button float-inherit" /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var activityArea in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@activityArea.Name</td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id)')" class="dt-sc-button float-inherit" /></td>
+                                <td>
+                                    <input type="button" value="Düzenle" onclick="openUpdateActivityAreaModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+@Html.Partial("ActivityAreaModal", new UskudarDenetim.UI.Models.ModelActivityArea())
+@section scripts{
+
+    <script type="text/javascript">
+        function openUpdateActivityAreaModal(model) {
+            debugger;
+            $('#Id').text(model.Id)
+            $('#Name').val(model.Name);
+            $('#Description').val(model.Description);
+            $('#IconClassName').val(model.IconClassName);
+
+            $('#ActivityAreaModal').modal();
+        }
+        function CreateActivityArea() {
+            debugger;
+            $('#Id').text('');
+            $('#Name').val('');
+            $('#Description').val('');
+            $('#IconClassName').val('');
+            $('#ActivityAreaModal').modal();
+
+        }
+        function deleteActivityArea(id) {
+            debugger;
+            var request = $.ajax({
+                url: "/ActivityArea/DeleteActivityArea",
+                type: "POST",
+                data: { id: id }
+            });
+
+            request.done(function (msg) {
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+            });
+    }
+    </script>
+ }
+
+

@@ -3,7 +3,9 @@
 }
 
 @Html.Partial("_Banner")
-@Html.Partial("_OurServices")
+@*Hizmetlerimiz kısmı eksik *@
+@*@Html.Partial("_OurServices")*@
+@Html.Action("GetActivityAreas","ActivityArea")
 @Html.Partial("_WhatWeDo")
 @Html.Partial("_FAQAndMaster")
 @Html.Partial("_Employees")

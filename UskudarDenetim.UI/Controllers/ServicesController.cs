@@ -13,5 +13,14 @@ namespace UskudarDenetim.UI.Controllers
         {
             return View();
         }
+        public ActionResult GetServices()
+        {
+
+            return View();
+        }
+        public ActionResult GetService(string id)
+        {
+            return View();
+        }
     }
 }

@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\ActivityAreaController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -201,10 +202,12 @@
     <Compile Include="Identity\IdentityContext.cs" />
     <Compile Include="Identity\IDRole.cs" />
     <Compile Include="Identity\IDUser.cs" />
+    <Compile Include="Models\ModelActivityArea.cs" />
     <Compile Include="Models\ModelAddress.cs" />
     <Compile Include="Models\ModelContact.cs" />
     <Compile Include="Models\ModelContactUS.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
+    <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -507,7 +510,7 @@
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Banner.cshtml" />
-    <Content Include="Views\Shared\_OurServices.cshtml" />
+    <Content Include="Views\ActivityArea\_ActivityArea.cshtml" />
     <Content Include="Views\Shared\_Employees.cshtml" />
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Shared\_ContactUS.cshtml" />
@@ -527,6 +530,8 @@
     <Content Include="Views\Admin\UpdateSocialMediaModal.cshtml" />
     <Content Include="Views\Admin\Employees.cshtml" />
     <Content Include="Views\Admin\UpdateEmployee.cshtml" />
+    <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
+    <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
