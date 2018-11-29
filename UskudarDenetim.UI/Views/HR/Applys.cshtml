@@ -1,0 +1,66 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelHRApplyForm>
+
+@{
+    ViewBag.Title = "Gelen Başvurular";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Başvuru Listesi</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ad/Soyad</th>
+                            <th scope="col">Pozisyon</th>
+                            <th scope="col">Doğum Tarihi</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var apply in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@apply.Name @apply.Surname</td>
+                                <td>@apply.Position </td>
+                                <td>@apply.Birthdate </td>
+                                <td> <input type="button" value="Detay" onclick="@Url.Action("ApplyDetail","HR",new { id=apply.Id})" class="dt-sc-button float-inherit" /></td>
+                                <td> <input type="button" value="Sil" style="background-color:red !important" onclick="deleteApply('@apply.Id')" class="dt-sc-button float-inherit" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script>
+        function deleteAplly(id) {
+                debugger;
+                var request = $.ajax({
+                    url: "/HR/DeleteApply",
+                    type: "POST",
+                    data: { id: id }
+                });
+
+                request.done(function (msg) {
+                });
+
+                request.fail(function (jqXHR, textStatus) {
+                });
+        }
+    </script>
+
+}

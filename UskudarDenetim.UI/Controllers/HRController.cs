@@ -19,5 +19,24 @@ namespace UskudarDenetim.UI.Controllers
         {
             return Json("Ok");
         }
+        [Authorize]
+        public ActionResult Applys()
+        {
+            //GetAll()
+            var model = new List<ModelHRApplyForm>() { };
+            return View(model);
+        }
+        [Authorize]
+        public ActionResult ApplyDetail(string id)
+        {
+            //GetApplyByID
+            var model = new ModelHRApplyForm() { };
+            return View(model);
+        }
+        [Authorize]
+        public ActionResult DeleteApply()
+        {
+            return Json("ok");
+        }
     }
 }
