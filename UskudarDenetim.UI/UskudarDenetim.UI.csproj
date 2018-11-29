@@ -191,7 +191,7 @@
     <Compile Include="Controllers\ActivityAreaController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -514,7 +514,7 @@
     <Content Include="Views\Shared\_Employees.cshtml" />
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Shared\_ContactUS.cshtml" />
-    <Content Include="Views\Shared\_WhatWeDo.cshtml" />
+    <Content Include="Views\Services\_WhatWeDo.cshtml" />
     <Content Include="Views\Shared\_FAQAndMaster.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
@@ -523,7 +523,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_AdminHeader.cshtml" />
     <Content Include="Views\TeamMember\Index.cshtml" />
-    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Services\Services.cshtml" />
     <Content Include="Views\Admin\UpdateContact.cshtml" />
     <Content Include="Views\Modal\SuccessMessageModal.cshtml" />
     <Content Include="Views\Modal\ErrorMessageModal.cshtml" />
@@ -532,6 +532,8 @@
     <Content Include="Views\Admin\UpdateEmployee.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
+    <Content Include="Views\Services\ServiceDetail.cshtml" />
+    <Content Include="Views\Services\ServiceModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

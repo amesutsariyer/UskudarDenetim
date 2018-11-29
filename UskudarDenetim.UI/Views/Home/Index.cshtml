@@ -3,10 +3,11 @@
 }
 
 @Html.Partial("_Banner")
-@*Hizmetlerimiz kısmı eksik *@
-@*@Html.Partial("_OurServices")*@
+
 @Html.Action("GetActivityAreas","ActivityArea")
-@Html.Partial("_WhatWeDo")
+@Html.Action("GetServices", "Service")
+
+
 @Html.Partial("_FAQAndMaster")
 @Html.Partial("_Employees")
 <div class="dt-sc-margin100"></div>

@@ -1,0 +1,81 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelService>
+@{
+    ViewBag.Title = "Hizmetlerimiz";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Hizmetlerimiz</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Hizmet Adı</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="CreateService()" class="dt-sc-button float-inherit" /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var service in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@service.Name</td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteService('@service.Id)')" class="dt-sc-button float-inherit" /></td>
+                                <td>
+                                    <input type="button" value="Düzenle" onclick="openUpdateServiceModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+@Html.Partial("ServiceModal", new UskudarDenetim.UI.Models.ModelService())
+@section scripts{
+
+    <script type="text/javascript">
+        function openUpdateServiceModal(model) {
+            debugger;
+            $('#Id').text(model.Id)
+            $('#Name').val(model.Name);
+            $('#Description').val(model.Description);
+            $('#IconClassName').val(model.IconClassName);
+
+            $('#ServiceModal').modal();
+        }
+        function CreateService() {
+            debugger;
+            $('#Id').text('');
+            $('#Name').val('');
+            $('#Description').val('');
+            $('#IconClassName').val('');
+            $('#ServiceModal').modal();
+
+        }
+        function deleteService(id) {
+            debugger;
+            var request = $.ajax({
+                url: "/Service/DeleteService",
+                type: "POST",
+                data: { id: id }
+            });
+
+            request.done(function (msg) {
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+            });
+    }
+    </script>
+}
+
+

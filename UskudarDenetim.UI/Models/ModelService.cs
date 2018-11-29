@@ -11,6 +11,8 @@ namespace UskudarDenetim.UI.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string IconClassName { get; set; }
+        public byte[] Image { get; set; }
+        public string ImageUrl { get; set; }
 
     }
 }

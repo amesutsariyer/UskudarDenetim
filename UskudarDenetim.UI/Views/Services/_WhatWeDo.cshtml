@@ -1,0 +1,44 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelService>
+    @{ 
+        int count = 0;
+    }
+<div class="parallax full-width-section pattern-bg">
+    <div class="dt-sc-margin65"></div>
+    <div class="container">
+        <h2 class="aligncenter">Hizmetlerimiz</h2>
+        <p class="middle-align">Hizmetlerimiz Hakkında daha fazla bilgi almaya ne dersiniz.</p>
+        <div class="dt-sc-hr-invisible-small"></div>
+        @foreach (var service in Model)
+        {
+            <div class="column dt-sc-one-third @if (count%3==0)
+            {
+                /*1.kolon ilk elemanlara first class eklenmeli*/<text>first</text>
+            }   ">
+                <!-- **Blog-post - Starts** -->
+                <article class="blog-post">
+                    
+                    <!-- **entry-thumb - Starts** -->
+                    <div class="entry-thumb">
+                        <a href="blog-detail-with-right-sidebar.html"><img src="@service.ImageUrl" alt="image" /></a>
+                    </div> <!-- **entry-thumb - Ends** -->
+                    <!-- **entry-detail - Starts** -->
+                    <div class="entry-detail">
+                        <div class="entry-title">
+                            <h4><a href="blog-detail-with-right-sidebar.html"> 	@service.Name</a></h4>
+                        </div>
+                        <div class="entry-body">
+                            <p>@service.Description</p>
+                        </div>
+                        <a class="read-more" href="@Url.Action("ServiceDetail","Service",new { id=service.Id })">Devamını Oku.. <span class="fa fa-long-arrow-right"></span> </a>
+                    </div> <!-- **entry-detail - Ends** -->
+                </article><!-- **Blog-post - Ends** -->
+            </div>
+            count++;
+        }
+
+
+
+
+        <div class="dt-sc-margin30"></div>
+    </div>
+</div>
