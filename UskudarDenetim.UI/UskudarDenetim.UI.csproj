@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ActivityAreaController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\_BaseController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Models\ModelContact.cs" />
     <Compile Include="Models\ModelContactUS.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
+    <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -534,11 +536,11 @@
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
     <Content Include="Views\Services\ServiceDetail.cshtml" />
     <Content Include="Views\Services\ServiceModal.cshtml" />
+    <Content Include="Views\HR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\ContactController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

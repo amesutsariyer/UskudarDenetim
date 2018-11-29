@@ -1,0 +1,1 @@
+db store images => Varbinary(max)

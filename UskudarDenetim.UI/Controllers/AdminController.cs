@@ -10,6 +10,7 @@ using UskudarDenetim.Core;
 using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;
 using UskudarDenetim.Core.Extensions;
+using System.IO;
 
 namespace UskudarDenetim.UI.Controllers
 {
@@ -84,6 +85,7 @@ namespace UskudarDenetim.UI.Controllers
         #endregion
 
         #region Employee
+
         public ActionResult Employees()
         {
             // return EmployeesModel 
@@ -156,9 +158,19 @@ namespace UskudarDenetim.UI.Controllers
         [HttpPost]
         public ActionResult UpdateEmployee(ModelEmployee model)
         {
-            //convertTo entity and save 
             try
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                        file.SaveAs(path);
+                    }
+                }
                 return Json("Ok");
             }
             catch (Exception)
