@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\SharedLinkController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelService.cs" />
+    <Compile Include="Models\ModelSharedLink.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -516,7 +518,7 @@
     <Content Include="Views\Shared\_Employees.cshtml" />
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Shared\_ContactUS.cshtml" />
-    <Content Include="Views\Services\_WhatWeDo.cshtml" />
+    <Content Include="Views\Service\_WhatWeDo.cshtml" />
     <Content Include="Views\Shared\_FAQAndMaster.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
@@ -525,7 +527,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_AdminHeader.cshtml" />
     <Content Include="Views\TeamMember\Index.cshtml" />
-    <Content Include="Views\Services\Services.cshtml" />
+    <Content Include="Views\Service\Services.cshtml" />
     <Content Include="Views\Admin\UpdateContact.cshtml" />
     <Content Include="Views\Modal\SuccessMessageModal.cshtml" />
     <Content Include="Views\Modal\ErrorMessageModal.cshtml" />
@@ -534,11 +536,14 @@
     <Content Include="Views\Admin\UpdateEmployee.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
-    <Content Include="Views\Services\ServiceDetail.cshtml" />
-    <Content Include="Views\Services\ServiceModal.cshtml" />
+    <Content Include="Views\Service\ServiceDetail.cshtml" />
+    <Content Include="Views\Service\ServiceModal.cshtml" />
     <Content Include="Views\HR\Index.cshtml" />
     <Content Include="Views\HR\Applys.cshtml" />
     <Content Include="Views\HR\ApplyDetail.cshtml" />
+    <Content Include="Views\SharedLink\_SharedLinks.cshtml" />
+    <Content Include="Views\SharedLink\SharedLinks.cshtml" />
+    <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

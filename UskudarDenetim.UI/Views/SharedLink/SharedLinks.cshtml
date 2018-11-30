@@ -1,0 +1,83 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelSharedLink>
+@{
+    ViewBag.Title = "SharedLinks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Faydalı Linkler</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ad</th>
+                            <th scope="col">Url</th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="createSharedLink()" class="dt-sc-button float-inherit" /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var links in Model)
+                        {
+                            <tr>
+                                <td scope="row">@Html.Raw(++count)</td>
+                                <td>@links.Name</td>
+                                <td> @links.Url </td>
+                                <td>
+                                    <input type="button" style="background-color:red !important" value="Sil" onclick="deleteSharedLink('@links.Id)')" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="openSharedLinkModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+@Html.Partial("ServiceModal", new UskudarDenetim.UI.Models.ModelService())
+@section scripts{
+
+    <script type="text/javascript">
+        function openSharedLinkModal(model) {
+            debugger;
+            $('#Id').text('');
+            $('#Name').val('');
+            $('#Url').val('');
+            $('#ImageUrl').val('');
+            $('#SharedLinkModal').modal();
+        }
+        function createSharedLink() {
+            debugger;
+            $('#Id').text('');
+            $('#Name').val('');
+            $('#Url').val('');
+            $('#ImageUrl').val('');
+            $('#SharedLinkModal').modal();
+
+        }
+        function deleteSharedLink(id) {
+            debugger;
+            var request = $.ajax({
+                url: "/SharedLink/DeleteSharedLink",
+                type: "POST",
+                data: { id: id }
+            });
+
+            request.done(function (msg) {
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+            });
+    }
+    </script>
+}
+
+
+
+

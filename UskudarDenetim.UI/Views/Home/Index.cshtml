@@ -4,7 +4,7 @@
 
 @Html.Partial("_Banner")
 
-@Html.Action("GetActivityAreas","ActivityArea")
+@Html.Action("GetActivityAreas", "ActivityArea")
 @Html.Action("GetServices", "Service")
 
 
@@ -12,4 +12,15 @@
 @Html.Partial("_Employees")
 <div class="dt-sc-margin100"></div>
 @Html.Partial("_ReachUS", new UskudarDenetim.UI.Models.ModelContact())
-@Html.Partial("_ContactUS")
+<div class="dt-sc-margin100"></div>
+<!-- Container starts-->
+@Html.Action("_SharedLinks", "SharedLink")
+
+@section scripts {
+    <script>
+        function openInNewTab(url) {
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+    </script>
+}
