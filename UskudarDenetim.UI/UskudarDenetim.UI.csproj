@@ -546,6 +546,8 @@
     <Content Include="Views\SharedLink\_SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
+    <Content Include="Views\PracticalInformaion\PracticalInformationDetail.cshtml" />
+    <Content Include="Views\PracticalInformaion\PracticalInformationModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
