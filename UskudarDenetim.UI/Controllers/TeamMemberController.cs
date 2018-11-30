@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class TeamMemberController : Controller
+    public class TeamMemberController : BaseController
     {
         // GET: TeamMember
         public ActionResult Index()

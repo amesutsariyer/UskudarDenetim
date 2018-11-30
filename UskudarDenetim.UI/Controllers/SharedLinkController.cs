@@ -7,7 +7,7 @@ using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class SharedLinkController : Controller
+    public class SharedLinkController : BaseController
     {
         //[Authorize]
         public ActionResult SharedLinks()

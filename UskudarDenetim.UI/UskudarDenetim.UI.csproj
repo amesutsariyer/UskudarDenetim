@@ -192,6 +192,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
+    <Compile Include="Controllers\PracticalInformaionController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SharedLinkController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Models\ModelContactUS.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
+    <Compile Include="Models\ModelPracticalInformation.cs" />
     <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSharedLink.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
@@ -519,7 +521,7 @@
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Shared\_ContactUS.cshtml" />
     <Content Include="Views\Service\_WhatWeDo.cshtml" />
-    <Content Include="Views\Shared\_FAQAndMaster.cshtml" />
+    <Content Include="Views\PracticalInformaion\_PracticalInformations.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Shared\_Subscribe.cshtml" />

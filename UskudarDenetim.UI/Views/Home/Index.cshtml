@@ -8,7 +8,7 @@
 @Html.Action("GetServices", "Service")
 
 
-@Html.Partial("_FAQAndMaster")
+@Html.Action("_PracticalInformations", "PracticalInformation")
 @Html.Partial("_Employees")
 <div class="dt-sc-margin100"></div>
 @Html.Partial("_ReachUS", new UskudarDenetim.UI.Models.ModelContact())
@@ -19,8 +19,8 @@
 @section scripts {
     <script>
         function openInNewTab(url) {
-  var win = window.open(url, '_blank');
-  win.focus();
-}
+            var win = window.open(url, '_blank');
+            win.focus();
+        }
     </script>
 }

@@ -7,7 +7,7 @@ using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class ServiceController : Controller
+    public class ServiceController : BaseController  
     {
       
         public ActionResult GetServices()

@@ -7,7 +7,7 @@ using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class HRController : Controller
+    public class HRController : BaseController
     {
         // GET: HR
         public ActionResult Index()
