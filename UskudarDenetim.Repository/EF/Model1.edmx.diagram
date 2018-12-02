@@ -28,6 +28,7 @@
         <AssociationConnector Association="UskudarDenetimModel.FK_District_City" ManuallyRouted="false" />
         <AssociationConnector Association="UskudarDenetimModel.FK_ContactSocialMedia_Contact" ManuallyRouted="false" />
         <AssociationConnector Association="UskudarDenetimModel.FK_ContactSocialMedia_SocialMedia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UskudarDenetimModel.ContactUSFB" Width="1.5" PointX="11.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

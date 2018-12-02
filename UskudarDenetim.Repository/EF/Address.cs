@@ -26,6 +26,8 @@ namespace UskudarDenetim.Repository.EF
         public Nullable<int> DistrictId { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public string AddressDetail { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     
         public virtual District District { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

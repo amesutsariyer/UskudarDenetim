@@ -12,17 +12,14 @@ namespace UskudarDenetim.Repository.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class ContactUSFB
     {
         public System.Guid Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Nullable<System.DateTime> BirthDate { get; set; }
-        public string Profession { get; set; }
-        public string Title { get; set; }
-        public Nullable<long> PhoneNumber { get; set; }
-        public byte[] Photo { get; set; }
-        public bool IsParent { get; set; }
-        public string EmailAddress { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<bool> IsRead { get; set; }
+        public string Message { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

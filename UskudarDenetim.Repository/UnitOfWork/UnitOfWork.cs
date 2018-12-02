@@ -42,7 +42,7 @@ namespace UskudarDenetim.Repository.UnitOfWork
 
         public IGenericRepository<T> GetRepository<T>() where T : class
         {
-            return new GenericRepository<T>(_dbContext);
+            return new GenericRepository<T>();
         }
 
         public int SaveChanges()

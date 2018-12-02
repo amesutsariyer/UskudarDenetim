@@ -14,9 +14,9 @@ namespace UskudarDenetim.Repository
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly UskudarDenetimEntities _dbContext;
-        public GenericRepository(UskudarDenetimEntities dbContext)
+        public GenericRepository( )
         {
-            _dbContext = dbContext;
+            _dbContext = new UskudarDenetimEntities();
         }
 
         public void Create(T entity)

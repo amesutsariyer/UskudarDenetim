@@ -74,6 +74,9 @@
     <Compile Include="EF\ContactSocialMedia.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\ContactUSFB.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

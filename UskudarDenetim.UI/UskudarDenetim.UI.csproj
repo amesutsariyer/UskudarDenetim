@@ -192,7 +192,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
-    <Compile Include="Controllers\PracticalInformaionController.cs" />
+    <Compile Include="Controllers\PracticalInformationsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SharedLinkController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
@@ -521,7 +521,7 @@
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Shared\_ContactUS.cshtml" />
     <Content Include="Views\Service\_WhatWeDo.cshtml" />
-    <Content Include="Views\PracticalInformaion\_PracticalInformations.cshtml" />
+    <Content Include="Views\PracticalInformations\_PracticalInformations.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Shared\_Subscribe.cshtml" />
@@ -546,8 +546,8 @@
     <Content Include="Views\SharedLink\_SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
-    <Content Include="Views\PracticalInformaion\PracticalInformationDetail.cshtml" />
-    <Content Include="Views\PracticalInformaion\PracticalInformationModal.cshtml" />
+    <Content Include="Views\PracticalInformations\PracticalInformationDetail.cshtml" />
+    <Content Include="Views\PracticalInformations\PracticalInformationModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -557,13 +557,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UskudarDenetim.Business\UskudarDenetim.Business.csproj">
-      <Project>{9644ef8a-61bf-4b6f-acd8-d5a4729947e5}</Project>
-      <Name>UskudarDenetim.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UskudarDenetim.Core\UskudarDenetim.Core.csproj">
       <Project>{0e50e19b-da09-42fd-bf46-2def406bdb53}</Project>
       <Name>UskudarDenetim.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UskudarDenetim.Repository\UskudarDenetim.Repository.csproj">
+      <Project>{ec5d7c8c-bb0f-415b-bc6e-f9806632c84c}</Project>
+      <Name>UskudarDenetim.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

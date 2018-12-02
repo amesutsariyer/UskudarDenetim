@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UskudarDenetim.Business.Entity;
 using UskudarDenetim.Core;
 using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;

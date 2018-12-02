@@ -38,12 +38,12 @@ namespace UskudarDenetim.Business
           return  _genericRepository.Get(predicate);
         }
 
-        public IQueryable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
             return _genericRepository.GetAll();
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> predicate)
         {
             return _genericRepository.GetAll(predicate);
         }

@@ -42,5 +42,6 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
         public virtual DbSet<Subscribe> Subscribes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ContactUSFB> ContactUSFBs { get; set; }
     }
 }

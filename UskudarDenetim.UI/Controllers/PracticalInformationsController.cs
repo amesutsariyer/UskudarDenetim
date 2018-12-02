@@ -7,7 +7,7 @@ using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class PracticalInformaionController : BaseController
+    public class PracticalInformationsController : BaseController
     {
         //[Authorize]
         public ActionResult PracticalInformations()
