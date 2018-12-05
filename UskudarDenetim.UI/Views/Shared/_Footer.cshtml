@@ -1,4 +1,5 @@
-﻿@*<footer id="footer">
+﻿@model UskudarDenetim.UI.Models.ModelFooter   
+ @*<footer id="footer">
     <div class="footer-widgets-wrapper type5">
         <div class="container">
 
@@ -81,55 +82,56 @@
 
             <div class="column dt-sc-one-third  first">
                 <aside class="widget widget_text">
-                    <h3 class="widget-title">Contact  <span class="wlast"> Us </span><span class="small-line"> </span></h3>
-                    <p> <i class="fa fa-phone"></i> <span>Phone:</span> +22 004 324 1124 </p>
-                    <p> <i class="fa fa-print"></i> <span>Fax:</span> +22 004 324 1124 </p>
-                    <p> <i class="fa fa-envelope"></i> <span> Email:</span> <a href="#">priority@gmail.com</a> </p>
-                    <p> <i class="fa fa-globe"></i> <span>Web:</span> <a href="#">www.Wedesignthemes.com</a> </p>
+                    <h3 class="widget-title">İletişim  <span class="wlast"> Bilgileri </span><span class="small-line"> </span></h3>
+                    <p> <i class="fa fa-phone"></i> <span>Telefon:</span> @Model.PhoneNumber</p>
+                    <p> <i class="fa fa-print"></i> <span>Fax:</span>@Model.FaxNumber</p>
+                    <p> <i class="fa fa-envelope"></i> <span> Email:</span> <a href="mailto:@(Model.Email)" target="_top">@Model.Email</a> </p>
+                    
                     <p>
                         <i class="fa fa-location-arrow"></i> <span>
-                            58, Thomson Street, Edison Avenue,
-                            Baltimore, USA
+                          @Html.Raw(Model.Address)
                         </span>
                     </p>
 
                 </aside>
             </div>
+            <style>
 
+                .currency {
+                    color: white;
+                    background-color: #191919 !important;
+                    border-bottom: 0px !important
+                }
+               } 
+            </style>
             <div class="column dt-sc-one-third">
                 <aside class="widget widget_popular_entries">
-                    <h3 class="widget-title">Popular <span class="wlast">Posts</span><span class="small-line"> </span></h3>
-                    <div class="recent-property-widget">
-                        <ul>
-                            <li>
-                                <a class="thumb" href="#"><img src="http://www.placehold.it/70x70&text=Image" alt="image" /></a>
-                                <h6>
-                                    <a href="#">
-                                        Here comes the title for
-                                        the post with 2 lines
-                                    </a>
-                                </h6>
-                                <div class="entry-meta">
-                                    <p><span class="fa fa-calendar"></span>03Aug2012</p>
-
-                                    <p><span class="fa fa-user"></span><a href="">admin</a></p>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="thumb" href="#"><img src="http://www.placehold.it/70x70&text=Image" alt="image" /></a>
-                                <h6>
-                                    <a href="#">
-                                        Here comes the title for
-                                        the post with 2 lines
-                                    </a>
-                                </h6>
-                                <div class="entry-meta">
-                                    <p><span class="fa fa-calendar"></span>03Aug2012</p>
-
-                                    <p><span class="fa fa-user"></span><a href="">admin</a></p>
-                                </div>
-                            </li>
-                        </ul>
+                    <h3 class="widget-title">Döviz <span class="wlast">Bilgileri</span><span class="small-line"> </span></h3>
+                    <div class="column dt-sc-one-fourth">
+                        <table>
+                            <tbody >
+                                <tr>
+                                    <td class="currency">&nbsp;</td>
+                                    <td class="currency"><span>Alış</span></td>
+                                    <td class="currency"><span>Satış</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="currency"><span>Dolar</span></td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteBuying</td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteSelling</td>
+                                </tr>
+                                <tr>
+                                    <td class="currency"><span>Euro</span></td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteBuying</td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteSelling</td>
+                                </tr>
+                                <tr>
+                                    <td class="currency"><span>Pound</span></td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteBuying</td>
+                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteSelling</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </aside>
             </div>
@@ -143,8 +145,8 @@
 
             <div class="column dt-sc-one-third">
                 <aside class="widget mailchimp">
-                    <h3 class="widget-title">Newsletter <span class="wlast">Subscription</span><span class="small-line"> </span></h3>
-                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was of the great explorer.</p>
+                    <h3 class="widget-title">Bülten <span class="wlast">Aboneliği</span><span class="small-line"> </span></h3>
+                    <p>Üsküdar Denetim Hakkındaki En Son ve Güncel Haberler İçin Abone Olun!</p>
                     <form method="post" class="mailchimp-form" name="frmNewsletter" action="php/subscribe.php">
                         <p>
                             <span class="fa fa-envelope"></span>
@@ -155,11 +157,10 @@
                     <div id="ajax_newsletter_msg"></div>
                     <div class="dt-sc-hr-invisible-small"></div>
                     <ul class="dt-sc-social-icons">
-                        <li><a class="dt-sc-tooltip-top facebook" href='#' target="_blank" title="Facebook"> <i class="fa fa-facebook"></i> </a></li>
-                        <li><a class="dt-sc-tooltip-top twitter" href='#' target="_blank" title="Twitter"> <i class="fa fa-twitter"></i> </a></li>
-                        <li><a class="dt-sc-tooltip-top google-plus" href='#' target="_blank" title="Google-plus"> <i class="fa fa-google-plus"></i> </a></li>
-                        <li><a class="dt-sc-tooltip-top pinterest" href='#' target="_blank" title="Pinterest"> <i class="fa fa-pinterest"></i> </a></li>
-                        <li><a class="dt-sc-tooltip-top youtube" href='#' target="_blank" title="Youtube"> <i class="fa fa-youtube"></i> </a></li>
+                        @foreach (var socialMedia in Model.SocialMedia)
+                        {
+                            <li><a class="dt-sc-tooltip-top @socialMedia.SocialMediaName.ToLower()" href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i> </a></li>
+                        }
                     </ul>
                 </aside>
             </div>

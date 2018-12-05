@@ -1,5 +1,5 @@
 ﻿<!-- Modal -->
-@model UskudarDenetim.UI.Models.ModelActivityArea
+@model UskudarDenetim.UI.Models.ModelPracticalInformation
 <div class="modal fade mt-80" id="PracticalInformationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,18 +7,18 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="social-label"></h4>
             </div>
-            @using (Ajax.BeginForm("ActiviyArea", "ActivityArea", new AjaxOptions()
+            @using (Ajax.BeginForm("PracticalInformation", "PracticalInformations", new AjaxOptions()
             {
                 HttpMethod = "Post",
-                OnSuccess = "OnSuccessUpdateActivityArea",
-                OnFailure = "OnFailureUpdateActivityArea"
+                OnSuccess = "OnSuccessUpdatePracticalInformation",
+                OnFailure = "OnFailureUpdatePracticalInformation"
             }))
             {
             <div class="modal-body">
                 @Html.HiddenFor(x => x.Id)
                 @Html.TextBoxFor(x => x.Name, new { @placeholder = "Ad" })
                 @Html.TextBoxFor(x => x.Description, new { @placeholder = "Açıklama" })
-                @Html.TextBoxFor(x => x.IconClassName, new { @placeholder = "Fa fa Icon Adı" })
+                @Html.TextBoxFor(x => x.Detail, new { @placeholder = "Detay" })
             </div>
 
                 <div class="modal-footer">

@@ -210,11 +210,13 @@
     <Compile Include="Models\ModelContact.cs" />
     <Compile Include="Models\ModelContactUS.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
+    <Compile Include="Models\ModelFooter.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelPracticalInformation.cs" />
     <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSharedLink.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
+    <Compile Include="Models\ModelTopBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -548,6 +550,7 @@
     <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformationDetail.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformationModal.cshtml" />
+    <Content Include="Views\PracticalInformations\PracticalInformations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -557,6 +560,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Desktop\ExchangeRateLibrary-master\ExhangeRateService\ExhangeRateService.csproj">
+      <Project>{d3982bc6-d4d1-4330-b3aa-01faa67c3f3d}</Project>
+      <Name>ExhangeRateService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UskudarDenetim.Core\UskudarDenetim.Core.csproj">
       <Project>{0e50e19b-da09-42fd-bf46-2def406bdb53}</Project>
       <Name>UskudarDenetim.Core</Name>

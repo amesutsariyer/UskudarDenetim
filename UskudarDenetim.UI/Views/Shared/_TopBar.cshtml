@@ -1,15 +1,20 @@
-﻿<div class="top-bar type5">
+﻿@model UskudarDenetim.UI.Models.ModelTopBar
+<div class="top-bar type5">
     <!-- **container - Starts** -->
     <div class="container">
         <ul class="top-contact-details alignleft">
-            <li> <i class="fa fa-phone"></i><span>(747) 280-3101</span></li>
-            <li> <i class="fa fa-envelope"></i><a href="#">Youremail@website.com</a></li>
+            <li> <i class="fa fa-phone"></i><span>@Model.Phone</span></li>
+            <li> <i class="fa fa-envelope"></i><a href="mailto:@(Model.Email)" target="_top">@Model.Email</a></li>
         </ul>
         <ul class="top-social-icons alignright">
-            <li> <a href="#" title="facebook"> <i class="fa fa-facebook-square"></i>  </a> </li>
-            <li> <a href="#" title="twitter"> <i class="fa fa-twitter"></i>  </a> </li>
+            @foreach (var socialMedia in Model.SocialMedia)
+            {
+                <li> <a href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i>  </a> </li>
+
+            }
+            @*<li> <a href="#" title="twitter"> <i class="fa fa-twitter"></i>  </a> </li>
             <li> <a href="#" title="pinterest"> <i class="fa fa-pinterest"></i>  </a> </li>
-            <li> <a href="#" title="youtube"> <i class="fa fa-youtube"></i>  </a> </li>
+            <li> <a href="#" title="youtube"> <i class="fa fa-youtube"></i>  </a> </li>*@
         </ul>
     </div> <!-- **container - End** -->
 </div>

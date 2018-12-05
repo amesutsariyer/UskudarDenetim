@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
+using UskudarDenetim.Repository;
+using UskudarDenetim.Repository.EF;
+using UskudarDenetim.Repository.Interface;
 using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
     public class SharedLinkController : BaseController
     {
+        private IGenericRepository<SharedLink> _sharedLinkRepository;
+        public SharedLinkController()
+        {
+            _sharedLinkRepository = new GenericRepository<SharedLink>();
+        }
         //[Authorize]
         public ActionResult SharedLinks()
         {
@@ -16,19 +25,37 @@ namespace UskudarDenetim.UI.Controllers
         }
         public ActionResult _SharedLinks()
         {
-            return PartialView("_SharedLinks",SharedLinkList());
+            return PartialView("_SharedLinks", SharedLinkList());
         }
-        public ActionResult SharedLinkDetail(string id) { return View(new ModelSharedLink()); }
+        public ActionResult SharedLinkDetail(string id)
+        {
+            var entity = _sharedLinkRepository.GetById(id.ConvertToGuid());
+            ModelSharedLink model = new ModelSharedLink()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Url = entity.Url,
+                //ImageUrl Burayı unutma db güncellenince gelecek burası
+            };
+            return View(model);
+        }
         [HttpPost]
         public ActionResult SharedLink(ModelSharedLink model)
         {
-            if (model.Id != Guid.Empty)
+            SharedLink entity = new SharedLink()
             {
-
+                Id = model.Id,
+                Name = model.Name,
+                Url = model.Url,
+                //ImageUrl Burayı unutma db güncellenince gelecek burası
+            };
+            if (entity.Id != Guid.Empty)
+            {
+                _sharedLinkRepository.Update(entity);
             }
             else
             {
-
+                _sharedLinkRepository.Create(entity);
             }
             return Json("Ok");
         }
@@ -40,37 +67,14 @@ namespace UskudarDenetim.UI.Controllers
 
         private List<ModelSharedLink> SharedLinkList()
         {
-            var model = new List<ModelSharedLink>()
+            var sharedLinkRepo = _sharedLinkRepository.GetAll().ToList();
+            var model = sharedLinkRepo.Select(x => new ModelSharedLink()
             {
-                new ModelSharedLink()
-                {
-                    Id=Guid.NewGuid(),
-                    Name="Gelir İdaresi Başkanlığı",
-                    Url = "http://www.gib.gov.tr/",
-                    ImageUrl=""
-                },
-                new ModelSharedLink()
-                {
-                       Id=Guid.NewGuid(),
-                    Name="Sosyal Güvenlik Kurumu",
-                    Url = "http://www.sgk.gov.tr/",
-                    ImageUrl=""
-                },
-                 new ModelSharedLink()
-                {
-                    Id=Guid.NewGuid(),
-                    Name="T.C Resmi Gazete",
-                    Url = "http://www.resmigazete.gov.tr/default.aspx",
-                    ImageUrl=""
-                },
-                new ModelSharedLink()
-                {
-                       Id=Guid.NewGuid(),
-                    Name="Türmob",
-                    Url = "https://www.turmob.org.tr/",
-                    ImageUrl=""
-                }
-            };
+                Id = x.Id,
+                ImageUrl = x.Url,
+                Url = x.Url,
+                Name = x.Name
+            }).ToList();
             return model;
         }
     }

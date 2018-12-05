@@ -1,6 +1,6 @@
-﻿@model System.Collections.Generic.List<UskudarDenetim.UI.Models.ModelActivityArea>
+﻿@model List<UskudarDenetim.UI.Models.ModelPracticalInformation>
 @{
-    ViewBag.Title = "Faaliyet Alanları";
+    ViewBag.Title = "Pratik Bilgiler";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -8,28 +8,28 @@
     <div class="container">
         <div class="form-wrapper register">
             <form>
-                <h4>Çalışanlar Listesi</h4>
+                <h4>Hizmetlerimiz</h4>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Faaliet Alanı</th>
+                            <th scope="col">Hizmet Adı</th>
                             <th scope="col">Açıklama</th>
-                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="CreateActivityArea()" class="dt-sc-button float-inherit" /></th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="CreatePracticalInformation()" class="dt-sc-button float-inherit" /></th>
                         </tr>
                     </thead>
                     <tbody>
                         @{
                             int count = 0;
                         }
-                        @foreach (var activityArea in Model)
+                        @foreach (var practicalInformation in Model)
                         {
                             <tr>
                                 <th scope="row">@Html.Raw(++count)</th>
-                                <td>@activityArea.Name</td>
-                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id)')" class="dt-sc-button float-inherit" /></td>
+                                <td>@practicalInformation.Name</td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteService('@practicalInformation.Id)')" class="dt-sc-button float-inherit" /></td>
                                 <td>
-                                    <input type="button" value="Düzenle" onclick="openUpdateActivityAreaModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="openUpdatePracticalInformationModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }
@@ -39,32 +39,32 @@
         </div>
     </div>
 </div>
-@Html.Partial("ActivityAreaModal", new UskudarDenetim.UI.Models.ModelActivityArea())
+@Html.Partial("PracticalInformationModal", new UskudarDenetim.UI.Models.ModelPracticalInformation())
 @section scripts{
 
     <script type="text/javascript">
-        function openUpdateActivityAreaModal(model) {
+        function openUpdatePracticalInformationModal(model) {
             debugger;
             $('#Id').text(model.Id)
             $('#Name').val(model.Name);
             $('#Description').val(model.Description);
             $('#IconClassName').val(model.IconClassName);
 
-            $('#ActivityAreaModal').modal();
+            $('#ServiceModal').modal();
         }
-        function CreateActivityArea() {
+        function CreatePracticalInformation() {
             debugger;
             $('#Id').text('');
             $('#Name').val('');
             $('#Description').val('');
             $('#IconClassName').val('');
-            $('#ActivityAreaModal').modal();
+            $('#ServiceModal').modal();
 
         }
-        function deleteActivityArea(id) {
+        function deleteService(id) {
             debugger;
             var request = $.ajax({
-                url: "/ActivityArea/DeleteActivityArea",
+                url: "/PracticalInformation/Delete",
                 type: "POST",
                 data: { id: id }
             });
@@ -76,6 +76,7 @@
             });
     }
     </script>
- }
+}
+
 
 

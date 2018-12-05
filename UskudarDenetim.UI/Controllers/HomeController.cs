@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExhangeRateService.Entity;
+using ExhangeRateService.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -12,10 +14,12 @@ namespace UskudarDenetim.UI.Controllers
 {
     public class HomeController : BaseController
     {
-        private IGenericRepository<Address>_addressRepository ;
+        private IGenericRepository<Address> _addressRepository;
+        private IGenericRepository<Contact> _contactRepository;
         public HomeController()
         {
             _addressRepository = new GenericRepository<Address>();
+            _contactRepository = new GenericRepository<Contact>();
         }
         public ActionResult Index()
         {
@@ -24,9 +28,9 @@ namespace UskudarDenetim.UI.Controllers
 
             //if (!roleManager.RoleExists("admin"))
             //    roleManager.Create(new IDRole("admin"));
-            
-            IQueryable<Address> a = _addressRepository.GetAll();
-            var asd= a.ToList();
+
+            IQueryable<Address> addressRepo = _addressRepository.GetAll();
+            var asd = addressRepo.ToList();
             return View();
         }
 
@@ -39,8 +43,71 @@ namespace UskudarDenetim.UI.Controllers
         {
             return View(new ModelContact());
         }
-    
 
+        public ActionResult TopBar()
+        {
+            try
+            {
+                List<Contact> contactRepoList = _contactRepository.GetAll().ToList();
+                ModelTopBar model = new ModelTopBar()
+                {
+                    Email = contactRepoList[0].EmailAddress,
+                    Phone = contactRepoList[0].PhoneNumber,
+                };
+                foreach (var sm in contactRepoList[0].ContactSocialMedias)
+                {
+                    model.SocialMedia.Add(new ModelSocialMedia()
+                    {
+                        IconClassName = sm.SocialMedia.IconClassName,
+                        SocialMediaId = sm.SocialMedia.Id,
+                        Url = sm.SocialMedia.Url,
+                        ShortName = sm.SocialMedia.ShortName,
+                        SocialMediaName = sm.SocialMedia.Name,
+                    });
+                }
+
+                return PartialView("_TopBar", model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public ActionResult Footer()
+        {
+            try
+            {
+                List<Contact> contactRepoList = _contactRepository.GetAll().ToList();
+                ModelFooter model = new ModelFooter()
+                {
+                    Email = contactRepoList[0].EmailAddress,
+                    PhoneNumber = contactRepoList[0].PhoneNumber,
+                    FaxNumber = contactRepoList[0].FaxNumber,
+                    Address = contactRepoList[0].Address.AddressDetail
+                };
+                foreach (var sm in contactRepoList[0].ContactSocialMedias)
+                {
+                    model.SocialMedia.Add(new ModelSocialMedia()
+                    {
+                        IconClassName = sm.SocialMedia.IconClassName,
+                        SocialMediaId = sm.SocialMedia.Id,
+                        Url = sm.SocialMedia.Url,
+                        ShortName = sm.SocialMedia.ShortName,
+                        SocialMediaName = sm.SocialMedia.Name,
+                    });
+                }
+                ExchangeRateService exchangeService = new ExchangeRateService();
+                model.Currency= exchangeService.GetAllCurrency().Result as ExchangeRate ;
+
+                return PartialView("_Footer", model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
     }
 }

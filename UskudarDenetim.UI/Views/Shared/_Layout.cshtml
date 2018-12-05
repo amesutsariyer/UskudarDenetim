@@ -23,12 +23,13 @@
 
     <div class="wrapper">
         <div class="inner-wrapper">
-            @Html.Partial("_TopBar")
+            @*@Html.Partial("_TopBar")*@
+            @Html.Action("TopBar", "Home")
             @Html.Partial("_Header")
             <div id="main">
                 @RenderBody()
             </div>
-            @Html.Partial("_Footer")
+            @Html.Action("Footer", "Home")
             @Html.Partial("../Modal/SuccessMessageModal")
         </div>
     </div>
