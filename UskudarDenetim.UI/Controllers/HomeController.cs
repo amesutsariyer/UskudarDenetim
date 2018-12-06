@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Helper;
 using UskudarDenetim.Repository;
 using UskudarDenetim.Repository.EF;
 using UskudarDenetim.Repository.Entity;
@@ -16,10 +17,13 @@ namespace UskudarDenetim.UI.Controllers
     {
         private IGenericRepository<Address> _addressRepository;
         private IGenericRepository<Contact> _contactRepository;
+        private IGenericRepository<Subscribe> _subscribeRepository;
+     
         public HomeController()
         {
             _addressRepository = new GenericRepository<Address>();
             _contactRepository = new GenericRepository<Contact>();
+            _subscribeRepository = new GenericRepository<Subscribe>();
         }
         public ActionResult Index()
         {
@@ -98,7 +102,7 @@ namespace UskudarDenetim.UI.Controllers
                     });
                 }
                 ExchangeRateService exchangeService = new ExchangeRateService();
-                model.Currency= exchangeService.GetAllCurrency().Result as ExchangeRate ;
+                model.Currency = exchangeService.GetAllCurrency().Result as ExchangeRate;
 
                 return PartialView("_Footer", model);
             }
@@ -108,6 +112,42 @@ namespace UskudarDenetim.UI.Controllers
             }
 
         }
+        public ActionResult CreateSubscription(ModelFooter model)
+        {
+            try
+            {
+                if (model.EmailSubs.IsValidEmail())
+                {
+                    if (CheckMail(model.EmailSubs))
+                    {
+                        _subscribeRepository.Create(new Subscribe() { Id = Guid.NewGuid(), Date = DateTime.Now, EmailAddress = model.EmailSubs });
+                        return Json(new { success = true, message = "Abone Olma İşlemi Başarılı" });
+                    }
+                    else
+                    {
+                        return Json( new { success=false ,message= "Bu Mail Adresi Sistemde Kayıtlı" });
+                    }
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Geçersiz Email Adresi" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Mail Adresi Sisteme Kaydedilirken Sistemsel Bir Hata Oluştu" });
+            }
+        }
 
+        private bool CheckMail(string email)
+        {
+            var allList = _subscribeRepository.GetAll().ToList();
+            if (allList.Count != 0)
+            {
+                if (allList.Where(x => x.EmailAddress.Trim().ToLower() == email.Trim().ToLower()).Any())
+                    return false;
+            }
+            return true;
+        }
     }
 }

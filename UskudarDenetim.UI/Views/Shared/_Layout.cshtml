@@ -31,6 +31,7 @@
             </div>
             @Html.Action("Footer", "Home")
             @Html.Partial("../Modal/SuccessMessageModal")
+            @Html.Partial("../Modal/ErrorMessageModal")
         </div>
     </div>
 
@@ -42,6 +43,32 @@
     <script>
         Inputmask().mask(document.querySelectorAll("input"));
     </script>
+    <script>
+        function OnSuccessSubscription(response) {
+            if (response.success) {
+                debugger;
+                jQuery('#success-modal-title').html('Kaydetme İşlemi')
+                jQuery('#success-modal-body').html(response.message)
+                jQuery('#success-modal').modal();
+            }
+            else {
+                jQuery('#error-modal-title').html('Kaydetme İşlemi')
+                jQuery('#error-modal-body').html(response.message)
+                jQuery('#error-modal').modal();
+            }
+        }
+        function OnFailureSubscription(response) {
+            if (response.success) {
+                jQuery('#error-modal-title').html('Kaydetme İşlemi')
+                jQuery('#error-modal-body').html(response.message)
+                jQuery('#error-modal').modal();
+            }
+            else {
+                jQuery('#error-modal-title').html('Kaydetme İşlemi')
+                jQuery('#error-modal-body').html(response.message)
+                jQuery('#error-modal').modal();
+            }
+        }</script>>
 </body>
 </html>
 

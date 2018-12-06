@@ -16,6 +16,7 @@ namespace UskudarDenetim.UI.Models
         public string FaxNumber { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+        public string EmailSubs { get; set; }
         public List<ModelSocialMedia> SocialMedia { get; set; }
         public ExchangeRate Currency { get; set; }
     }

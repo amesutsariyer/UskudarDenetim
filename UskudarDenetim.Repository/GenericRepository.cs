@@ -22,6 +22,7 @@ namespace UskudarDenetim.Repository
         public void Create(T entity)
         {
             _dbContext.Set<T>().Add(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Delete(T entity)
