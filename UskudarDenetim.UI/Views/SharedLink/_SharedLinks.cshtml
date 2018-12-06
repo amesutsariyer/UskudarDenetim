@@ -5,17 +5,17 @@
         <div class="dt-sc-margin10"></div>
         @foreach (var sharedLink in Model)
         {
-            <div onclick="openInNewTab('@sharedLink.Url')" class="portfolio dt-sc-one-fourth no-space column all-sort outdoors-sort fashion-sort">
+            <div onclick="openInNewTab('@sharedLink.Url')" style="   width: 250px;
+    height: 130px; " class="portfolio dt-sc-one-fourth no-space column all-sort outdoors-sort fashion-sort">
                 <!-- **portfolio-thumb - Starts** -->
 
                 <div class="portfolio-thumb">
                     <figure>
-                        <img src="http://placehold.it/1200x800&text=Gallery" alt="image" />
+                        <img style="   width: 250px;
+    height: 130px; "   src="@sharedLink.ImageUrl" alt="@sharedLink.Name" />
                         <div class="image-overlay">
-
-
                             <div class="portfolio-content">
-                                <h5> <a href="portfolio-detail-v2.html"> @sharedLink.Name </a> </h5>
+                                <h5> <a href="#"> @sharedLink.Name </a> </h5>
                                 <span class="fa fa-sort-up"></span>
                             </div>
                         </div>

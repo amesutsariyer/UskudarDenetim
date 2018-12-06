@@ -11,7 +11,7 @@ using UskudarDenetim.Repository.Interface;
 
 namespace UskudarDenetim.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : Interface.GenericRepository<T> where T : class
     {
         private readonly UskudarDenetimEntities _dbContext;
         public GenericRepository( )
@@ -96,6 +96,7 @@ namespace UskudarDenetim.Repository
         {
             _dbContext.Set<T>().Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
     }
 }

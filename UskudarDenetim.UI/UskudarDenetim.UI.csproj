@@ -265,7 +265,13 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Images\1200x800\gib.png" />
+    <Content Include="Images\1200x800\resmigazete.jpg" />
+    <Content Include="Images\1200x800\sgk.png" />
+    <Content Include="Images\1200x800\turmob.png" />
+    <Content Include="Images\160x160\ufukpf.png" />
     <Content Include="Images\8.gif" />
+    <Content Include="Images\160x160\amspf.jpg" />
     <Content Include="Images\attorney\form-bg.png" />
     <Content Include="Images\attorney\logo%402x.png" />
     <Content Include="Images\attorney\logo.png" />
@@ -537,7 +543,7 @@
     <Content Include="Views\Modal\ErrorMessageModal.cshtml" />
     <Content Include="Views\Admin\UpdateSocialMediaModal.cshtml" />
     <Content Include="Views\Admin\Employees.cshtml" />
-    <Content Include="Views\Admin\UpdateEmployee.cshtml" />
+    <Content Include="Views\Admin\Employee.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
     <Content Include="Views\Service\ServiceDetail.cshtml" />

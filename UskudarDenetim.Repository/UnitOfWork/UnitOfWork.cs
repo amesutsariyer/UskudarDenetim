@@ -40,7 +40,7 @@ namespace UskudarDenetim.Repository.UnitOfWork
             GC.SuppressFinalize(this);
         }
 
-        public IGenericRepository<T> GetRepository<T>() where T : class
+        public GenericRepository<T> GetRepository<T>() where T : class
         {
             return new GenericRepository<T>();
         }

@@ -17,5 +17,6 @@ namespace UskudarDenetim.Repository.EF
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

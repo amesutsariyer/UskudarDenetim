@@ -15,6 +15,7 @@ namespace UskudarDenetim.UI.Models
         public string Title { get; set; }
         public string PhoneNumber { get; set; }
         public byte[] Photo { get; set; }
+        public HttpPostedFileBase File { get; set; }
         public bool IsParent{ get; set; }
         public string Email { get; set; }
     }

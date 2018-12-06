@@ -9,7 +9,7 @@ namespace UskudarDenetim.Repository.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<T> GetRepository<T>() where T : class;
+        GenericRepository<T> GetRepository<T>() where T : class;
         int SaveChanges();
     }
 }

@@ -15,15 +15,15 @@ namespace UskudarDenetim.UI.Controllers
 {
     public class HomeController : BaseController
     {
-        private IGenericRepository<Address> _addressRepository;
-        private IGenericRepository<Contact> _contactRepository;
-        private IGenericRepository<Subscribe> _subscribeRepository;
+        private Repository.Interface.GenericRepository<Address> _addressRepository;
+        private Repository.Interface.GenericRepository<Contact> _contactRepository;
+        private Repository.Interface.GenericRepository<Subscribe> _subscribeRepository;
      
         public HomeController()
         {
-            _addressRepository = new GenericRepository<Address>();
-            _contactRepository = new GenericRepository<Contact>();
-            _subscribeRepository = new GenericRepository<Subscribe>();
+            _addressRepository = new Repository.GenericRepository<Address>();
+            _contactRepository = new Repository.GenericRepository<Contact>();
+            _subscribeRepository = new Repository.GenericRepository<Subscribe>();
         }
         public ActionResult Index()
         {

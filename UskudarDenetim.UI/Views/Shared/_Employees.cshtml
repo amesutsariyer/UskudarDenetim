@@ -1,119 +1,67 @@
-﻿<div class="full-width-section">
-    <div class="dt-sc-margin50"></div>
-    <div class="container">
-        <h2 class="aligncenter">Our Attorneys</h2>
-        <p class="middle-align">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical<br /> Latin literature from 45 BC, making it over 2000 years old. </p>
-        <div class="dt-sc-hr-invisible-small"></div>
-        <div class="dt-sc-timeline-wrapper">
+﻿@model List<UskudarDenetim.UI.Models.ModelEmployee>
+@if (Model.Count != 0)
+{
+    <div class="full-width-section">
+        <div class="dt-sc-margin50"></div>
+        <div class="container">
+            <h2 class="aligncenter">Ekibimiz</h2>
+            @*<p class="middle-align">Çalışma Arkadaşlarımız<br /> Latin literature from 45 BC, making it over 2000 years old. </p>*@
+            <div class="dt-sc-hr-invisible-small"></div>
+            <div class="dt-sc-timeline-wrapper">
+                @{
+                    int count = 0;
+                }
+                @foreach (var employee in Model)
+                {
+                    if (count % 2 == 0)
+                    {
+                        <div class="dt-sc-timeline-team right">
+                            <div class="column dt-sc-one-half first">
+                                <div class="dt-sc-hr-invisible"></div>
+                            </div>
+                            <div class="column dt-sc-one-half">
+                                <div class="dt-sc-hr-invisible"></div>
+                                <!-- **dt-sc-team - Starts** -->
+                                <div class="dt-sc-team type4">
+                                    <div class="image"><img src="~/Images/160x160/amspf.jpg" alt="iamge" /></div>
+                                    <!-- **team-details - Starts** -->
+                                    <div class="team-details">
+                                        <h6><a href="#">@employee.FirstName @employee.LastName</a></h6>
+                                        <p>@employee.Title</p>
+                                        <p>@employee.Profession</p>
+                                    </div> <!-- **team-details - Ends** -->
+                                </div><!-- **dt-sc-team - Ends** -->
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="dt-sc-timeline-team left">
 
-            <div class="dt-sc-timeline-team right">
+                            <div class="column dt-sc-one-half first">
+                                <!-- **dt-sc-team - Starts** -->
+                                <div class="dt-sc-team type4">
+                                    <div class="image"><img src="~/Images/160x160/ufukpf.png" alt="iamge" /></div>
+                                    <!-- **team-details - Starts** -->
+                                    <div class="team-details">
+                                        <h6><a href="#">@employee.FirstName @employee.LastName</a></h6>
+                                        <p>@employee.Title</p>
+                                        <p>@employee.Profession</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="column dt-sc-one-half first">
-                    <div class="dt-sc-hr-invisible"></div>
-                </div>
-                <div class="column dt-sc-one-half">
-                    <div class="dt-sc-hr-invisible"></div>
-                    <!-- **dt-sc-team - Starts** -->
-                    <div class="dt-sc-team type4">
-                        <div class="image"><img src="http://placehold.it/160x160&text=Image" alt="iamge" /></div>
-                        <!-- **team-details - Starts** -->
-                        <div class="team-details">
-                            <h6><a href="#">James Dunlop</a></h6>
-                            <p>Associate / Crime</p>
-                            <p>Lorem ipsum dolor sit amet, tincidunt suspendisse. Tempor lectus, purus elit et, non scelerisque et, posuere phasellus adipiscing ut luctus dignissimos. Sollicitudin sit augue non quam at, purus aenean enim nunc.</p>
-                      
-                        </div> <!-- **team-details - Ends** -->
-                    </div><!-- **dt-sc-team - Ends** -->
-                </div>
-            </div> <!-- **dt-sc-timeline-team right - Ends** -->
+                            <div class="column dt-sc-one-half">
+                                <div class="dt-sc-hr-invisible"></div>
+                            </div>
 
-            <div class="dt-sc-timeline-team left">
+                        </div>
+                    }
 
-                <div class="column dt-sc-one-half first">
-                    <!-- **dt-sc-team - Starts** -->
-                    <div class="dt-sc-team type4">
-                        <div class="image"><img src="http://placehold.it/160x160&text=Image" alt="iamge" /></div>
-                        <!-- **team-details - Starts** -->
-                        <div class="team-details">
-                            <h6><a href="#">Danny</a></h6>
-                            <p>Associate</p>
-                            <p>Lorem ipsum dolor sit amet, tincidunt suspendisse. Tempor lectus, purus elit et, non scelerisque et, posuere phasellus adipiscing ut luctus dignissimos. Sollicitudin sit augue non quam at, purus aenean enim nunc.</p>
-                            <!-- **dt-sc-social-icons - Starts** -->
-                          <!-- **dt-sc-social-icons - Ends** -->
-                        </div> <!-- **team-details - Ends** -->
-                    </div><!-- **dt-sc-team - Ends** -->
-                </div>
+                    count++;
+                }
 
-                <div class="column dt-sc-one-half">
-                    <div class="dt-sc-hr-invisible"></div>
-                </div>
-
-            </div> <!-- **dt-sc-timeline-team left - Ends** -->
-
-            <div class="dt-sc-timeline-team right">
-
-                <div class="column dt-sc-one-half first">
-                    <div class="dt-sc-hr-invisible"></div>
-                </div>
-                <div class="column dt-sc-one-half">
-                    <!-- **dt-sc-team - Starts** -->
-                    <div class="dt-sc-team type4">
-                        <div class="image"><img src="http://placehold.it/160x160&text=Image" alt="iamge" /></div>
-                        <!-- **team-details - Starts** -->
-                        <div class="team-details">
-                            <h6><a href="#">Mick Lousie</a></h6>
-                            <p>Women Harrasment</p>
-                            <p>Lorem ipsum dolor sit amet, tincidunt suspendisse. Tempor lectus, purus elit et, non scelerisque et, posuere phasellus adipiscing ut luctus dignissimos. Sollicitudin sit augue non quam at, purus aenean enim nunc.</p>
-
-                        </div> <!-- **team-details - Ends** -->
-                    </div><!-- **dt-sc-team - Ends** -->
-                </div>
-            </div> <!-- **dt-sc-timeline-team right - Ends** -->
-
-            <div class="dt-sc-timeline-team left">
-
-                <div class="column dt-sc-one-half first">
-                    <!-- **dt-sc-team - Starts** -->
-                    <div class="dt-sc-team type4">
-                        <div class="image"><img src="http://placehold.it/160x160&text=Image" alt="iamge" /></div>
-                        <!-- **team-details - Starts** -->
-                        <div class="team-details">
-                            <h6><a href="#">Karen Smith</a></h6>
-                            <p>Associate / Estate Planning</p>
-                            <p>Lorem ipsum dolor sit amet, tincidunt suspendisse. Tempor lectus, purus elit et, non scelerisque et, posuere phasellus adipiscing ut luctus dignissimos. Sollicitudin sit augue non quam at, purus aenean enim nunc.</p>
-                            <!-- **dt-sc-social-icons - Starts** -->
-                          
-                        </div> <!-- **team-details - Ends** -->
-                    </div><!-- **dt-sc-team - Ends** -->
-                </div>
-
-                <div class="column dt-sc-one-half">
-                    <div class="dt-sc-hr-invisible"></div>
-                </div>
-
-            </div> <!-- **dt-sc-timeline-team left - Ends** -->
-
-            <div class="dt-sc-timeline-team right">
-
-                <div class="column dt-sc-one-half first">
-                    <div class="dt-sc-hr-invisible"></div>
-                </div>
-                <div class="column dt-sc-one-half">
-                    <!-- **dt-sc-team - Starts** -->
-                    <div class="dt-sc-team type4">
-                        <div class="image"><img src="http://placehold.it/160x160&text=Image" alt="iamge" /></div>
-                        <!-- **team-details - Starts** -->
-                        <div class="team-details">
-                            <h6><a href="#">Peter JAckson</a></h6>
-                            <p>Business Law</p>
-                            <p>Lorem ipsum dolor sit amet, tincidunt suspendisse. Tempor lectus, purus elit et, non scelerisque et, posuere phasellus adipiscing ut luctus dignissimos. Sollicitudin sit augue non quam at, purus aenean enim nunc.</p>
-                            <!-- **dt-sc-social-icons - Starts** -->
-                          
-                        </div> <!-- **team-details - Ends** -->
-                    </div><!-- **dt-sc-team - Ends** -->
-                </div>
-            </div> <!-- **dt-sc-timeline-team right - Ends** -->
-
-        </div> <!-- **dt-sc-timeline-wrapper - Ends** -->
-    </div> <!-- **container - Ends** -->
-</div>
+            </div>
+        </div>
+    </div>
+}

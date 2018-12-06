@@ -1,18 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Çalışan Düzenleme";
+    ViewBag.Title = "Çalışan Ekle/Düzenleme";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @model UskudarDenetim.UI.Models.ModelEmployee
 
 <div class="full-width-section parallax full-section-bg">
-    @using (Ajax.BeginForm("UpdateEmployee", "Admin", new AjaxOptions()
-    {
-        HttpMethod = "Post",
-        OnSuccess = "OnSuccessUpdateEmployee",
-        OnFailure = "OnFailureUpdateEmployee",
-        OnBegin = "OnBeginUpdateEmployee"
-    }))
+    @using (Html.BeginForm("Employee", "Admin",FormMethod.Post,new
+    { enctype = "multipart/form-data" }))
     {
         <div class="form-wrapper register">
             <div class="container">
@@ -44,10 +39,11 @@
                 </p>
 
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.BirthDate, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @type = "date" })
+                    @Html.TextBoxFor(x => x.BirthDate, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @type = "date" ,@class="form-control"})
                 </p>
                 <p class="dt-sc-one-half column">
-                    <input type="file" name="file" />
+                    @*<input type="file" name="file" value="" />>*@
+                    @Html.TextBoxFor(x=>x.File,new {@type="file",@name="file" })
                 </p>
 
             </div>

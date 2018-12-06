@@ -13,10 +13,10 @@ namespace UskudarDenetim.UI.Controllers
 {
     public class SharedLinkController : BaseController
     {
-        private IGenericRepository<SharedLink> _sharedLinkRepository;
+        private Repository.Interface.GenericRepository<SharedLink> _sharedLinkRepository;
         public SharedLinkController()
         {
-            _sharedLinkRepository = new GenericRepository<SharedLink>();
+            _sharedLinkRepository = new Repository.GenericRepository<SharedLink>();
         }
         //[Authorize]
         public ActionResult SharedLinks()
@@ -35,6 +35,7 @@ namespace UskudarDenetim.UI.Controllers
                 Id = entity.Id,
                 Name = entity.Name,
                 Url = entity.Url,
+                ImageUrl =entity.ImageUrl
                 //ImageUrl Burayı unutma db güncellenince gelecek burası
             };
             return View(model);
@@ -47,6 +48,7 @@ namespace UskudarDenetim.UI.Controllers
                 Id = model.Id,
                 Name = model.Name,
                 Url = model.Url,
+                ImageUrl = model.ImageUrl
                 //ImageUrl Burayı unutma db güncellenince gelecek burası
             };
             if (entity.Id != Guid.Empty)
@@ -71,7 +73,7 @@ namespace UskudarDenetim.UI.Controllers
             var model = sharedLinkRepo.Select(x => new ModelSharedLink()
             {
                 Id = x.Id,
-                ImageUrl = x.Url,
+                ImageUrl = x.ImageUrl,
                 Url = x.Url,
                 Name = x.Name
             }).ToList();

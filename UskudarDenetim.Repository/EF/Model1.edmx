@@ -144,7 +144,7 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <Property Name="BirthDate" Type="date" />
           <Property Name="Profession" Type="nvarchar(max)" />
           <Property Name="Title" Type="nvarchar(max)" />
-          <Property Name="PhoneNumber" Type="bigint" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="IsParent" Type="bit" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
@@ -189,6 +189,7 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SocialMedia">
           <Key>
@@ -456,21 +457,6 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_District" FromRole="District" ToRole="Address" />
           <NavigationProperty Name="City" Relationship="Self.FK_District_City" FromRole="District" ToRole="City" />
         </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="Int64" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsParent" Type="Boolean" Nullable="false" />
-          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="HRApplyForm">
           <Key>
             <PropertyRef Name="Id" />
@@ -511,6 +497,7 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SocialMedia">
           <Key>
@@ -623,7 +610,6 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <EntitySet Name="ContactSocialMedias" EntityType="Self.ContactSocialMedia" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="Districts" EntityType="Self.District" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="HRApplyForms" EntityType="Self.HRApplyForm" />
           <EntitySet Name="Sectors" EntityType="Self.Sector" />
           <EntitySet Name="Services" EntityType="Self.Service" />
@@ -656,6 +642,7 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
             <End Role="ContactSocialMedia" EntitySet="ContactSocialMedias" />
           </AssociationSet>
           <EntitySet Name="ContactUSFBs" EntityType="UskudarDenetimModel.ContactUSFB" />
+          <EntitySet Name="Employees" EntityType="UskudarDenetimModel.Employee" />
         </EntityContainer>
         <EntityType Name="ContactUSFB">
           <Key>
@@ -668,6 +655,21 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <Property Name="IsRead" Type="Boolean" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsParent" Type="Boolean" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -791,22 +793,6 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="UskudarDenetimModel.Employee">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Profession" ColumnName="Profession" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HRApplyForms">
             <EntityTypeMapping TypeName="UskudarDenetimModel.HRApplyForm">
               <MappingFragment StoreEntitySet="HRApplyForm">
@@ -846,6 +832,7 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
           <EntitySetMapping Name="SharedLinks">
             <EntityTypeMapping TypeName="UskudarDenetimModel.SharedLink">
               <MappingFragment StoreEntitySet="SharedLink">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
@@ -892,6 +879,22 @@ warning 6013: The table/view 'UskudarDenetim.dbo.Company' does not have a primar
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="UskudarDenetimModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

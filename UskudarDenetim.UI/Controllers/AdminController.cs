@@ -10,11 +10,18 @@ using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;
 using UskudarDenetim.Core.Extensions;
 using System.IO;
+using UskudarDenetim.Repository.EF;
 
 namespace UskudarDenetim.UI.Controllers
 {
     public class AdminController : BaseController
     {
+        private Repository.Interface.GenericRepository<Employee> _employeeRepository;
+
+        public AdminController()
+        {
+            _employeeRepository = new Repository.GenericRepository<Employee>();
+        }
         // GET: Admin
         public ActionResult Index()
         {
@@ -84,93 +91,121 @@ namespace UskudarDenetim.UI.Controllers
         #endregion
 
         #region Employee
-
+        public ActionResult AllEmployee()
+        {
+            var empList = _employeeRepository.GetAll().ToList();
+            var model = empList.Select(x => new ModelEmployee()
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                BirthDate = x.BirthDate.Value,
+                Profession = x.Profession,
+                Title = x.Title,
+                PhoneNumber = x.PhoneNumber,
+                Photo = x.Photo,
+                IsParent = x.IsParent,
+                Email = x.EmailAddress
+            }).ToList();
+            return PartialView("_Employees", model);
+        }
         public ActionResult Employees()
         {
             // return EmployeesModel 
             //Tüm çalışanlar Model ile gönderilmeli
             //IsPArent Patron burda göndercez her türlü
-            var model = new List<ModelEmployee>()
+            var empList = _employeeRepository.GetAll().ToList();
+            var model = empList.Select(x => new ModelEmployee()
             {
-                 new ModelEmployee()
-                 {
-                     Id= Guid.NewGuid(),
-                     BirthDate= DateTime.Now,
-                     FirstName="Ufuk",
-                     LastName ="Sevincer",
-                     Profession = "Denetçi Yardımcısı",
-                     IsParent=false,
-                     Title = "Junior",
-                     PhoneNumber="538 649 91 64",
-                     Email ="test@uskudardenetim.com.tr"
-
-                 },
-                 new ModelEmployee()
-                 {
-                         Id= Guid.NewGuid(),
-                     BirthDate= DateTime.Now,
-                     FirstName="Harun",
-                     LastName ="Baştürk",
-                     Profession = "Yeminli Mali Müşavir",
-                     IsParent=false,
-                     Title = "Senior",
-                     PhoneNumber="535 346 28 78",
-                     Email ="test@uskudardenetim2.com.tr"
-
-                 },
-                 new ModelEmployee()
-                 {
-                      Id= Guid.NewGuid(),
-                     BirthDate= DateTime.Now,
-                     FirstName="Harun",
-                     LastName ="Baştürk",
-                     Profession = "Bilgisayar Mühendisi",
-                     IsParent=false,
-                     Title = "Junior",
-                     PhoneNumber="535 346 28 78",
-                     Email ="test@uskudardenetim3.com.tr"
-
-                 }
-            };
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                BirthDate = x.BirthDate.Value,
+                Profession = x.Profession,
+                Title = x.Title,
+                PhoneNumber = x.PhoneNumber,
+                Photo = x.Photo,
+                IsParent = x.IsParent,
+                Email = x.EmailAddress
+            }).ToList();
             return View(model);
         }
         [HttpGet]
         public ActionResult UpdateEmployee(string id)
         {
             Guid idG = id.ConvertToGuid();
+           var employee = _employeeRepository.GetById(idG);
             var model = new ModelEmployee()
             {
 
-                Id = Guid.NewGuid(),
-                BirthDate = DateTime.Now,
-                FirstName = "Harun",
-                LastName = "Baştürk",
-                Profession = "Bilgisayar Mühendisi",
-                IsParent = false,
-                Title = "Junior",
-                PhoneNumber = "535 346 28 78",
-                Email = "test@uskudardenetim3.com.tr"
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                BirthDate = employee.BirthDate.Value.ConvertToUIDateFormat(),
+                Profession = employee.Profession,
+                Title = employee.Title,
+                PhoneNumber = employee.PhoneNumber,
+                Photo = employee.Photo,
+                IsParent = employee.IsParent,
+                Email = employee.EmailAddress
             };
-
-            return View(model);
+            return View("Employee", model);
         }
         [HttpPost]
-        public ActionResult UpdateEmployee(ModelEmployee model)
+        public ActionResult Employee(ModelEmployee model)
         {
             try
             {
-                if (Request.Files.Count > 0)
+                if (model.Id != null && model.Id != Guid.Empty)
                 {
-                    var file = Request.Files[0];
-
-                    if (file != null && file.ContentLength > 0)
+                    var ent = new Employee()
                     {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                        file.SaveAs(path);
-                    }
+                        Id = model.Id,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        BirthDate = model.BirthDate,
+                        Profession = model.Profession,
+                        Title = model.Title,
+                        PhoneNumber = model.PhoneNumber,
+                        Photo = model.Photo,
+                        IsParent = model.IsParent,
+                        EmailAddress = model.Email
+                    };
+                    _employeeRepository.Update(ent);
+                    return RedirectToAction("Employees", "Admin");
                 }
-                return Json("Ok");
+                else
+                {
+                    //ekleme
+                    var ent = new Employee()
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        BirthDate = model.BirthDate,
+                        Profession = model.Profession,
+                        Title = model.Title,
+                        PhoneNumber = model.PhoneNumber,
+                        Photo = model.Photo,
+                        IsParent = model.IsParent,
+                        EmailAddress = model.Email
+                    };
+                    _employeeRepository.Create(ent);
+                    return RedirectToAction("Employees", "Admin");
+                }
+
+                //if (Request.Files.Count > 0)
+                //{
+                //    var file = Request.Files[0];
+
+                //    if (file != null && file.ContentLength > 0)
+                //    {
+                //        var fileName = Path.GetFileName(file.FileName);
+                //        var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                //        file.SaveAs(path);
+                //    }
+                //}
+                //return Json("Ok");
             }
             catch (Exception)
             {
@@ -179,7 +214,30 @@ namespace UskudarDenetim.UI.Controllers
             }
 
         }
-        #endregion
 
+        [HttpGet]
+        public ActionResult CreateEmployee()
+        {
+            return View("Employee", new ModelEmployee());
+        }
+
+        #endregion
+        public void ConvertToBase64()
+        {
+            //BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream);
+            //byte[] bytes = br.ReadBytes((int)FileUpload1.PostedFile.InputStream.Length);
+
+            ////Convert the Byte Array to Base64 Encoded string.
+            //string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+            ////***Save Base64 Encoded string as Image File***//
+
+            ////Convert Base64 Encoded string to Byte Array.
+            //byte[] imageBytes = Convert.FromBase64String(base64String);
+
+            ////Save the Byte Array as Image File.
+            //string filePath = Server.MapPath("~/Files/" + Path.GetFileName(FileUpload1.PostedFile.FileName));
+            //File.WriteAllBytes(filePath, imageBytes);
+        }
     }
 }

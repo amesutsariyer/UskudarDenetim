@@ -13,8 +13,7 @@
                     {
                         HttpMethod = "Post",
                         OnSuccess = "OnSuccessCreateContactUSHome",
-                        OnFailure = "OnFailureCreateContactUSHome",
-                        OnBegin = "OnBeginCreateContactUSHome"
+                        OnFailure = "OnFailureCreateContactUSHome"
                     },new { @class="dt-sc-contact-form"}))
                     {
                         <p>
@@ -47,13 +46,15 @@
 </div>
 
 <script>
-    function OnSuccessCreateContactUSHome() {
-
+    function OnSuccessCreateContactUSHome(response) {
+        if (response.success) {
+            openShowSuccessModal(response.message)
+        } else {
+            openShowErrorModal(response.message)
+        }
     }
-    function OnFailureCreateContactUSHome() {
-
+    function OnFailureCreateContactUSHome(response) {
+        openShowErrorModal(response.message)
     }
-    function OnBeginCreateContactUSHome() {
-
-    }
+  
 </script>

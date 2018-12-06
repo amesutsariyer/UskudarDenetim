@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace UskudarDenetim.Repository.Interface
 {
 
-    public interface IGenericRepository<T> where T : class
+    public interface GenericRepository<T> where T : class
     {
         IQueryable<T> GetAll();
         IQueryable<T> GetAll(Expression<Func<T, bool>> predicate); // LINQ desteği sunabilmek içinde expression'ları kullanıyoruz.
