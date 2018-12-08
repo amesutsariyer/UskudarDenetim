@@ -17,7 +17,7 @@ namespace UskudarDenetim.Repository.EF
         public System.Guid Id { get; set; }
         public string RequestNumber { get; set; }
         public string FullName { get; set; }
-        public Nullable<long> PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string CompanyName { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> AppointmentDate { get; set; }

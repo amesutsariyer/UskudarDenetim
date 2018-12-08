@@ -5,6 +5,7 @@
     string margin30 = "dt-sc-margin30";
     string First = "first";
 }
+
 <div class="full-width-section">
     <div class="dt-sc-margin50"></div>
     <div class="container">
@@ -18,11 +19,11 @@
 		 <text>@First</text>
                 }   ">
                 <div class="dt-sc-ico-content type7">
-                    <div class="icon animate" data-animation="fadeInRight" data-delay="100">
-                        <span class="fa fa-edit"></span>
+                    <div class="icon animate" data-animation="fadeInRight" data-delay="100" style="cursor:inherit">
+                        <span class=" @activityArea.IconClassName "></span>
                     </div>
-                    <h4> <a> @activityArea.Name </a> </h4>
-                    <p>@activityArea.Description</p>
+                    <h4 style="    font-family: 'Open Sans', sans-serif;cursor:inherit"> <a style="text-decoration:none;cursor:inherit"> @activityArea.Name </a> </h4>
+                    <p style="    font-family: 'Open Sans', sans-serif;">@activityArea.Description</p>
                 </div>
             </div>
             if (count % 3 == 0 && count != 0)

@@ -2,7 +2,7 @@
     <header class="header">
         <div class="container">
             <div id="logo">
-                <a href="/Home/Index" title="Attorney"> <img src="../Images/ud-logo.png" alt="logo" /> </a>
+                <a href="/Home/Index" title="Attorney"> <img src="/Images/ud-logo.png" alt="logo" /> </a>
             </div>
             <div id="menu-container">
                 <nav id="main-menu">
@@ -11,44 +11,42 @@
                         <span class="dt-menu-toggle-icon"></span>
                     </div>
                     <ul class="menu">
-                        <li class="current_page_item menu-item-simple-parent">
+                        <li class=" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index")&& ViewContext.RouteData.Values["controller"].ToString().Equals("Home")? "current_page_item":"") menu-item-simple-parent">
                             <a href="@Url.Action("Index","Home")">Ana Sayfa</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                         @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                                <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
-                                <a class="dt-menu-expand">+</a>
-                            </li>*@
-                        <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("Index","Services")">Hizmetlerimiz</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                            <a href="@Url.Action("Index","HR")">İnsan Kaynakları</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-simple-parent">
-                            <a href="tabs-accordions.html">Sirküler</a>
-                            <ul class="sub-menu">
-                                <li><a href="404-page.html">Vergi Sirkülerİ</a></li>
+            <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
+            <a class="dt-menu-expand">+</a>
+        </li>*@
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("ServiceDetail")? "current_page_item":"") ">
+                            <a href="#">Hizmetlerimiz</a>
+                            <ul class="sub-menu ">
+                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="610c8926-de05-4430-9e3e-0c487a181ea3" })">Kdv İadesi</a></li>
+                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="6dd63b40-56de-4554-a047-92b5b4b2edad" })">Tam Tasdik</a></li>
+                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="863144da-31d9-408a-8bac-9ce85cff9c10" })">Teşvik ve Destek projeleri</a></li>
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("Appointment")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">
+                            <a href="#">Online İşlemler</a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Appointment","Home")">Randevu</a></li>
+                                <li> <a href="@Url.Action("Index","HR")">İnsan Kaynakları</a></li>
+                            </ul>
+                            <a class="dt-menu-expand">+</a>
+                        </li>
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("About")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("TeamMember")? "current_page_item":"")">
                             <a href="#">Hakkımızda</a>
                             <ul class="sub-menu">
-                                <li><a href="@Url.Action("About","Home")">Biz Kimiz?</a></li>
+                                <li><a href="@Url.Action("About","Home")">Hakkımızda</a></li>
                                 <li><a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a></li>
-
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+
+                        <li class="menu-item-simple-parent  @(ViewContext.RouteData.Values["action"].ToString().Equals("Contact")? "current_page_item":"")">
                             <a href="@Url.Action("Contact","Home")">İletişim</a>
-                            <a class="dt-menu-expand">+</a>
-                        </li>
-                        <li class="menu-item-simple-parent">
-                            <a href="@Url.Action("","")">Randevu</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
                     </ul>

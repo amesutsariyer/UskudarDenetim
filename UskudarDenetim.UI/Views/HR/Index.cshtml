@@ -12,17 +12,18 @@
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessCreateHR",
                 OnFailure = "OnFailureCreateHR"
-            }))
+            }, new
+            { enctype = "multipart/form-data" }))
             {
                 <h4>IK Aday Başvuru</h4>
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.Name)
+                    @Html.TextBoxFor(x => x.Name, new { @placeholder = "Ad", @required = "required" })
                 </p>
                 <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.Surname)
+                    @Html.TextBoxFor(x => x.Surname, new { @placeholder = "Soyad", @required = "required" })
                 </p>
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.IdentityNumber)
+                    @Html.TextBoxFor(x => x.IdentityNumber, new { @placeholder = "TC Kimlik Numaranız", @required = "required", type = "number" })
                 </p>
                 <p class="dt-sc-one-half column ">
                     @Html.TextBoxFor(x => x.Email, new { @placeholder = " E-Posta Adresi", @required = "required" })
@@ -31,39 +32,40 @@
                     @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Cep Telefon Numarasını Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
                 </p>
                 <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.Gender)
+                    @Html.TextBoxFor(x => x.Gender, new { @placeholder = "Cinsiyet", @required = "required" })
                 </p>
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.Birthdate)
+                    @Html.TextBoxFor(x => x.Address, new { @placeholder = "Adres", @required = "required" })
                 </p>
                 <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.Address)
-                </p>
-                <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.CityName)
-                </p>
-                <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.ExternalPhoneNumber)
-                </p>
-
-                <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.EducationStatus)
-                </p>
-                <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.Note)
-                </p>
-                <p class="dt-sc-one-half column ">
-                    @Html.TextBoxFor(x => x.Position)
+                    @Html.TextBoxFor(x => x.Birthdate, new { @placeholder = "Doğum Tarihi", @required = "required", type = "date" })
                 </p>
 
                 <p class="dt-sc-one-half column first">
-                   <input type="file" accept="*" alt="" value="Cv Yükle" />
+                    @Html.TextBoxFor(x => x.CityName, new { @placeholder = "İkamet Edilen Şehir", @required = "required" })
                 </p>
-               
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.ExternalPhoneNumber, new { @placeholder = "2.Telefon Bilgisi" })
+                </p>
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.EducationStatus, new { @placeholder = "Eğitim Durumu", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Note, new { @placeholder = "Eklenmek İstenilen Not " })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Position, new { @placeholder = "Başvurulmak İstenilen Pozisyon" })
+                </p>
+
+                <p class="dt-sc-one-half column ">
+                    <input type="file" accept="*" alt="" value="Cv Yükle" />
+                </p>
+
                 <p class="dt-sc-one-half column">
-                 
+
                 </p>
-                <input class="button bg-button-color-success " value="Kaydet" type="submit">
+                <input class="button bg-button-color-success mt-50 " value="Kaydet" type="submit">
             }
         </div>
     </div>
@@ -73,10 +75,15 @@
     <script type="text/javascript">
 
         function OnSuccessCreateHR(response) {
-            debugger;
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message)
+            }
         }
         function OnFailureCreateHR(response) {
-            debugger;
+            openShowErrorModal(response.message)
         }
 
 

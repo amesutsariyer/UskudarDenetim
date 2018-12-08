@@ -28,5 +28,8 @@ namespace UskudarDenetim.Repository.EF
         public string ExternalPhoneNumber { get; set; }
         public string Position { get; set; }
         public string Note { get; set; }
+        public Nullable<System.Guid> DocumentId { get; set; }
+    
+        public virtual Document Document { get; set; }
     }
 }

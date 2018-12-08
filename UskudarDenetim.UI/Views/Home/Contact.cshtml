@@ -18,15 +18,13 @@
             </div>
 
             <div class="column dt-sc-one-fourth">
-                <h3>İletişim Bilgileri</h3>
+                <h3 style="margin-top:0px !important">İletişim</h3>
                 <div class="dt-sc-margin15"></div>
-                <p class="dt-sc-contact-detail"> We are located in Melbourne, serving clients worldwide. Shoot us an email, give us a call, or fill out our Project Brief if you're interested in getting started.  </p>
                 <!-- **dt-sc-contact-info - Starts** -->
                 <div class="dt-sc-contact-info">
-                    <p> <i class="fa fa-location-arrow"></i> 121 King St, Melbourne VIC 3000,<br /> Australia </p>
-                    <p> <i class="fa fa-phone"></i> +61 3 8376 6284 </p>
-                    <p> <i class="fa fa-globe"></i> <a href="#"> envato.com </a> </p>
-                    <p> <i class="fa fa-envelope"></i> <a href="#"> grandjade@gmail.com </a> </p>
+                    <p> <i class="fa fa-location-arrow"></i>@Model.Address.AddressDetail<br /> 
+                    <p> <i class="fa fa-phone"></i> @Model.PhoneNumber </p>
+                    <i class="fa fa-envelope"></i><a href="mailto:@(Model.EmailAddress)" target="_top">@Model.EmailAddress</a>
                 </div> <!-- **dt-sc-contact-info - Ends** -->
             </div>
 
@@ -44,8 +42,7 @@
                 {
                     HttpMethod = "Post",
                     OnSuccess = "OnSuccessCreateContactUS",
-                    OnFailure = "OnFailureCreateContactUS",
-                    OnBegin = "OnBeginCreateContactUS"
+                    OnFailure = "OnFailureCreateContactUS"
                 }))
                 {
                     <div class="column dt-sc-one-third first">
@@ -68,7 +65,7 @@
                         <p>
                             <span>
                                 @*<input type="text" placeholder="Phone" name="txtphone" value="" />*@
-                                @Html.TextBoxFor(x => x.ContactUS.PhoneNumber, new { @placeholder = "Telefon" })
+                                @Html.TextBoxFor(x => x.ContactUS.PhoneNumber, new { @placeholder = "Telefon*" , @data_inputmask = "'mask':'(0999)-999-99-99'" ,required="required"})
                             </span>
                         </p>
                     </div>
@@ -110,16 +107,19 @@
         }
     </script>
     <script>
-        function OnSuccessCreateContactUS() {
+        function OnSuccessCreateContactUS(response) {
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message)
 
+
+            }
         }
-        function OnFailureCreateContactUS() {
-
+        function OnFailureCreateContactUS(response) {
         }
-        function OnBeginCreateContactUS() {
-
-        }
-
+       
     </script>
 
 }

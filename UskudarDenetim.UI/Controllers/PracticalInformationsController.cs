@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
+using UskudarDenetim.Repository.EF;
 using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
     public class PracticalInformationsController : BaseController
     {
+        private Repository.Interface.GenericRepository<PracticalInformation> _practicalAreaRepository;
+        private Repository.Interface.GenericRepository<BoardOfDirector> _directorRepository;
+        public PracticalInformationsController()
+        {
+            _practicalAreaRepository = new Repository.GenericRepository<PracticalInformation>();
+            _directorRepository = new Repository.GenericRepository<BoardOfDirector>();
+        }
         //[Authorize]
         public ActionResult PracticalInformations()
         {
@@ -16,9 +25,27 @@ namespace UskudarDenetim.UI.Controllers
         }
         public ActionResult _PracticalInformations()
         {
-            return PartialView("_PracticalInformations", PracticalInformationList());
+            var director = _directorRepository.GetAll().First();
+
+            ModelPracticalInformationViewModel model = new ModelPracticalInformationViewModel
+            {
+                PracticalInformationList = PracticalInformationList(),
+                Director = new ModelEmployee()
+                {
+                    FirstName = director.Name,
+                    LastName = director.Surname,
+                    Title = director.Title,
+                    Profession = director.About,
+                    About = director.AboutShort
+                }
+            };
+            return PartialView("_PracticalInformations", model);
         }
-        public ActionResult PracticalInformationDetail(string id) { return View(new ModelPracticalInformation()); }
+        public ActionResult PracticalInformationDetail(string id)
+        {
+            var model = _practicalAreaRepository.GetById(id.ConvertToGuid());
+            return View(new ModelPracticalInformation() {Description = model.Description,Detail=model.LongDescription,Name=model.Name });
+        }
         [HttpPost]
         public ActionResult PracticalInformation(ModelPracticalInformation model)
         {
@@ -40,33 +67,15 @@ namespace UskudarDenetim.UI.Controllers
 
         private List<ModelPracticalInformation> PracticalInformationList()
         {
-            var model = new List<ModelPracticalInformation>()
+            var ent = _practicalAreaRepository.GetAll().ToList();
+            var piModel = ent.Select(x => new ModelPracticalInformation()
             {
-                new ModelPracticalInformation()
-                {
-                    Id=Guid.NewGuid(),
-                    Name="Gelir İdaresi Başkanlığı",
-
-                },
-                new ModelPracticalInformation()
-                {
-                       Id=Guid.NewGuid(),
-                    Name="Sosyal Güvenlik Kurumu",
-
-                },
-                 new ModelPracticalInformation()
-                {
-                    Id=Guid.NewGuid(),
-                    Name="T.C Resmi Gazete",
-
-                },
-                new ModelPracticalInformation()
-                {
-                       Id=Guid.NewGuid(),
-                    Name="Türmob",
-                               }
-            };
-            return model;
+                Id = x.Id,
+                Detail = x.LongDescription,
+                Name = x.Name,
+                Description = x.Description
+            }).ToList();
+            return piModel;
         }
     }
 }

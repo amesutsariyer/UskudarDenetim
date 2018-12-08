@@ -11,6 +11,7 @@ namespace UskudarDenetim.UI.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
+        
 
     }
 }

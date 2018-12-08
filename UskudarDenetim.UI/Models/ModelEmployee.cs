@@ -18,5 +18,6 @@ namespace UskudarDenetim.UI.Models
         public HttpPostedFileBase File { get; set; }
         public bool IsParent{ get; set; }
         public string Email { get; set; }
+        public string About { get; set; }
     }
 }

@@ -1,26 +1,25 @@
-﻿@model List<UskudarDenetim.UI.Models.ModelPracticalInformation>
+﻿@model UskudarDenetim.UI.Models.ModelPracticalInformationViewModel
 <div class="full-width-section">
     <div class="dt-sc-margin70"></div>
     <div class="container">
         <div class="column dt-sc-three-fourth first">
             <div class="hr-title">
-                <h3>FAQ's</h3>
+                <h3>Pratik Bilgiler</h3>
                 <div class="title-sep"> </div>
             </div>
             <!-- **dt-sc-toggle-frame-set - Starts** -->
             <div class="dt-sc-toggle-frame-set">
-                <h5 class="dt-sc-toggle-accordion active"><a href="#">Various Options </a></h5>
-                <div class="dt-sc-toggle-content">
-                    <div class="block">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit elit turpis, a porttitor tellus sollicitudin at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit elit turpis, a porttitor tellus sollicitudin at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                    </div>
-                </div>
-                @foreach (var faq in Model)
+                @{ int count = 0;}
+                @foreach (var faq in Model.PracticalInformationList)
                 {
-                    <h5 class="dt-sc-toggle-accordion "><a href="@Url.Action("PracticalInformationDetail","PracticalInformation",new {id=faq.Id })">@faq.Name</a></h5>
+                    <h5 class="dt-sc-toggle-accordion @if (count==0)
+	{
+		 <text>block</text>
+	}"><a href="#">@faq.Name</a></h5>
                     <div class="dt-sc-toggle-content">
                         <div class="block">
-                                         @faq.Description
+                            @faq.Description <br />
+                            <a href="@Url.Action("PracticalInformationDetail","PracticalInformations",new {id=faq.Id })">Detay için tıklaynız..</a>
                         </div>
                     </div>
                 }
@@ -32,20 +31,20 @@
 
         <div class="column dt-sc-one-fourth">
             <div class="hr-title">
-                <h3>Specialist</h3>
+                <h3>Üstad</h3>
                 <div class="title-sep">
                 </div>
             </div>
             <!-- **dt-sc-team - Starts** -->
             <div class="dt-sc-team">
                 <div class="image">
-                    <a href="#"><img src="http://placehold.it/160x160&text=Image" alt="image" /></a>
+                    <a href="#"><img src="~/Images/160x160/Ustad.png" alt="image" /></a>
                 </div>
                 <div class="team-details">
-                    <h6><a href="#">James Bladwin</a></h6>
-                    <p>Associate</p>
+                    <h6><a href="#">@Model.Director.FirstName @Model.Director.LastName</a></h6>
+                    <p>@Model.Director.Title</p>
                 </div>
-                <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old this is the larger one.  It was popularised in the 1960s with the release of Letraset sheets Lorem.</p>
+                <p> @Model.Director.About</p>
             </div>
         </div><!-- **dt-sc-team - Ends** -->
 

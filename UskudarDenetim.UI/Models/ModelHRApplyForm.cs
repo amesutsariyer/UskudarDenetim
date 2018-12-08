@@ -21,5 +21,6 @@ namespace UskudarDenetim.UI.Models
         public string ExternalPhoneNumber { get; set; }
         public string Position { get; set; }
         public string Note { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

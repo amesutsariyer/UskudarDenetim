@@ -3,20 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
+using UskudarDenetim.Repository.EF;
 using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
-    public class ServiceController : BaseController  
+    public class ServiceController : BaseController
     {
-      
+        private Repository.Interface.GenericRepository<Service> _serviceRepository;
+       
+        public ServiceController()
+        {
+            _serviceRepository = new Repository.GenericRepository<Service>();
+
+        }
         public ActionResult GetServices()
         {
             return PartialView("_WhatWeDo", GetAllServices());
         }
+        [HttpGet]
         public ActionResult ServiceDetail(string id)
         {
-            return View();
+            var x = _serviceRepository.GetById(id.ConvertToGuid());
+
+            return View(new ModelService() {
+                Name = x.Name,
+                ImageUrl = x.ImageUrl,
+                Description = x.Description,
+                ShortDescription = x.ShortDescription,
+                Id = x.Id,
+
+            });
         }
         
         
@@ -46,40 +64,18 @@ namespace UskudarDenetim.UI.Controllers
                 return Json("ok");      //update   //Add
             }
         }
-     
-        
-        
         #region Private Methods
         public List<ModelService> GetAllServices()
         {
-            List<ModelService> model = new List<ModelService>()
-             {
-                 new ModelService()
-                 {
-                     Id = Guid.NewGuid(),
-                     Name ="Hukuki Danışmanlık",
-                     Description="Danışmanlık alanlarında profesyonel ve uzman avukatları ve akademik danışmanları ile hukuki hizmetlerinde etkili ve pratik çözümleriyle fark yaratmaktadır.",
-                     IconClassName="fa fa-book",
-                     ImageUrl="http://placehold.it/1170x592&text=Image"
+            var list = _serviceRepository.GetAll().ToList();
+            var model = list.Select(x => new ModelService() {
+                Name=x.Name,
+               ImageUrl=x.ImageUrl,
+               Description=x.Description,
+               ShortDescription=x.ShortDescription,
+               Id = x.Id,
 
-                 },
-                     new ModelService()
-                 {
-                     Id = Guid.NewGuid(),
-                     Name ="YMM ve İç Denetim Hizmetleri",
-                     Description="Şirketin faaliyetlerini geliştirmek ve onlara değer katmak amacıyla bağımsız ve objektif bir şekilde danışmanlık hizmetleri verilmektedir.",
-                     ImageUrl="http://placehold.it/1170x592&text=Image",
-                     IconClassName="fa fa-heartbeat",
-                     },
-                         new ModelService()
-                     {
-                     Id = Guid.NewGuid(),
-                     Name ="Mali Danışmanlık",
-                     Description="MHY Danışmanlık, sürekli değişen mali ve ekonomik şartların meydana getirdiği problemleri yakından takip ederek en doğru adımın en uygun zamanda atılmasını sağlamaktadır.",
-                     ImageUrl="http://placehold.it/1170x592&text=Image",
-                     IconClassName="fa fa-money",
-
-             } };
+            }).ToList();
             return model;
         }
         #endregion

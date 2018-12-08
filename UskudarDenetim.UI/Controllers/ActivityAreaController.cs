@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Repository.EF;
 using UskudarDenetim.UI.Models;
 
 namespace UskudarDenetim.UI.Controllers
 {
     public class ActivityAreaController : BaseController
     {
+        private Repository.Interface.GenericRepository<ActivityArea> _activityAreaRepository;
+        public ActivityAreaController()
+        {
+            _activityAreaRepository = new Repository.GenericRepository<ActivityArea>();
+        }
         public ActionResult GetActivityAreas()
         {
             return PartialView("_ActivityArea",GetAllActivity());
@@ -47,66 +53,14 @@ namespace UskudarDenetim.UI.Controllers
         #region PrivateMethods
         private List<ModelActivityArea> GetAllActivity()
         {
-            return new List<ModelActivityArea>()
-            {
-                new ModelActivityArea()
-                {
-                    Id = Guid.NewGuid(),
-                    Name ="Muhasebe",
-                    Description = "Muhasebe Alanı Açıklaması",
-                   IconClassName = "fa fa-edit"
-                },
-                new ModelActivityArea()
-                {
-                      Id = Guid.NewGuid(),
-                    Name ="Kdv İadesi",
-                    Description = "Kdv İadesi Açıklama",
-                   IconClassName = "fa fa-edit"
-                },
-                 new ModelActivityArea()
-                {
-                    Id = Guid.NewGuid(),
-                    Name ="Muhasebe",
-                    Description = "Muhasebe Alanı Açıklaması",
-                   IconClassName = "fa fa-edit"
-                },
-                new ModelActivityArea()
-                {
-                      Id = Guid.NewGuid(),
-                    Name ="Kdv İadesi",
-                    Description = "Kdv İadesi Açıklama",
-                   IconClassName = "fa fa-edit"
-                },
-                 new ModelActivityArea()
-                {
-                    Id = Guid.NewGuid(),
-                    Name ="Muhasebe",
-                    Description = "Muhasebe Alanı Açıklaması",
-                   IconClassName = "fa fa-edit"
-                },
-                new ModelActivityArea()
-                {
-                      Id = Guid.NewGuid(),
-                    Name ="Kdv İadesi",
-                    Description = "Kdv İadesi Açıklama",
-                   IconClassName = "fa fa-edit"
-                },
-                new ModelActivityArea()
-                {
+            var listEntity = _activityAreaRepository.GetAll().ToList();
+            return listEntity.Select(x => new ModelActivityArea() {
+                Id = x.Id,
+                Description=x.Description,
+               IconClassName=x.IconName,
+               Name=x.Name
 
-                        Id = Guid.NewGuid(),
-                    Name ="Şirket Açma",
-                    Description = "Şirket Açma Açıklaması",
-                   IconClassName = "fa fa-edit"
-                },
-                  new ModelActivityArea()
-                {
-                    Id = Guid.NewGuid(),
-                    Name ="Ymmy",
-                    Description = "Ymmy Açıklaması",
-                   IconClassName = "fa fa-edit"
-                }
-            };
+            }).ToList();
         }
         #endregion
 

@@ -13,7 +13,7 @@ namespace UskudarDenetim.UI
                   "~/Content/bootstrap.css",
                   "~/Content/shortcodes.css",
                   "~/Content/additional-css/attorney/style.css",
-                  "~/Content/skins/blueturquoise/style.css",
+                  "~/Content/skins/blue/style.css",
                   "~/Content/layerslider.css",
                   "~/Content/responsive.css",
                   "~/Content/meanmenu.css",

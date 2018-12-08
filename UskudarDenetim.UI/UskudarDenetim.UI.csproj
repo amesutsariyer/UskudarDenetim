@@ -207,12 +207,15 @@
     <Compile Include="Identity\IDUser.cs" />
     <Compile Include="Models\ModelActivityArea.cs" />
     <Compile Include="Models\ModelAddress.cs" />
+    <Compile Include="Models\ModelAppointmentRequest.cs" />
+    <Compile Include="Models\ModelCompany.cs" />
     <Compile Include="Models\ModelContact.cs" />
     <Compile Include="Models\ModelContactUS.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelFooter.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelPracticalInformation.cs" />
+    <Compile Include="Models\ModelPracticalInformationViewModel.cs" />
     <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSharedLink.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
@@ -270,6 +273,7 @@
     <Content Include="Images\1200x800\sgk.png" />
     <Content Include="Images\1200x800\turmob.png" />
     <Content Include="Images\160x160\ufukpf.png" />
+    <Content Include="Images\160x160\Ustad.png" />
     <Content Include="Images\8.gif" />
     <Content Include="Images\160x160\amspf.jpg" />
     <Content Include="Images\attorney\form-bg.png" />
@@ -287,6 +291,8 @@
     <Content Include="Images\camera1%402x.png" />
     <Content Include="Images\camera1.png" />
     <Content Include="Images\clock.png" />
+    <Content Include="Images\CompanyGallery\gallery1.png" />
+    <Content Include="Images\CompanyGallery\gallery2.jpg" />
     <Content Include="Images\de.png" />
     <Content Include="Images\dice%402x.png" />
     <Content Include="Images\dice.png" />
@@ -305,7 +311,7 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\magic-heat%402x.png" />
     <Content Include="Images\magic-heat.png" />
-    <Content Include="Images\message-parallax-bg.jpg" />
+    <Content Include="Images\message-parallax-bggg.jpg" />
     <Content Include="Images\mobile.png" />
     <Content Include="Images\next-arrow%402x.png" />
     <Content Include="Images\next-arrow.png" />
@@ -313,14 +319,16 @@
     <Content Include="Images\next-arrow1.png" />
     <Content Include="Images\paper-plane-icon%402x.png" />
     <Content Include="Images\paper-plane-icon.png" />
+    <Content Include="Images\message-parallax-bg.jpg" />
     <Content Include="Images\pattern-bg.jpg" />
     <Content Include="Images\presentation-bg-dark.jpg" />
     <Content Include="Images\presentation-bg-eski.jpg" />
+    <Content Include="Images\presentation-bggg.jpg" />
+    <Content Include="Images\presentation-bg.jpg" />
     <Content Include="Images\prev-arrow%402x.png" />
     <Content Include="Images\prev-arrow.png" />
     <Content Include="Images\prev-arrow1%402x.png" />
     <Content Include="Images\prev-arrow1.png" />
-    <Content Include="Images\presentation-bg.jpg" />
     <Content Include="Images\product-presentation-bg.jpg" />
     <Content Include="Images\search%402x.png" />
     <Content Include="Images\search.png" />
@@ -527,7 +535,6 @@
     <Content Include="Views\ActivityArea\_ActivityArea.cshtml" />
     <Content Include="Views\Shared\_Employees.cshtml" />
     <Content Include="Views\Shared\_ReachUS.cshtml" />
-    <Content Include="Views\Shared\_ContactUS.cshtml" />
     <Content Include="Views\Service\_WhatWeDo.cshtml" />
     <Content Include="Views\PracticalInformations\_PracticalInformations.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
@@ -557,6 +564,7 @@
     <Content Include="Views\PracticalInformations\PracticalInformationDetail.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformationModal.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformations.cshtml" />
+    <Content Include="Views\Home\Appointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

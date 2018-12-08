@@ -32,7 +32,7 @@
                 </p>
 
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required" })
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required" , @data_inputmask = "'mask':'(0999)-999-99-99'" })
                 </p>
                 <p class="dt-sc-one-half column">
                     @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required" })

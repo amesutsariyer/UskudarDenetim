@@ -1,4 +1,4 @@
-﻿
+﻿@model UskudarDenetim.UI.Models.ModelService
 @{
     ViewBag.Title = "Hizmetlerimiz";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,174 +7,33 @@
     <div class="parallax full-width-bg">
         <div class="container">
             <div class="main-title">
-                <h1>Blog Detail</h1>
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <span class="fa fa-angle-right"></span>
-                    <a href="blog.html">Blog</a>
-                    <span class="fa fa-angle-right"></span>
-                    <span class="current">Blog Detail</span>
-                </div>
+                <h1>Hizmetlerimiz</h1>
             </div>
         </div>
     </div>
-    <div class="dt-sc-margin100"></div>
     <!-- Container starts-->
-    <div class="container">
+    <div class="container ">
         <!-- Primary Starts -->
-        <section id="primary" class="content-full-width">
+        <section id="primary" class="content-full-width mt-40">
 
             <!-- **Blog-post - Starts** -->
             <article class="blog-post type3">
                 <!-- **entry-meta - Starts** -->
-                <div class="entry-meta">
-                    <div class="date">
-                        <p><span>22</span><br />Dec</p>
-                    </div>
-                    <div class="post-comments">
-                        <a href="#"><span class="fa fa-comment"></span>12</a>
-                    </div>
-                </div> <!-- **entry-meta - Ends** -->
-                <!-- **entry-thumb - Starts** -->
-                <div class="entry-thumb">
-                    <a href="blog.html"><img src="http://placehold.it/1170x767&text=Blog" alt="image" /></a>
-                </div> <!-- **entry-thumb - Ends** -->
+              
+         
                 <!-- **entry-detail - Starts** -->
                 <div class="entry-detail">
                     <div class="entry-title">
-                        <h4><a href="blog.html">Music as my Companion.</a></h4>
+                        <h4><a href="#">@Model.Name</a></h4>
                     </div>
-                    <!-- **entry-meta-data - Starts** -->
-                    <div class="entry-meta-data">
-                        <p><span class="fa fa-user"> </span> Posted By: <a href="#"> admin </a></p>
-                        <p><span class="fa fa-tag"> </span> In: <a href="#">  Trend,</a> <a href="#"> Technology,</a><a href="#"> Web2.0 </a></p>
-                    </div> <!-- **entry-meta-data - Ends** -->
+            
                     <div class="entry-body">
-                        <p><b>Priority</b> has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <p> @Model.Description</p>
                     </div>
-                    <div class="dt-sc-margin10"></div>
-                    <blockquote class="type2">
-                        <span class="fa fa-quote-left"></span>
-                        <q> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Aldus PageMaker including versions of Lorem Ipsum.</q>
-                        <span class="fa fa-quote-right"></span>
-                    </blockquote>
-                    <div class="dt-sc-hr-invisible-very-small"></div>
-                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. </p>
+              
                 </div> <!-- **entry-detail - Ends** -->
             </article><!-- **Blog-post - Ends** -->
-            <!-- **post-author-details - starts** -->
-            <div class="post-author-details">
-                <h3>About Author</h3>
-                <div class="entry-author-image">
-                    <img src="http://www.placehold.it/85x85&text=Image" alt="image" title="" />
-                </div>
-                <div class="author-desc">
-                    <div class="author-title">
-                        <h5><a href="#">James Dean</a></h5> / <span>Admin</span>
-                    </div>
-                    <p>The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-                </div>
-                <div class="dt-sc-hr-invisible-small"></div>
-                <ul class='dt-sc-social-icons'>
-                    <li><a class="dt-sc-tooltip-top facebook" href='#' target="_blank" title="Facebook"> <i class="fa fa-facebook"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top twitter" href='#' target="_blank" title="Twitter"> <i class="fa fa-twitter"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top google-plus" href='#' target="_blank" title="Google-plus"> <i class="fa fa-google-plus"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top pinterest" href='#' target="_blank" title="Pinterest"> <i class="fa fa-pinterest"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top youtube" href='#' target="_blank" title="Youtube"> <i class="fa fa-youtube"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top" href='#' target="_blank" title="linkedin"> <i class="fa fa-linkedin"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top" href='#' target="_blank" title="dribbble"> <i class="fa fa-dribbble"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top" href='#' target="_blank" title="flickr"> <i class="fa fa-flickr"></i> </a></li>
-                    <li><a class="dt-sc-tooltip-top" href='#' target="_blank" title="tumblr"> <i class="fa fa-tumblr"></i> </a></li>
-                </ul>
-            </div>
-            <!-- **post-author-details** - Ends -->
-            <!-- **commententries** - Starts-->
-            <div class="commententries">
-                <h4> User Comments </h4>
-                <ul class="commentlist">
-                    <li>
-                        <div class="comment">
-                            <header class="comment-author">
-                                <img src="http://www.placehold.it/85x85&text=Image" alt="image" title="">
-                            </header>
-                            <div class="comment-details">
-                                <div class="author-name">
-                                    <a href="#">Callahan James</a>
-                                </div>
-                                <div class="commentmetadata"> / California University</div>
-                                <div class="comment-body">
-                                    <div class="comment-content">
-                                        <p>The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-                                    </div>
-                                </div>
-                                <div class="reply">
-                                    <a href="#" class="dt-sc-button">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="children">
-                            <li>
-                                <div class="comment">
-                                    <header class="comment-author">
-                                        <img src="http://www.placehold.it/85x85&text=Image" alt="image" title="">
-                                    </header>
-                                    <div class="comment-details">
-                                        <div class="author-name">
-                                            <a href="#">Sean Bean</a>
-                                        </div>
-                                        <div class="commentmetadata"> / California University</div>
-                                        <div class="comment-body">
-                                            <div class="comment-content">
-                                                <p>The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-                                            </div>
-                                        </div>
-                                        <div class="reply">
-                                            <a href="#" class="dt-sc-button">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="comment">
-                            <header class="comment-author">
-                                <img src="http://www.placehold.it/85x85&text=Image" alt="image" title="">
-                            </header>
-                            <div class="comment-details">
-                                <div class="author-name">
-                                    <a href="#">James Dean</a>
-                                </div>
-                                <div class="commentmetadata"> / California University</div>
-                                <div class="comment-body">
-                                    <div class="comment-content">
-                                        <p>The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-                                    </div>
-                                </div>
-                                <div class="reply">
-                                    <a href="#" class="dt-sc-button">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div> <!-- **commententries- Ends** -->
-            <!-- **respond - Starts** -->
-            <div id="respond">
-                <h3> Give a Reply </h3>
-                <form id="commentform" action="#">
-                    <div class="column dt-sc-one-half first">
-                        <p> <span> <input type="text" placeholder="Name*" name="your-name" value="" required /> </span> </p>
-                    </div>
-                    <div class="column dt-sc-one-half">
-                        <p> <span> <input type="email" placeholder="Email*" name="email" value="" required /> </span> </p>
-                    </div>
-                    <p> <textarea placeholder="Message" name="your-meassage"></textarea> </p>
-                    <div class="dt-sc-margin10"></div>
-                    <p> <input type="submit" value="Submit Comment" name="submit" class="button" /> </p>
-                </form>
-            </div> <!-- **respond- Ends** -->
-            <div class="dt-sc-margin80"></div>
+ 
         </section> <!-- **Primary - Ends** -->
 
     </div> <!-- **container - Ends** -->

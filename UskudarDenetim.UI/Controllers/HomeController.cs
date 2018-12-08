@@ -18,12 +18,16 @@ namespace UskudarDenetim.UI.Controllers
         private Repository.Interface.GenericRepository<Address> _addressRepository;
         private Repository.Interface.GenericRepository<Contact> _contactRepository;
         private Repository.Interface.GenericRepository<Subscribe> _subscribeRepository;
-     
+        private Repository.Interface.GenericRepository<Company> _companyRepository;
+        private Repository.Interface.GenericRepository<AppointmentRequest> _appointmentRepository;
+
         public HomeController()
         {
             _addressRepository = new Repository.GenericRepository<Address>();
             _contactRepository = new Repository.GenericRepository<Contact>();
             _subscribeRepository = new Repository.GenericRepository<Subscribe>();
+            _companyRepository = new Repository.GenericRepository<Company>();
+            _appointmentRepository = new Repository.GenericRepository<AppointmentRequest>();
         }
         public ActionResult Index()
         {
@@ -33,21 +37,41 @@ namespace UskudarDenetim.UI.Controllers
             //if (!roleManager.RoleExists("admin"))
             //    roleManager.Create(new IDRole("admin"));
 
-            IQueryable<Address> addressRepo = _addressRepository.GetAll();
-            var asd = addressRepo.ToList();
+
             return View();
         }
-
         public ActionResult About()
         {
-            return View();
+            var company = _companyRepository.GetAll().ToList().First();
+            return View(new ModelCompany()
+            {
+                About = company.About,
+                Quota = company.Vision
+            });
         }
-
         public ActionResult Contact()
         {
-            return View(new ModelContact());
-        }
+            IQueryable<Address> addressRepo = _addressRepository.GetAll();
+            var address = addressRepo.ToList().FirstOrDefault();
+            var model = new ModelContact()
+            {
+                PhoneNumber = address.Contacts.First().PhoneNumber,
+                EmailAddress = address.Contacts.First().EmailAddress,
+                Address = new ModelAddress()
+                {
+                    AddressDetail = address.AddressDetail,
+                    Longitude = address.Longitude,
+                    Latitude = address.Latitude,
+                    CityName = address.District.City.Name,
+                    DistrictName = address.District.Name,
+                    Name = address.Name
 
+                },
+                ContactUS = new ModelContactUS() { },
+                ContactSocialMedias = new List<ModelSocialMedia>()
+            };
+            return View(model);
+        }
         public ActionResult TopBar()
         {
             try
@@ -125,7 +149,7 @@ namespace UskudarDenetim.UI.Controllers
                     }
                     else
                     {
-                        return Json( new { success=false ,message= "Bu Mail Adresi Sistemde Kayıtlı" });
+                        return Json(new { success = false, message = "Bu Mail Adresi Sistemde Kayıtlı" });
                     }
                 }
                 else
@@ -138,7 +162,36 @@ namespace UskudarDenetim.UI.Controllers
                 return Json(new { success = false, message = "Mail Adresi Sisteme Kaydedilirken Sistemsel Bir Hata Oluştu" });
             }
         }
-
+        [HttpGet]
+        public ActionResult Appointment()
+        {
+            return View(new ModelAppointmentRequest());
+        }
+        [HttpPost]
+        public ActionResult CreateAppointment(ModelAppointmentRequest model)
+        {
+            try
+            {
+                var entity = new AppointmentRequest()
+                {
+                    Id = Guid.NewGuid(),
+                    AppointmentDate = model.AppointmentDate,
+                    CompanyName = model.CompanyName,
+                    Description = model.Description,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                    PhoneNumber = model.PhoneNumber,
+                    PreferPlace = model.PreferPlace,
+                    RequestNumber = model.RequestNumber
+                };
+                _appointmentRepository.Create(entity);
+                return Json(new { success = true, message = "Görüşme Talep Formunuz Tarafımıza İletilmiştir." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Kayıt esnasında bir hata ile karşılaşıldı." });
+            }
+        }
         private bool CheckMail(string email)
         {
             var allList = _subscribeRepository.GetAll().ToList();
