@@ -305,6 +305,7 @@
     <Content Include="Images\fr.png" />
     <Content Include="Images\intro-text-bg.jpg" />
     <Content Include="Images\intro-text-bg5.jpg" />
+    <Content Include="Images\kızkulesi\15.png" />
     <Content Include="Images\light-bulb%402x.png" />
     <Content Include="Images\light-bulb.png" />
     <Content Include="Images\logo%402x.png" />
@@ -373,6 +374,8 @@
     <Content Include="Images\sliders\purchase-template.png" />
     <Content Include="Images\sliders\quote.png" />
     <Content Include="Images\sliders\quote2.png" />
+    <Content Include="Images\sliders\rsz_1kızkulesi.jpg" />
+    <Content Include="Images\sliders\rsz_kızkulesi.jpg" />
     <Content Include="Images\sliders\running-man.png" />
     <Content Include="Images\sliders\sun.png" />
     <Content Include="Images\sliders\transparent-bg.png" />

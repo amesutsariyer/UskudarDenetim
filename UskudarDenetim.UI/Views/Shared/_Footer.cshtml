@@ -2,7 +2,6 @@
 <footer id="footer">
     <div class="footer-widgets-wrapper">
         <div class="container">
-
             <div class="column dt-sc-one-third  first">
                 <aside class="widget widget_text">
                     <h3 class="widget-title">İletişim  <span class="wlast"> Bilgileri </span><span class="small-line"> </span></h3>
@@ -36,21 +35,26 @@
                                     <td class="currency"><span>Alış</span></td>
                                     <td class="currency"><span>Satış</span></td>
                                 </tr>
-                                <tr>
-                                    <td class="currency"><span>Dolar</span></td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteBuying</td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteSelling</td>
-                                </tr>
-                                <tr>
-                                    <td class="currency"><span>Euro</span></td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteBuying</td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteSelling</td>
-                                </tr>
-                                <tr>
-                                    <td class="currency"><span>Pound</span></td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteBuying</td>
-                                    <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteSelling</td>
-                                </tr>
+                                @if (Model.Currency != null)
+                                {
+                                    <tr>
+                                        <td class="currency"><span>Dolar</span></td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteBuying</td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "US DOLLAR").BanknoteSelling</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="currency"><span>Euro</span></td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteBuying</td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "EURO").BanknoteSelling</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="currency"><span>Pound</span></td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteBuying</td>
+                                        <td class="currency">@Model.Currency.Currency.FirstOrDefault(x => x.CurrencyName == "POUND STERLING").BanknoteSelling</td>
+                                    </tr>
+                                }
+
                             </tbody>
                         </table>
                     </div>
@@ -94,7 +98,7 @@
 
         </div>
     </div><!-- **footer-widgets-wrapper - End** -->
-     
+
     <div class="copyright" style="   background-color: #191919;
     color: white;">
         <div class="container align-center">
