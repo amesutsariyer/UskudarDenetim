@@ -13,10 +13,10 @@ namespace UskudarDenetim.Repository
 {
     public class GenericRepository<T> : Interface.GenericRepository<T> where T : class
     {
-        private readonly UskudarDenetimEntities _dbContext;
+        private readonly musa_UdMainEntities _dbContext;
         public GenericRepository( )
         {
-            _dbContext = new UskudarDenetimEntities();
+            _dbContext = new musa_UdMainEntities();
         }
 
         public void Create(T entity)

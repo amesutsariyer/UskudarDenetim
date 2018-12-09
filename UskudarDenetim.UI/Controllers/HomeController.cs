@@ -123,7 +123,7 @@ namespace UskudarDenetim.UI.Controllers
                         Url = sm.SocialMedia.Url,
                         ShortName = sm.SocialMedia.ShortName,
                         SocialMediaName = sm.SocialMedia.Name,
-                    });
+                    }); 
                 }
                 ExchangeRateService exchangeService = new ExchangeRateService();
                 model.Currency = exchangeService.GetAllCurrency().Result as ExchangeRate;

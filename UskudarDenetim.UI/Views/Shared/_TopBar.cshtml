@@ -9,12 +9,20 @@
         <ul class="top-social-icons alignright">
             @foreach (var socialMedia in Model.SocialMedia)
             {
-                <li> <a href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i>  </a> </li>
+                if (socialMedia.SocialMediaName == "Mail")
+                {
+                    <li> <a href="mailto:@(socialMedia.Url)" target="_top" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i>  </a> </li>
+                }
+                else
+                {
+                    <li> <a href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i>  </a> </li>
+                }
+
 
             }
             @*<li> <a href="#" title="twitter"> <i class="fa fa-twitter"></i>  </a> </li>
-            <li> <a href="#" title="pinterest"> <i class="fa fa-pinterest"></i>  </a> </li>
-            <li> <a href="#" title="youtube"> <i class="fa fa-youtube"></i>  </a> </li>*@
+        <li> <a href="#" title="pinterest"> <i class="fa fa-pinterest"></i>  </a> </li>
+        <li> <a href="#" title="youtube"> <i class="fa fa-youtube"></i>  </a> </li>*@
         </ul>
     </div> <!-- **container - End** -->
 </div>

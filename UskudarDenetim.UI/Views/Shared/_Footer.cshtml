@@ -90,7 +90,17 @@
                     <ul class="dt-sc-social-icons">
                         @foreach (var socialMedia in Model.SocialMedia)
                         {
-                            <li><a class="dt-sc-tooltip-top @socialMedia.SocialMediaName.ToLower()" href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i> </a></li>
+                            if (socialMedia.SocialMediaName == "Mail")
+                            {
+
+                                <li><a class="dt-sc-tooltip-top @socialMedia.SocialMediaName.ToLower()" href="mailto:@(socialMedia.Url)" target="_top" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i> </a></li>
+                            }
+                            else
+                            {
+                                    
+                                <li><a class="dt-sc-tooltip-top @socialMedia.SocialMediaName.ToLower()" href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i> </a></li>
+                            }
+
                         }
                     </ul>
                 </aside>

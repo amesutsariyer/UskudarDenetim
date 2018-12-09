@@ -11,10 +11,10 @@ namespace UskudarDenetim.Repository.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly UskudarDenetimEntities _dbContext;
-        public UnitOfWork(UskudarDenetimEntities dbContext)
+        private readonly musa_UdMainEntities _dbContext;
+        public UnitOfWork(musa_UdMainEntities dbContext)
         {
-            Database.SetInitializer<UskudarDenetimEntities>(null);
+            Database.SetInitializer<musa_UdMainEntities>(null);
             _dbContext = dbContext ?? throw new ArgumentNullException("dbContext can not be null.");
 
             // Buradan istediğiniz gibi EntityFramework'ü konfigure edebilirsiniz.

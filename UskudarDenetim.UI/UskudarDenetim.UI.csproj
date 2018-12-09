@@ -205,6 +205,11 @@
     <Compile Include="Identity\IdentityContext.cs" />
     <Compile Include="Identity\IDRole.cs" />
     <Compile Include="Identity\IDUser.cs" />
+    <Compile Include="Migrations\201812091957567_InitialCreate.cs" />
+    <Compile Include="Migrations\201812091957567_InitialCreate.Designer.cs">
+      <DependentUpon>201812091957567_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ModelActivityArea.cs" />
     <Compile Include="Models\ModelAddress.cs" />
     <Compile Include="Models\ModelAppointmentRequest.cs" />
@@ -589,6 +594,11 @@
       <Project>{ec5d7c8c-bb0f-415b-bc6e-f9806632c84c}</Project>
       <Name>UskudarDenetim.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812091957567_InitialCreate.resx">
+      <DependentUpon>201812091957567_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
