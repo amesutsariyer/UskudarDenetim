@@ -19,6 +19,7 @@ namespace UskudarDenetim.Repository.EF
         {
             this.HRApplyForms = new HashSet<HRApplyForm>();
             this.Companies = new HashSet<Company>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public System.Guid Id { get; set; }
@@ -32,5 +33,7 @@ namespace UskudarDenetim.Repository.EF
         public virtual ICollection<HRApplyForm> HRApplyForms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

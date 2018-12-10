@@ -56,6 +56,7 @@ namespace UskudarDenetim.UI.Controllers
             var model = new ModelContact()
             {
                 PhoneNumber = address.Contacts.First().PhoneNumber,
+                FaxNumber=address.Contacts.First().FaxNumber,
                 EmailAddress = address.Contacts.First().EmailAddress,
                 Address = new ModelAddress()
                 {

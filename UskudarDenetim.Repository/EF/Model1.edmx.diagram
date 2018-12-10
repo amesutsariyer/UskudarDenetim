@@ -33,6 +33,7 @@
         <AssociationConnector Association="musa_UdMainModel.FK_ContactSocialMedia_SocialMedia" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.FK_HRApplyForm_Document" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.CompanyDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -19,5 +19,9 @@ namespace UskudarDenetim.UI.Models
         public bool IsParent{ get; set; }
         public string Email { get; set; }
         public string About { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.Guid> DocumentId { get; set; }
+        public string ImgSrc { get; set; }
+        public ModelDocument Document { get; set; }
     }
 }

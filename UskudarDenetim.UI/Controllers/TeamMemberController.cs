@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
 using UskudarDenetim.Repository.EF;
 using UskudarDenetim.UI.Models;
 
@@ -29,9 +30,11 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = x.Profession,
                 Title = x.Title,
                 PhoneNumber = x.PhoneNumber,
-                Photo = x.Photo,
+                //Photo = x.Photo,
                 IsParent = x.IsParent,
-                Email = x.EmailAddress
+                Email = x.EmailAddress,
+                ImgSrc = x.Document.File.ConvertToSrc(),
+               // File = (HttpPostedFileBase)new MemoryPostedFile(x.Document.File)
             }).ToList();
           
             return View(model);

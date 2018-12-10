@@ -3,7 +3,7 @@
 
 #logo { padding:12px 0 7px; }
 
-.parallax-bg { background-image:url(../../../Images/message-parallax-bg.jpg); }
+.parallax-bg { background-image:url(~/Images/message-parallax-bg.jpg); }
 #footer .footer-widgets-wrapper.type4 { background-color:#000000; }
 
 @media only screen and (min-width:768px) and (max-width:959px) {

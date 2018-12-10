@@ -24,5 +24,9 @@ namespace UskudarDenetim.Repository.EF
         public byte[] Photo { get; set; }
         public bool IsParent { get; set; }
         public string EmailAddress { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.Guid> DocumentId { get; set; }
+    
+        public virtual Document Document { get; set; }
     }
 }

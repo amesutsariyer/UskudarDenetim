@@ -6,15 +6,17 @@
 @model UskudarDenetim.UI.Models.ModelEmployee
 
 <div class="full-width-section parallax full-section-bg">
-    @using (Html.BeginForm("Employee", "Admin",FormMethod.Post,new
-    { enctype = "multipart/form-data" }))
-    {
+    <div class="container">
         <div class="form-wrapper register">
-            <div class="container">
+
+            @using (Html.BeginForm("Employee", "Admin", FormMethod.Post, new
+            { enctype = "multipart/form-data" }))
+            {
                 <div class="dt-sc-clear"></div>
 
                 @*Adres Tablosuyla alakalı inputlar*@
                 @Html.HiddenFor(Model => Model.Id)
+                @Html.HiddenFor(Model => Model.DocumentId)
                 <h4>Kişi Bilgileri</h4>
                 <p class="dt-sc-one-half column first">
                     @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Adı Giriniz", @required = "required" })
@@ -32,32 +34,32 @@
                 </p>
 
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required" , @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
                 </p>
                 <p class="dt-sc-one-half column">
                     @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required" })
                 </p>
 
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.BirthDate, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @type = "date" ,@class="form-control"})
+                    @Html.TextBoxFor(x => x.BirthDate, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @type = "date", @class = "form-control" })
                 </p>
-                <p class="dt-sc-one-half column">
-                    @*<input type="file" name="file" value="" />>*@
-                    @Html.TextBoxFor(x=>x.File,new {@type="file",@name="file" })
+                <p class="dt-sc-one-half column mt-10">
+                    @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", accept = "image/png, image/jpeg, image/gif", @class = "form-control", required = "required" })
+
                 </p>
 
-            </div>
-            <div class="form-wrapper register">
-                <input class="button bg-button-color-success " value="Kaydet" type="submit">
-            </div>
+                <div class="form-wrapper register mt-40">
+                    <input class="button bg-button-color-success mt " value="Kaydet" type="submit">
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>
 
 <script>
-
+ 
     function OnSuccessUpdateEmployee() {
-}
+    }
 
     function OnFailureUpdateEmployee() {
 
@@ -67,5 +69,4 @@
     }
 
 
-</script>  
-             
+</script>

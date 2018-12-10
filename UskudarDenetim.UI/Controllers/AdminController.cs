@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UskudarDenetim.Core;
+using UskudarDenetim.Core.Extensions;
 using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;
-using UskudarDenetim.Core.Extensions;
 using System.IO;
 using UskudarDenetim.Repository.EF;
 
@@ -17,10 +16,12 @@ namespace UskudarDenetim.UI.Controllers
     public class AdminController : BaseController
     {
         private Repository.Interface.GenericRepository<Employee> _employeeRepository;
+        private Repository.Interface.GenericRepository<Document> _documentRepository;
 
         public AdminController()
         {
             _employeeRepository = new Repository.GenericRepository<Employee>();
+            _documentRepository = new Repository.GenericRepository<Document>();
         }
         // GET: Admin
         public ActionResult Index()
@@ -103,9 +104,12 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = x.Profession,
                 Title = x.Title,
                 PhoneNumber = x.PhoneNumber,
-                Photo = x.Photo,
+                //Photo = x.Photo,
                 IsParent = x.IsParent,
-                Email = x.EmailAddress
+                Email = x.EmailAddress,
+                ImgSrc = x.Document.File.ConvertToSrc(),
+                File = (HttpPostedFileBase)new MemoryPostedFile(x.Document.File)
+
             }).ToList();
             return PartialView("_Employees", model);
         }
@@ -134,7 +138,7 @@ namespace UskudarDenetim.UI.Controllers
         public ActionResult UpdateEmployee(string id)
         {
             Guid idG = id.ConvertToGuid();
-           var employee = _employeeRepository.GetById(idG);
+            var employee = _employeeRepository.GetById(idG);
             var model = new ModelEmployee()
             {
 
@@ -156,8 +160,22 @@ namespace UskudarDenetim.UI.Controllers
         {
             try
             {
+                if (model.File == null && model.File.ContentLength == 0)
+                    return Json(new { success = false, message = "Resim Ekleyiniz" });
+                var document = new Document();
                 if (model.Id != null && model.Id != Guid.Empty)
                 {
+                    document = new Document()
+                    {
+                        Id = Guid.NewGuid(),
+                        IsDeleted = false,
+                        File = model.File.ConvertToByteArray(),
+                        Name = model.File.FileName,
+                        Size = model.File.ContentLength,
+                        // Type= model.File.ContentType
+                    };
+                    _documentRepository.Create(document);
+
                     var ent = new Employee()
                     {
                         Id = model.Id,
@@ -169,14 +187,25 @@ namespace UskudarDenetim.UI.Controllers
                         PhoneNumber = model.PhoneNumber,
                         Photo = model.Photo,
                         IsParent = model.IsParent,
-                        EmailAddress = model.Email
+                        EmailAddress = model.Email,
+                        DocumentId = document.Id
                     };
                     _employeeRepository.Update(ent);
                     return RedirectToAction("Employees", "Admin");
                 }
                 else
                 {
-                    //ekleme
+                    document = new Document()
+                    {
+                        Id = Guid.NewGuid(),
+                        IsDeleted = false,
+                        File = model.File.ConvertToByteArray(),
+                        Name = model.File.FileName,
+                        Size = model.File.ContentLength,
+                        // Type= model.File.ContentType
+                    };
+                    _documentRepository.Create(document);
+
                     var ent = new Employee()
                     {
                         Id = Guid.NewGuid(),
@@ -188,24 +217,14 @@ namespace UskudarDenetim.UI.Controllers
                         PhoneNumber = model.PhoneNumber,
                         Photo = model.Photo,
                         IsParent = model.IsParent,
-                        EmailAddress = model.Email
+                        EmailAddress = model.Email,
+                        DocumentId = document.Id
                     };
                     _employeeRepository.Create(ent);
                     return RedirectToAction("Employees", "Admin");
                 }
 
-                //if (Request.Files.Count > 0)
-                //{
-                //    var file = Request.Files[0];
 
-                //    if (file != null && file.ContentLength > 0)
-                //    {
-                //        var fileName = Path.GetFileName(file.FileName);
-                //        var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                //        file.SaveAs(path);
-                //    }
-                //}
-                //return Json("Ok");
             }
             catch (Exception)
             {
@@ -214,6 +233,7 @@ namespace UskudarDenetim.UI.Controllers
             }
 
         }
+      
 
         [HttpGet]
         public ActionResult CreateEmployee()

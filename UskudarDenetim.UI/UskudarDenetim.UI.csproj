@@ -210,12 +210,14 @@
       <DependentUpon>201812091957567_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\MemoryPostedFile.cs" />
     <Compile Include="Models\ModelActivityArea.cs" />
     <Compile Include="Models\ModelAddress.cs" />
     <Compile Include="Models\ModelAppointmentRequest.cs" />
     <Compile Include="Models\ModelCompany.cs" />
     <Compile Include="Models\ModelContact.cs" />
     <Compile Include="Models\ModelContactUS.cs" />
+    <Compile Include="Models\ModelDocument.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelFooter.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="musa_UdMainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="musa_UdMainModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActivityArea">
           <Key>
             <PropertyRef Name="Id" />
@@ -171,6 +171,8 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="IsParent" Type="bit" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DocumentId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="HRApplyForm">
           <Key>
@@ -346,6 +348,18 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employees_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HRApplyForm_Document">
           <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
           <End Role="HRApplyForm" Type="Self.HRApplyForm" Multiplicity="*" />
@@ -417,13 +431,16 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="City" EntitySet="City" />
             <End Role="District" EntitySet="District" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Document" Association="Self.FK_Employees_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK_HRApplyForm_Document" Association="Self.FK_HRApplyForm_Document">
             <End Role="Document" EntitySet="Document" />
             <End Role="HRApplyForm" EntitySet="HRApplyForm" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="musa_UdMainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -582,6 +599,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="HRApplyForms" Relationship="Self.FK_HRApplyForm_Document" FromRole="Document" ToRole="HRApplyForm" />
           <NavigationProperty Name="Companies" Relationship="Self.CompanyDocument" FromRole="Document" ToRole="Company" />
+          <NavigationProperty Name="Employees" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Document" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -597,6 +615,9 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsParent" Type="Boolean" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentId" Type="Guid" />
+          <NavigationProperty Name="Document" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Employee" ToRole="Document" />
         </EntityType>
         <EntityType Name="HRApplyForm">
           <Key>
@@ -819,7 +840,23 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="Company" EntitySet="Companies" />
             <End Role="Document" EntitySet="Documents" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Document" Association="musa_UdMainModel.FK_Employees_Document">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Employees_Document">
+          <End Type="musa_UdMainModel.Document" Role="Document" Multiplicity="0..1" />
+          <End Type="musa_UdMainModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -983,6 +1020,8 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="musa_UdMainModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
