@@ -189,6 +189,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\ActivityAreaController.cs" />
+    <Compile Include="Controllers\CircularController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
@@ -575,10 +576,12 @@
     <Content Include="Views\PracticalInformations\PracticalInformationModal.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformations.cshtml" />
     <Content Include="Views\Home\Appointment.cshtml" />
+    <Content Include="Views\Circular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
