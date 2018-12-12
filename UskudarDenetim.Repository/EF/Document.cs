@@ -28,6 +28,7 @@ namespace UskudarDenetim.Repository.EF
         public string Name { get; set; }
         public Nullable<long> Size { get; set; }
         public bool IsDeleted { get; set; }
+        public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HRApplyForm> HRApplyForms { get; set; }

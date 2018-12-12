@@ -34,6 +34,7 @@
         <AssociationConnector Association="musa_UdMainModel.FK_HRApplyForm_Document" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.CompanyDocument" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
+        <EntityTypeShape EntityType="musa_UdMainModel.Circular" Width="1.5" PointX="11.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -65,6 +65,9 @@
     <Compile Include="EF\BoardOfDirector.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\Circular.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\City.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -156,6 +156,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Size" Type="bigint" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="550" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -251,6 +252,19 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Circular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Header" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DocumentId" Type="uniqueidentifier" />
         </EntityType>
         <Association Name="FK_Address_District">
           <End Role="District" Type="Self.District" Multiplicity="0..1" />
@@ -393,6 +407,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySet Name="SharedLink" EntityType="Self.SharedLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SocialMedia" EntityType="Self.SocialMedia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Circular" EntityType="Self.Circular" Schema="ud_main_user" store:Type="Tables" />
           <EntitySet Name="CompanyDocument" EntityType="Self.CompanyDocument" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CompanyDocument].[CompanyId] AS [CompanyId], 
@@ -600,6 +615,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <NavigationProperty Name="HRApplyForms" Relationship="Self.FK_HRApplyForm_Document" FromRole="Document" ToRole="HRApplyForm" />
           <NavigationProperty Name="Companies" Relationship="Self.CompanyDocument" FromRole="Document" ToRole="Company" />
           <NavigationProperty Name="Employees" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Document" ToRole="Employee" />
+          <Property Name="Type" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -844,6 +860,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="Document" EntitySet="Documents" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Circulars" EntityType="musa_UdMainModel.Circular" />
         </EntityContainer>
         <Association Name="FK_Employees_Document">
           <End Type="musa_UdMainModel.Document" Role="Document" Multiplicity="0..1" />
@@ -857,6 +874,19 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Circular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Header" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentId" Type="Guid" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1008,6 +1038,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySetMapping Name="Documents">
             <EntityTypeMapping TypeName="musa_UdMainModel.Document">
               <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="File" ColumnName="File" />
@@ -1128,6 +1159,20 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
               <ScalarProperty Name="Id" ColumnName="DocumentId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Circulars">
+            <EntityTypeMapping TypeName="musa_UdMainModel.Circular">
+              <MappingFragment StoreEntitySet="Circular">
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

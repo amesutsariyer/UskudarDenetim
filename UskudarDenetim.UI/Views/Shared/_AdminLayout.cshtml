@@ -33,6 +33,7 @@
         </div>
     </div>
     @Html.Partial("../Modal/SuccessMessageModal")
+    @Html.Partial("../Modal/ErrorMessageModal")
 
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/javascript")
@@ -54,6 +55,36 @@
                 }
             }
         });
+    </script>
+    <script>
+        function OnSuccessSubscription(response) {
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message);
+            }
+        }
+        function OnFailureSubscription(response) {
+            if (response.success) {
+                openShowErrorModal(response.message);
+            }
+            else {
+                openShowErrorModal(response.message);
+            }
+        }
+
+        function openShowSuccessModal(message) {
+            jQuery('#success-modal-title').html('BAŞARILI')
+            jQuery('#success-modal-body').html(message)
+            jQuery('#success-modal').modal();
+        }
+        function openShowErrorModal(message) {
+            jQuery('#error-modal-title').html('HATA')
+            jQuery('#error-modal-body').html(message)
+            jQuery('#error-modal').modal();
+        }
+
     </script>
 </body>
 </html>

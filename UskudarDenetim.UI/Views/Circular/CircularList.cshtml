@@ -1,0 +1,67 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelCircular>
+@{
+    ViewBag.Title = "CircularList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Sirküler</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Sirkü Başlık</th>
+                            <th scope="col">Sil</th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="location.href = '@Url.Action("Create","Circular")';" class="dt-sc-button float-inherit" /></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var circuler in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@circuler.Header</td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteCircular('@circuler.Id')" class="dt-sc-button float-inherit" /></td>
+                                <td>
+                                    <input type="button" value="Düzenle" onclick="location.href = '@Url.Action("Update","Circular", new { id = circuler.Id })';" class="dt-sc-button float-inherit" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+
+        function deleteCircular(id) {
+            var request = $.ajax({
+                url: "/Circular/Delete",
+                type: "POST",
+                data: { id: id }
+            });
+
+            request.done(function (response) {
+                if (response.success) {
+                    openShowSuccessModal(response.message)
+                } else {
+                    openShowErrorModal(response.message)
+                }
+            });
+
+            request.fail(function (response) {
+                openShowErrorModal(response.message)
+            });
+        }
+
+    </script>
+}

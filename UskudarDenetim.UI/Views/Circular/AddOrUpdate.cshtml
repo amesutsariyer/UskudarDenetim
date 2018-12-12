@@ -1,0 +1,44 @@
+﻿@model UskudarDenetim.UI.Models.ModelCircular
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <div>
+                @using (Ajax.BeginForm("CreateOrUpdate", "Circular", new AjaxOptions()
+                {
+                    HttpMethod = "Post",
+                    OnSuccess = "OnSuccessUpdateCircular",
+                    OnFailure = "OnFailureUpdateCircular"
+                },new { style="padding:0px" }))
+                {
+                    @Html.HiddenFor(Model => Model.Id)
+                    @Html.TextBoxFor(Model => Model.Header, new { placeholder = "Sirkü Başlığı Giriniz", @required = "required" })
+                    @Html.TextBoxFor(Model => Model.Title, new { placeholder = "Ön Gösterim Yazısı Giriniz", @required = "required" })
+                    @Html.EditorFor(model => model.Description, new { placeholder = "Sirkü Detay Giriniz.", @required = "required" })
+                    <input style="margin-top:10px" class=" bg-button-color-success" type="submit" value="Kaydet" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function OnSuccessUpdateCircular(response) {
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message)
+            }
+        }
+        function OnFailureUpdateCircular(response) {
+            openShowErrorModal(response.message)
+        }
+
+    </script>
+
+}
+

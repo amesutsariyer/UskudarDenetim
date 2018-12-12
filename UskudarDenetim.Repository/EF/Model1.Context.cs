@@ -45,5 +45,6 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<SharedLink> SharedLinks { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
         public virtual DbSet<Subscribe> Subscribes { get; set; }
+        public virtual DbSet<Circular> Circulars { get; set; }
     }
 }

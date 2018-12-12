@@ -1,8 +1,9 @@
-﻿
+﻿@model List<UskudarDenetim.UI.Models.ModelCircular>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using System.Globalization;
 <div id="main">
     <div class="parallax full-width-bg">
         <div class="container">
@@ -16,74 +17,37 @@
         <!-- Primary Starts -->
         <section id="primary" class="content-full-width">
             <div class="blog-items apply-isotope">
-                <div class="column dt-sc-one-half">
-                    <article class="blog-post type3">
-                        <!-- **entry-meta - Starts** -->
-                        <div class="entry-meta">
-                            <div class="date">
-                                <p><span>22</span><br />Dec</p>
-                            </div>
-                            <div class="post-comments">
-                                <a href="#"><span class="fa fa-comment"></span>12</a>
-                            </div>
-                        </div> <!-- **entry-meta - Ends** -->
-                        <!-- **entry-thumb - Starts** -->
-                        <div class="entry-thumb">
-                            <a href="blog-detail-with-right-sidebar.html"><img src="http://placehold.it/1170x767&text=Blog" alt="image" /></a>
-                        </div> <!-- **entry-thumb - Ends** -->
-                        <!-- **entry-detail - Starts** -->
-                        <div class="entry-detail">
-                            <div class="entry-title">
-                                <h4><a href="blog-detail-with-right-sidebar.html">Its Christmas. Special days ahead.</a></h4>
-                            </div>
-                            <!-- **entry-meta-data - Starts** -->
-                            <div class="entry-meta-data">
-                                <p><span class="fa fa-user"> </span> Posted By: <a href="#"> admin </a></p>
-                                <p><span class="fa fa-tag"> </span> In: <a href="#">  Trend,</a> <a href="#"> Technology,</a> <a href="#"> Web2.0 </a></p>
-                            </div> <!-- **entry-meta-data - Ends** -->
-                            <div class="entry-title">
-                                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div> <!-- **entry-detail - Ends** -->
-                    </article>
-                </div>
+                @if (Model.Count==0)
+                {
+                    <h3>Henüz Sirkü Eklenmemiştir.</h3>
+                }
+                @foreach (var circular in Model.OrderByDescending(x=>x.CreatedDate))
+                {
+                    <div class="column dt-sc-one-half">
+                        <article class="blog-post type3">
+                            <!-- **entry-meta - Starts** -->
+                        
+                            <!-- **entry-thumb - Starts** -->
+                            <div class="entry-thumb">
+                                <a href="@Url.Action("Detail","Circular",new { id=circular.Id})"><img src="http://placehold.it/1170x767&text=Blog" alt="image" /></a>
+                            </div> <!-- **entry-thumb - Ends** -->
+                            <!-- **entry-detail - Starts** -->
+                            <div class="entry-detail">
+                                <div class="entry-title">
+                                    <h4><a href="@Url.Action("Detail","Circular",new { id=circular.Id})">@circular.Header</a></h4>
+                                </div>
+                                <!-- **entry-meta-data - Starts** -->
+                                <div class="entry-meta-data">
+                                    <p><span class="fa fa-user"> </span> Yayınlanma Tarihi: <a href="#"> @circular.CreatedDate </a></p>
 
-                <div class="column dt-sc-one-half">
-                    <article class="blog-post type3">
-                        <!-- **entry-meta - Starts** -->
-                        <div class="entry-meta">
-                            <div class="date">
-                                <p><span>22</span><br />Dec</p>
-                            </div>
-                            <div class="post-comments">
-                                <a href="#"><span class="fa fa-comment"></span>12</a>
-                            </div>
-                        </div> <!-- **entry-meta - Ends** -->
-                        <!-- **entry-thumb - Starts** -->
-                        <div class="entry-thumb">
-                            <a href="blog-detail-with-right-sidebar.html"><img src="http://placehold.it/1170x767&text=Blog" alt="image" /></a>
-                        </div> <!-- **entry-thumb - Ends** -->
-                        <!-- **entry-detail - Starts** -->
-                        <div class="entry-detail">
-                            <div class="entry-title">
-                                <h4><a href="blog-detail-with-right-sidebar.html">Winter Dreams - Capturing the snow.</a></h4>
-                            </div>
-                            <!-- **entry-meta-data - Starts** -->
-                            <div class="entry-meta-data">
-                                <p><span class="fa fa-user"> </span> Posted By: <a href="#"> admin </a></p>
-                                <p><span class="fa fa-tag"> </span> In: <a href="#">  Trend,</a> <a href="#"> Technology,</a> <a href="#"> Web2.0 </a></p>
-                            </div> <!-- **entry-meta-data - Ends** -->
-                            <div class="entry-body">
-                                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                        </div> <!-- **entry-detail - Ends** -->
-                    </article>
-                </div>
-
-                
-
-
-
+                                </div> <!-- **entry-meta-data - Ends** -->
+                                <div class="entry-title">
+                                    <p>@circular.Title<a href="@Url.Action("Detail","Circular",new { id=circular.Id})   ">  devamını oku... </a></p>
+                                </div>
+                            </div> <!-- **entry-detail - Ends** -->
+                        </article>
+                    </div>
+                }
             </div>
             <div class="dt-sc-margin50"></div>
         </section> <!-- **Primary - Ends** -->
