@@ -14,7 +14,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Ad/Soyad</th>
                             <th scope="col">Telefon Numarası</th>
-                            <th scope="col"><input type="button" value="Yeni Kayıt" onclick="location.href='@Url.Action("CreateEmployee","Admin")'" /></th>
+                            <th scope="col"><input type="button" value="Yeni Kayıt" onclick="location.href='@Url.Action("CreateEmployee","TeamMember")'" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +28,7 @@
                                 <td>@employee.FirstName @employee.LastName</td>
                                 <td>@employee.PhoneNumber</td>
                                 <td>
-                                    <input type="button" value="Düzenle" onclick="window.location.href='@Url.Action("UpdateEmployee","Admin",new {id=employee.Id.ToString() })'" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="window.location.href='@Url.Action("UpdateEmployee","TeamMember",new {id=employee.Id.ToString() })'" class="dt-sc-button float-inherit" />
                                     <input type="button" value="Sil" style="background-color:red !important" onclick="deleteEmployee('@employee.Id')" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
@@ -43,7 +43,7 @@
     <script>
         function deleteEmployee(id) {
             var request = $.ajax({
-                url: "/Admin/DeleteEmployee",
+                url: "/TeamMember/DeleteEmployee",
                 type: "POST",
                 data: { id: id }
             });

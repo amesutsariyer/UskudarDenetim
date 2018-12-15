@@ -9,7 +9,7 @@
     <div class="container">
         <div class="form-wrapper register">
 
-            @using (Html.BeginForm("Employee", "Admin", FormMethod.Post, new
+            @using (Html.BeginForm("Employee", "TeamMember", FormMethod.Post, new
             { enctype = "multipart/form-data" }))
             {
                 <div class="dt-sc-clear"></div>
@@ -21,8 +21,6 @@
                 <p class="dt-sc-one-column">
                     <div class="image"><img src="@Model.ImgSrc" alt="iamge" /></div>
                 </p>
-
-
                 <p class="dt-sc-one-half column first">
                     @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Adı Giriniz", @required = "required" })
                 </p>
@@ -49,7 +47,7 @@
                     @Html.TextBoxFor(x => x.Order, new { @placeholder = "Öncelik Sırasını Giriniz", @required = "required", @type = "text", @class = "form-control" })
                 </p>
                 <p class="dt-sc-one-half column mt-10">
-                    @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", accept = "image/png, image/jpeg, image/gif", @class = "form-control"})
+                    @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", accept = "image/png, image/jpeg, image/gif", @class = "form-control" })
 
                 </p>
 

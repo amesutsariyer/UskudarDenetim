@@ -30,11 +30,11 @@
         <AssociationConnector Association="musa_UdMainModel.FK_HRApplyForm_Document" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.CompanyDocument" ManuallyRouted="false" />
         <EntityTypeShape EntityType="musa_UdMainModel.Circular" Width="1.5" PointX="11.375" PointY="13.75" />
-        <EntityTypeShape EntityType="musa_UdMainModel.Employee" Width="1.5" PointX="5.25" PointY="15.5" />
-        <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
         <EntityTypeShape EntityType="musa_UdMainModel.Sector" Width="1.5" PointX="5.375" PointY="11.75" />
         <EntityTypeShape EntityType="musa_UdMainModel.ActivityArea" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="musa_UdMainModel.Service" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="musa_UdMainModel.Employee" Width="1.5" PointX="5.25" PointY="15.5" />
+        <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

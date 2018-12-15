@@ -23,9 +23,9 @@ namespace UskudarDenetim.Repository.EF
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
         public string Description { get; set; }
-        public Nullable<System.Guid> DocumentId { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> Order { get; set; }
+        public System.Guid DocumentId { get; set; }
+        public bool IsActive { get; set; }
+        public int Order { get; set; }
     
         public virtual Document Document { get; set; }
     }

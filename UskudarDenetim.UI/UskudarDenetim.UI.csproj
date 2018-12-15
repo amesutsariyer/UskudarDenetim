@@ -805,7 +805,7 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Banner.cshtml" />
     <Content Include="Views\ActivityArea\_ActivityArea.cshtml" />
-    <Content Include="Views\Shared\_Employees.cshtml" />
+    <Content Include="Views\TeamMember\_Employees.cshtml" />
     <Content Include="Views\Shared\_ReachUS.cshtml" />
     <Content Include="Views\Service\_WhatWeDo.cshtml" />
     <Content Include="Views\PracticalInformations\_PracticalInformations.cshtml" />
@@ -821,8 +821,8 @@
     <Content Include="Views\Modal\SuccessMessageModal.cshtml" />
     <Content Include="Views\Modal\ErrorMessageModal.cshtml" />
     <Content Include="Views\Admin\UpdateSocialMediaModal.cshtml" />
-    <Content Include="Views\Admin\Employees.cshtml" />
-    <Content Include="Views\Admin\Employee.cshtml" />
+    <Content Include="Views\TeamMember\Employees.cshtml" />
+    <Content Include="Views\TeamMember\Employee.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
     <Content Include="Views\Service\ServiceDetail.cshtml" />

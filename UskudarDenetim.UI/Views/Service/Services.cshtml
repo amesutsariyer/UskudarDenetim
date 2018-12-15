@@ -54,6 +54,7 @@
             request.done(function (response) {
                 if (response.success) {
                     openShowSuccessModal(response.message)
+                    location.reload();
                 }
                 else {
                     openShowErrorModal(response.message)
