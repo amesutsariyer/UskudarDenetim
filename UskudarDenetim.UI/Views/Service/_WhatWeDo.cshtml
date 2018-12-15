@@ -26,12 +26,12 @@
                     
                     <!-- **entry-thumb - Starts** -->
                     <div class="entry-thumb">
-                        <a href="#"><img src="http://placehold.it/1170x592&text=Image" alt="image" /></a>
+                        <a href="@Url.Action("ServiceDetail","Service",new { id=service.Id })"><img src="~/Images/450x300/services-bg.jpg" class="effect-img" alt="image" /></a>
                     </div> <!-- **entry-thumb - Ends** -->
                     <!-- **entry-detail - Starts** -->
                     <div class="entry-detail">
                         <div class="entry-title">
-                            <h4><a href="#l"> 	@service.Name</a></h4>
+                            <h4><a href="@Url.Action("ServiceDetail","Service",new { id=service.Id })"> 	@service.Name</a></h4>
                         </div>
                         <div class="entry-body">
                             <p>@service.ShortDescription ...</p>

@@ -24,6 +24,10 @@ namespace UskudarDenetim.UI.Controllers
             var model = GetAllCircular();
             return View(model);
         }
+        public ActionResult GetCircular()
+        {
+            return PartialView("_Circular",GetAllCircular().Take(3).ToList());
+        }
         public ActionResult Detail(string id)
         {
             var gId = id.ConvertToGuid();

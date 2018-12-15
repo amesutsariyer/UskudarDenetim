@@ -17,5 +17,8 @@ namespace UskudarDenetim.Repository.EF
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsActive { get; set; }
+        public int Order { get; set; }
+        public string IconClassName { get; set; }
     }
 }

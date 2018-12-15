@@ -1,0 +1,54 @@
+﻿@model UskudarDenetim.UI.Models.ModelService
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register " style="margin-top:18px;">
+            @using (Ajax.BeginForm("CreateOrUpdate", "Service", new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccessUpdateService",
+                OnFailure = "OnFailureUpdateService"
+            }, new { style = "padding:0px" }))
+            {
+                @Html.HiddenFor(Model => Model.Id)
+                <p class="dt-sc-one-half column ">
+                    @Html.Label("Hizmetin Adı /Başlığı")
+                    @Html.TextBoxFor(Model => Model.Name, new { placeholder = "Hizmetin Adı", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.Label("Kısa Açıklama")
+                    @Html.TextBoxFor(Model => Model.ShortDescription, new { placeholder = "Kısa Açıklama", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.Label("Sıra Numarası")
+                    @Html.TextBoxFor(Model => Model.Order, new { placeholder = "Sıralama", @required = "required", type = "number" })
+                </p>
+                @Html.EditorFor(model => model.Description, new { placeholder = "Hizmet Detayı.", @required = "required", @style = "" })
+                <input style="margin:20px" class=" bg-button-color-success" type="submit" value="Kaydet" />
+            }
+
+        </div>
+    </div>
+</div>
+</div>
+@section scripts{
+    <script>
+        function OnSuccessUpdateService(response) {
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message)
+            }
+        }
+        function OnFailureUpdateService(response) {
+            openShowErrorModal(response.message)
+        }
+
+    </script>
+
+}
+

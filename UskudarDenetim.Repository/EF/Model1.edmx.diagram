@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f23a73c2861b499793a592faaed6df76" Name="Diagram1">
-        <EntityTypeShape EntityType="musa_UdMainModel.ActivityArea" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.Address" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.AppointmentRequest" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.BoardOfDirector" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
@@ -17,11 +16,8 @@
         <EntityTypeShape EntityType="musa_UdMainModel.Country" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.District" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.Document" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="musa_UdMainModel.Employee" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.HRApplyForm" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.PracticalInformation" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="musa_UdMainModel.Sector" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="musa_UdMainModel.Service" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.SharedLink" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.SocialMedia" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.Subscribe" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
@@ -33,8 +29,12 @@
         <AssociationConnector Association="musa_UdMainModel.FK_ContactSocialMedia_SocialMedia" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.FK_HRApplyForm_Document" ManuallyRouted="false" />
         <AssociationConnector Association="musa_UdMainModel.CompanyDocument" ManuallyRouted="false" />
-        <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
         <EntityTypeShape EntityType="musa_UdMainModel.Circular" Width="1.5" PointX="11.375" PointY="13.75" />
+        <EntityTypeShape EntityType="musa_UdMainModel.Employee" Width="1.5" PointX="5.25" PointY="15.5" />
+        <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
+        <EntityTypeShape EntityType="musa_UdMainModel.Sector" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="musa_UdMainModel.ActivityArea" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="musa_UdMainModel.Service" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

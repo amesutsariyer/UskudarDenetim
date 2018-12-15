@@ -194,6 +194,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\PracticalInformationsController.cs" />
+    <Compile Include="Controllers\SectorController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SharedLinkController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelPracticalInformation.cs" />
     <Compile Include="Models\ModelPracticalInformationViewModel.cs" />
+    <Compile Include="Models\ModelSector.cs" />
     <Compile Include="Models\ModelService.cs" />
     <Compile Include="Models\ModelSharedLink.cs" />
     <Compile Include="Models\ModelSocialMedia.cs" />
@@ -283,6 +285,7 @@
     <Content Include="Images\1200x800\turmob.png" />
     <Content Include="Images\160x160\ufukpf.png" />
     <Content Include="Images\160x160\Ustad.png" />
+    <Content Include="Images\450x300\sirku-bg.png" />
     <Content Include="Images\8.gif" />
     <Content Include="Images\160x160\amspf.jpg" />
     <Content Include="Images\attorney\form-bg.png" />
@@ -312,6 +315,7 @@
     <Content Include="Images\flag-icon.png" />
     <Content Include="Images\footer-bg.jpg" />
     <Content Include="Images\fr.png" />
+    <Content Include="Images\450x300\ihracatta-tl-sözleşmeleri-vdd.jpg" />
     <Content Include="Images\intro-text-bg.jpg" />
     <Content Include="Images\intro-text-bg5.jpg" />
     <Content Include="Images\kızkulesi\15.png" />
@@ -342,6 +346,7 @@
     <Content Include="Images\product-presentation-bg.jpg" />
     <Content Include="Images\search%402x.png" />
     <Content Include="Images\search.png" />
+    <Content Include="Images\450x300\services-bg.jpg" />
     <Content Include="Images\setting-icon%402x.png" />
     <Content Include="Images\setting-icon.png" />
     <Content Include="Images\sliders\arrow1.png" />
@@ -821,7 +826,6 @@
     <Content Include="Views\ActivityArea\ActivityAreas.cshtml" />
     <Content Include="Views\ActivityArea\ActivityAreaModal.cshtml" />
     <Content Include="Views\Service\ServiceDetail.cshtml" />
-    <Content Include="Views\Service\ServiceModal.cshtml" />
     <Content Include="Views\HR\Index.cshtml" />
     <Content Include="Views\HR\Applys.cshtml" />
     <Content Include="Views\HR\ApplyDetail.cshtml" />
@@ -838,6 +842,11 @@
     <Content Include="Views\Shared\EditorTemplates\tinymce_full_compressed.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
     <Content Include="Views\Circular\Detail.cshtml" />
+    <Content Include="Views\Circular\_Circular.cshtml" />
+    <Content Include="Views\Sector\_SectorList.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\AddOrUpdate.cshtml" />
+    <Content Include="Views\Service\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

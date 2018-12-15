@@ -22,7 +22,16 @@ namespace UskudarDenetim.UI
                   "~/Content/font-awesome.min.css"
                       ));
             /*
-             
+             	<link id="default-css" rel="stylesheet" href="style.css" type="text/css" media="all" />
+	<link id="shortcodes-css" rel="stylesheet" href="shortcodes.css" type="text/css" media="all"/>
+	<link id="skin-css" rel="stylesheet" href="skins/skyblue/style.css" type="text/css" media="all"/>
+    <link id="layer-slider" rel="stylesheet"  href="css/layerslider.css" media="all" />
+	
+	<!-- **Additional - stylesheets** -->
+	<link rel="stylesheet" href="responsive.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/meanmenu.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/animations.css" type="text/css" media="all" />
 	   
     
 	<link id="default-css" rel="stylesheet" href="style.css" type="text/css" media="all" />
@@ -56,6 +65,7 @@ namespace UskudarDenetim.UI
                    "~/Scripts/jquery.jcarousel.min.js",
                    "~/Scripts/jquery.carouFredSel-6.2.1-packed.js",
                    "~/Scripts/jquery.isotope.min.js",
+                           "~/Scripts/jquery.smartresize.js",
                    "~/Scripts/jquery.bxslider.min.js",
                    "~/Scripts/jquery.prettyPhoto.js",
                    "~/Scripts/masonry.pkgd.min.js",

@@ -2,34 +2,41 @@
 <div class="full-width-section">
     <div class="dt-sc-margin70"></div>
     <div class="container">
-        <div class="column dt-sc-three-fourth first">
+        <div class="column dt-sc-one-third">
+            <div class="hr-title">
+                <h3>Sektörler</h3>
+                <div class="title-sep"> </div>
+            </div>
+            @{ double count2 = 0.75;}
+            @foreach (var sector in Model.Sector)
+            {
+                <ul class="dt-sc-icon-list" style="padding-bottom:0px;margin-bottom:3px">
+                    <li class="animate" data-animation="fadeInUp" data-delay="@(count2*100)" style="padding-bottom:0px;border-bottom:none"><a href="#"><i class="fa fa-circle-thin"></i>@sector.Name</a></li>
+                </ul>
+            }
+        </div>
+        <div class="column dt-sc-one-third first">
             <div class="hr-title">
                 <h3>Pratik Bilgiler</h3>
                 <div class="title-sep"> </div>
             </div>
             <!-- **dt-sc-toggle-frame-set - Starts** -->
             <div class="dt-sc-toggle-frame-set">
-                @{ int count = 0;}
+                @{ double count = 0.75;}
                 @foreach (var faq in Model.PracticalInformationList)
                 {
-                    <h5 class="dt-sc-toggle-accordion @if (count==0)
-	{
-		 <text>block</text>
-	}"><a href="#">@faq.Name</a></h5>
-                    <div class="dt-sc-toggle-content">
-                        <div class="block">
-                            @faq.Description <br />
-                            <a href="@Url.Action("PracticalInformationDetail","PracticalInformations",new {id=faq.Id })">Detay için tıklaynız..</a>
-                        </div>
-                    </div>
+                    <ul class="dt-sc-icon-list">
+                        <li class="animate" data-animation="fadeInUp" data-delay="@(count*100)"><a href="@Url.Action("PracticalInformationDetail","PracticalInformations",new {id=faq.Id})"><i class="fa fa-info"></i>@faq.Description</a></li>
+                    </ul>
+                    count++;
                 }
 
 
-            </div> 
+            </div>
 
         </div>
 
-        <div class="column dt-sc-one-fourth">
+        <div class="column dt-sc-one-third ">
             <div class="hr-title">
                 <h3>Yeminli Mali Müşavir </h3>
                 <div class="title-sep">
@@ -46,7 +53,7 @@
                 </div>
                 <p> @Model.Director.About</p>
             </div>
-        </div><!-- **dt-sc-team - Ends** -->
+        </div>
 
     </div>
     <div class="dt-sc-hr-invisible-small"></div>

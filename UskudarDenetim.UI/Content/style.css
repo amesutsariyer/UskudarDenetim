@@ -6829,3 +6829,8 @@ ul.products li .product-wrapper.product-two-column {
 .bg-button-color-info {
     background-color: #ffc107 !important;
 }
+
+.effect-img:hover {
+    opacity: 0.3;
+    transition: .5s ease;
+}

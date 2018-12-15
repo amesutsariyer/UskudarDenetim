@@ -1,0 +1,51 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelCircular>
+@{
+    int count = 0;
+}
+<style>
+    .cs-bg-box {
+        padding: 5px;
+        -webkit-box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+        -moz-box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+        box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+    }
+</style>
+@if (Model.Count != 0)
+{
+
+    <div class="parallax full-width-section pattern-bg ">
+        <div class="dt-sc-margin65"></div>
+        <div class="container">
+            <h2 class="aligncenter" style="margin-top:0px">Sirküler</h2>
+            <div class="dt-sc-hr-invisible-small"></div>
+            @foreach (var circular in Model)
+            {
+                <div class="column dt-sc-one-third  @if (count%3==0)
+            {
+                /*1.kolon ilk elemanlara first class eklenmeli*/<text>first</text>
+            }   ">
+                    <!-- **Blog-post - Starts** -->
+                    <article class="blog-post">
+
+                        <!-- **entry-thumb - Starts** -->
+                        <div class="entry-thumb">
+                            <a href="@Url.Action("Detail","Circular",new { id=circular.Id })"><img src="~/Images/450x300/ihracatta-tl-sözleşmeleri-vdd.jpg" alt="image"  class="effect-img"/></a>
+                        </div> <!-- **entry-thumb - Ends** -->
+                        <!-- **entry-detail - Starts** -->
+                        <div class="entry-detail">
+                            <div class="entry-title">
+                                <h4><a href="@Url.Action("Detail","Circular",new { id=circular.Id })">@circular.Name</a></h4>
+                            </div>
+                            <div class="entry-body">
+                                <p>@circular.Title ...</p>
+                            </div>
+                            <a class="read-more" href="@Url.Action("Detail","Circular",new { id=circular.Id })">Devamını Oku.. <span class="fa fa-long-arrow-right"></span> </a>
+                        </div> <!-- **entry-detail - Ends** -->
+                    </article><!-- **Blog-post - Ends** -->
+                </div>
+                count++;
+            }
+            <div class="dt-sc-margin30"></div>
+        </div>
+    </div>
+}

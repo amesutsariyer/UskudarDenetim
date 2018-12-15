@@ -13,10 +13,12 @@ namespace UskudarDenetim.UI.Controllers
     {
         private Repository.Interface.GenericRepository<PracticalInformation> _practicalAreaRepository;
         private Repository.Interface.GenericRepository<BoardOfDirector> _directorRepository;
+        private Repository.Interface.GenericRepository<Sector> _sectorRepository;
         public PracticalInformationsController()
         {
             _practicalAreaRepository = new Repository.GenericRepository<PracticalInformation>();
             _directorRepository = new Repository.GenericRepository<BoardOfDirector>();
+            _sectorRepository = new Repository.GenericRepository<Sector>();
         }
         //[Authorize]
         public ActionResult PracticalInformations()
@@ -26,17 +28,25 @@ namespace UskudarDenetim.UI.Controllers
         public ActionResult _PracticalInformations()
         {
             var director = _directorRepository.GetAll().First();
-
+            var sector = _sectorRepository.GetAll().Where(x => x.IsActive).OrderBy(x => x.Order).Select(x => new ModelSector()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Order = x.Order,
+                IconClassName = x.IconClassName,
+                IsActive = x.IsActive
+            }).ToList();
             ModelPracticalInformationViewModel model = new ModelPracticalInformationViewModel
             {
                 PracticalInformationList = PracticalInformationList(),
+                Sector = sector,
                 Director = new ModelEmployee()
                 {
                     FirstName = director.Name,
                     LastName = director.Surname,
                     Title = director.Title,
                     Profession = director.About,
-                    About = director.AboutShort
+                    About = director.About
                 }
             };
             return PartialView("_PracticalInformations", model);
@@ -44,7 +54,7 @@ namespace UskudarDenetim.UI.Controllers
         public ActionResult PracticalInformationDetail(string id)
         {
             var model = _practicalAreaRepository.GetById(id.ConvertToGuid());
-            return View(new ModelPracticalInformation() {Description = model.Description,Detail=model.LongDescription,Name=model.Name });
+            return View(new ModelPracticalInformation() { Description = model.Description, Detail = model.LongDescription, Name = model.Name });
         }
         [HttpPost]
         public ActionResult PracticalInformation(ModelPracticalInformation model)

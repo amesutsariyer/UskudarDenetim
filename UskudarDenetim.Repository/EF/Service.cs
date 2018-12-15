@@ -16,11 +16,10 @@ namespace UskudarDenetim.Repository.EF
     {
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> DocumentId { get; set; }
-        public string ImageUrl { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ShortDescription { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<System.Guid> ImageId { get; set; }
+        public bool IsActive { get; set; }
+        public int Order { get; set; }
     }
 }

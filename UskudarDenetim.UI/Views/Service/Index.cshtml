@@ -1,8 +1,9 @@
-﻿@model List<UskudarDenetim.UI.Models.ModelCircular>
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model List<UskudarDenetim.UI.Models.ModelService>
 @using System.Globalization;
 <style>
     .effect-img:hover {
@@ -23,29 +24,21 @@
         <!-- Primary Starts -->
         <section id="primary" class="content-full-width">
             <div class="blog-items apply-isotope">
-                @if (Model.Count == 0)
-                {
-                    <h3>Henüz Sirkü Eklenmemiştir.</h3>
-                }
-                @foreach (var circular in Model.OrderByDescending(x => x.CreatedDate))
+           
+                @foreach (var service in Model)
                 {
                     <div class="column dt-sc-one-half">
                         <article class="blog-post type3">
                             <div class="entry-thumb">
-                                <a href="@Url.Action("Detail","Circular",new { id=circular.Id})"><img src="~/Images/450x300/sirku-bg.png" class="effect-img" alt="image" /></a>
+                                <a href="@Url.Action("Detail","Service",new { id=service.Id})"><img src="~/Images/450x300/sirku-bg.png" class="effect-img" alt="image" /></a>
                             </div> <!-- **entry-thumb - Ends** -->
                             <!-- **entry-detail - Starts** -->
                             <div class="entry-detail">
                                 <div class="entry-title">
-                                    <h4><a href="@Url.Action("Detail","Circular",new { id=circular.Id})">@circular.Header</a></h4>
+                                    <h4><a href="@Url.Action("Detail","Service",new { id=service.Id})">@service.Name</a></h4>
                                 </div>
-                                <!-- **entry-meta-data - Starts** -->
-                                <div class="entry-meta-data">
-                                    <p><span class="fa fa-user"> </span> Yayınlanma Tarihi: <a href="#"> @circular.CreatedDate </a></p>
-
-                                </div> <!-- **entry-meta-data - Ends** -->
                                 <div class="entry-title">
-                                    <p>@circular.Title<a href="@Url.Action("Detail","Circular",new { id=circular.Id})   ">  devamını oku... </a></p>
+                                    <p>@Html.Raw(service.ShortDescription)<a href="@Url.Action("Detail","Service",new { id=service.Id})">  devamını oku... </a></p>
                                 </div>
                             </div> <!-- **entry-detail - Ends** -->
                         </article>

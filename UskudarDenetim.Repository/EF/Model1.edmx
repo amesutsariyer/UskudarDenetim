@@ -169,11 +169,11 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Profession" Type="nvarchar(max)" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="Photo" Type="varbinary(max)" />
-          <Property Name="IsParent" Type="bit" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DocumentId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Order" Type="int" />
         </EntityType>
         <EntityType Name="HRApplyForm">
           <Key>
@@ -212,6 +212,9 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="IconClassName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -219,12 +222,11 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DocumentId" Type="uniqueidentifier" />
-          <Property Name="ImageUrl" Type="nvarchar(max)" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="ShortDescription" Type="nvarchar(max)" />
-          <Property Name="Date" Type="datetime" />
-          <Property Name="ImageId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SharedLink">
           <Key>
@@ -362,18 +364,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employees_Document">
-          <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
-          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Document">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Employees">
-              <PropertyRef Name="DocumentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HRApplyForm_Document">
           <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
           <End Role="HRApplyForm" Type="Self.HRApplyForm" Multiplicity="*" />
@@ -446,10 +436,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="City" EntitySet="City" />
             <End Role="District" EntitySet="District" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employees_Document" Association="Self.FK_Employees_Document">
-            <End Role="Document" EntitySet="Document" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="FK_HRApplyForm_Document" Association="Self.FK_HRApplyForm_Document">
             <End Role="Document" EntitySet="Document" />
             <End Role="HRApplyForm" EntitySet="HRApplyForm" />
@@ -459,16 +445,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="musa_UdMainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ActivityArea">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Id" />
@@ -614,26 +590,8 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="HRApplyForms" Relationship="Self.FK_HRApplyForm_Document" FromRole="Document" ToRole="HRApplyForm" />
           <NavigationProperty Name="Companies" Relationship="Self.CompanyDocument" FromRole="Document" ToRole="Company" />
-          <NavigationProperty Name="Employees" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Document" ToRole="Employee" />
           <Property Name="Type" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsParent" Type="Boolean" Nullable="false" />
-          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DocumentId" Type="Guid" />
-          <NavigationProperty Name="Document" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Employee" ToRole="Document" />
+          <NavigationProperty Name="Employees" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Document" ToRole="Employee" />
         </EntityType>
         <EntityType Name="HRApplyForm">
           <Key>
@@ -665,27 +623,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DocumentId" Type="Guid" />
-        </EntityType>
-        <EntityType Name="Sector">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Service">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="DocumentId" Type="Guid" />
-          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <Property Name="ImageId" Type="Guid" />
         </EntityType>
         <EntityType Name="SharedLink">
           <Key>
@@ -804,7 +741,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <End Role="Document" Type="Self.Document" Multiplicity="*" />
         </Association>
         <EntityContainer Name="musa_UdMainEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ActivityAreas" EntityType="Self.ActivityArea" />
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="AppointmentRequests" EntityType="Self.AppointmentRequest" />
           <EntitySet Name="BoardOfDirectors" EntityType="Self.BoardOfDirector" />
@@ -816,11 +752,8 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Documents" EntityType="Self.Document" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="HRApplyForms" EntityType="Self.HRApplyForm" />
           <EntitySet Name="PracticalInformations" EntityType="Self.PracticalInformation" />
-          <EntitySet Name="Sectors" EntityType="Self.Sector" />
-          <EntitySet Name="Services" EntityType="Self.Service" />
           <EntitySet Name="SharedLinks" EntityType="Self.SharedLink" />
           <EntitySet Name="SocialMedias" EntityType="Self.SocialMedia" />
           <EntitySet Name="Subscribes" EntityType="Self.Subscribe" />
@@ -856,24 +789,16 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="Company" EntitySet="Companies" />
             <End Role="Document" EntitySet="Documents" />
           </AssociationSet>
+          <EntitySet Name="Circulars" EntityType="musa_UdMainModel.Circular" />
+          <EntitySet Name="Employees" EntityType="musa_UdMainModel.Employee" />
           <AssociationSet Name="FK_Employees_Document" Association="musa_UdMainModel.FK_Employees_Document">
             <End Role="Document" EntitySet="Documents" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <EntitySet Name="Circulars" EntityType="musa_UdMainModel.Circular" />
+          <EntitySet Name="Sectors" EntityType="musa_UdMainModel.Sector" />
+          <EntitySet Name="ActivityAreas" EntityType="musa_UdMainModel.ActivityArea" />
+          <EntitySet Name="Services" EntityType="musa_UdMainModel.Service" />
         </EntityContainer>
-        <Association Name="FK_Employees_Document">
-          <End Type="musa_UdMainModel.Document" Role="Document" Multiplicity="0..1" />
-          <End Type="musa_UdMainModel.Employee" Role="Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Document">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="DocumentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Circular">
           <Key>
             <PropertyRef Name="Id" />
@@ -887,23 +812,75 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DocumentId" Type="Guid" />
         </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentId" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Order" Type="Int32" />
+          <NavigationProperty Name="Document" Relationship="musa_UdMainModel.FK_Employees_Document" FromRole="Employee" ToRole="Document" />
+        </EntityType>
+        <Association Name="FK_Employees_Document">
+          <End Type="musa_UdMainModel.Document" Role="Document" Multiplicity="0..1" />
+          <End Type="musa_UdMainModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="IconClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ActivityArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DocumentId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="musa_UdMainModelStoreContainer" CdmEntityContainer="musa_UdMainEntities">
-          <EntitySetMapping Name="ActivityAreas">
-            <EntityTypeMapping TypeName="musa_UdMainModel.ActivityArea">
-              <MappingFragment StoreEntitySet="ActivityArea">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IconName" ColumnName="IconName" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="musa_UdMainModel.Address">
               <MappingFragment StoreEntitySet="Address">
@@ -1048,24 +1025,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="musa_UdMainModel.Employee">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Profession" ColumnName="Profession" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HRApplyForms">
             <EntityTypeMapping TypeName="musa_UdMainModel.HRApplyForm">
               <MappingFragment StoreEntitySet="HRApplyForm">
@@ -1095,29 +1054,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
                 <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sectors">
-            <EntityTypeMapping TypeName="musa_UdMainModel.Sector">
-              <MappingFragment StoreEntitySet="Sector">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Services">
-            <EntityTypeMapping TypeName="musa_UdMainModel.Service">
-              <MappingFragment StoreEntitySet="Services">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1169,6 +1105,60 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Header" ColumnName="Header" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="musa_UdMainModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sectors">
+            <EntityTypeMapping TypeName="musa_UdMainModel.Sector">
+              <MappingFragment StoreEntitySet="Sector">
+                <ScalarProperty Name="IconClassName" ColumnName="IconClassName" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityAreas">
+            <EntityTypeMapping TypeName="musa_UdMainModel.ActivityArea">
+              <MappingFragment StoreEntitySet="ActivityArea">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="musa_UdMainModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

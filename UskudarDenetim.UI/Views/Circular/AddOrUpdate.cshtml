@@ -6,20 +6,24 @@
 <div class="full-width-section parallax full-section-bg">
     <div class="container">
         <div class="form-wrapper register">
-            <div>
                 @using (Ajax.BeginForm("CreateOrUpdate", "Circular", new AjaxOptions()
                 {
                     HttpMethod = "Post",
                     OnSuccess = "OnSuccessUpdateCircular",
                     OnFailure = "OnFailureUpdateCircular"
-                },new { style="padding:0px" }))
+                }, new { style = "padding:0px" }))
                 {
                     @Html.HiddenFor(Model => Model.Id)
-                    @Html.TextBoxFor(Model => Model.Header, new { placeholder = "Sirkü Başlığı Giriniz", @required = "required" })
-                    @Html.TextBoxFor(Model => Model.Title, new { placeholder = "Ön Gösterim Yazısı Giriniz", @required = "required" })
-                    @Html.EditorFor(model => model.Description, new { placeholder = "Sirkü Detay Giriniz.", @required = "required" })
-                    <input style="margin-top:10px" class=" bg-button-color-success" type="submit" value="Kaydet" />
+                    <p class="dt-sc-one-half column first">
+                        @Html.TextBoxFor(Model => Model.Header, new { placeholder = "Sirkü Başlığı Giriniz", @required = "required" })
+                    </p>
+                    <p class="dt-sc-one-half column ">
+                        @Html.TextBoxFor(Model => Model.Title, new { placeholder = "Ön Gösterim Yazısı Giriniz", @required = "required" })
+                    </p>
+                        @Html.EditorFor(model => model.Description, new { placeholder = "Sirkü Detay Giriniz.", @required = "required", @style = "" })
+                        <input style="margin:20px" class=" bg-button-color-success" type="submit" value="Kaydet" />
                 }
+
             </div>
         </div>
     </div>

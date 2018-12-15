@@ -28,7 +28,8 @@
                                 <td>@employee.FirstName @employee.LastName</td>
                                 <td>@employee.PhoneNumber</td>
                                 <td>
-                                    <input type="button" value="Kişi Düzenle" onclick="window.location.href='@Url.Action("UpdateEmployee","Admin",new {id=employee.Id.ToString() })'" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="window.location.href='@Url.Action("UpdateEmployee","Admin",new {id=employee.Id.ToString() })'" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Sil" style="background-color:red !important" onclick="deleteEmployee('@employee.Id')" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }
@@ -38,7 +39,28 @@
         </div>
     </div>
 </div>
-<script>
+@section scripts{
+    <script>
+        function deleteEmployee(id) {
+            var request = $.ajax({
+                url: "/Admin/DeleteEmployee",
+                type: "POST",
+                data: { id: id }
+            });
 
-</script>
+            request.done(function (response) {
+                if (response.success) {
+                    openShowSuccessModal(response.message)
+                } else {
+                    openShowErrorModal(response.message)
+                }
+            });
+
+            request.fail(function (response) {
+                openShowErrorModal(response.message)
+            });
+        }
+    </script>
+
+}
 

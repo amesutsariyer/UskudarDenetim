@@ -94,7 +94,7 @@ namespace UskudarDenetim.UI.Controllers
         #region Employee
         public ActionResult AllEmployee()
         {
-            var empList = _employeeRepository.GetAll().ToList();
+            var empList = _employeeRepository.GetAll().Where(x=>x.IsActive.Value).OrderBy(x=>x.Order).ToList();
             var model = empList.Select(x => new ModelEmployee()
             {
                 Id = x.Id,
@@ -104,8 +104,6 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = x.Profession,
                 Title = x.Title,
                 PhoneNumber = x.PhoneNumber,
-                //Photo = x.Photo,
-                IsParent = x.IsParent,
                 Email = x.EmailAddress,
                 ImgSrc = x.Document.File.ConvertToSrc(),
                 File = (HttpPostedFileBase)new MemoryPostedFile(x.Document.File)
@@ -128,8 +126,6 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = x.Profession,
                 Title = x.Title,
                 PhoneNumber = x.PhoneNumber,
-                Photo = x.Photo,
-                IsParent = x.IsParent,
                 Email = x.EmailAddress
             }).ToList();
             return View(model);
@@ -141,7 +137,6 @@ namespace UskudarDenetim.UI.Controllers
             var employee = _employeeRepository.GetById(idG);
             var model = new ModelEmployee()
             {
-
                 Id = employee.Id,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
@@ -149,10 +144,16 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = employee.Profession,
                 Title = employee.Title,
                 PhoneNumber = employee.PhoneNumber,
-                Photo = employee.Photo,
-                IsParent = employee.IsParent,
-                Email = employee.EmailAddress
+                Email = employee.EmailAddress,
+                Order = employee.Order.HasValue ? employee.Order.Value : 0,
+                ImgSrc = employee.Document.File.ConvertToSrc(),
+                Document =new ModelDocument()
+                {
+                    Id = employee.Document.Id
+                },
+                DocumentId = employee.Document.Id
             };
+
             return View("Employee", model);
         }
         [HttpPost]
@@ -160,22 +161,28 @@ namespace UskudarDenetim.UI.Controllers
         {
             try
             {
-                if (model.File == null && model.File.ContentLength == 0)
-                    return Json(new { success = false, message = "Resim Ekleyiniz" });
+                //if (model.File == null)
+                //    return Json(new { success = false, message = "Resim Ekleyiniz" });
                 var document = new Document();
                 if (model.Id != null && model.Id != Guid.Empty)
                 {
-                    document = new Document()
+                    if (model.File != null)
                     {
-                        Id = Guid.NewGuid(),
-                        IsDeleted = false,
-                        File = model.File.ConvertToByteArray(),
-                        Name = model.File.FileName,
-                        Size = model.File.ContentLength,
-                        // Type= model.File.ContentType
-                    };
-                    _documentRepository.Create(document);
-
+                        document = new Document()
+                        {
+                            Id = Guid.NewGuid(),
+                            IsDeleted = false,
+                            File = model.File.ConvertToByteArray(),
+                            Name = model.File.FileName,
+                            Size = model.File.ContentLength,
+                            Type = model.File.ContentType
+                        };
+                        _documentRepository.Create(document);
+                    }
+                    else
+                    {
+                        document.Id = model.DocumentId.Value;
+                    }
                     var ent = new Employee()
                     {
                         Id = model.Id,
@@ -185,16 +192,18 @@ namespace UskudarDenetim.UI.Controllers
                         Profession = model.Profession,
                         Title = model.Title,
                         PhoneNumber = model.PhoneNumber,
-                        Photo = model.Photo,
-                        IsParent = model.IsParent,
                         EmailAddress = model.Email,
-                        DocumentId = document.Id
+                        DocumentId = document.Id,
+                        Order = model.Order,
                     };
                     _employeeRepository.Update(ent);
                     return RedirectToAction("Employees", "Admin");
                 }
                 else
                 {
+                    if (model.File == null)
+                        return Json(new { success = false, message = "Resim Ekleyiniz" });
+
                     document = new Document()
                     {
                         Id = Guid.NewGuid(),
@@ -202,7 +211,7 @@ namespace UskudarDenetim.UI.Controllers
                         File = model.File.ConvertToByteArray(),
                         Name = model.File.FileName,
                         Size = model.File.ContentLength,
-                        // Type= model.File.ContentType
+                        Type = model.File.ContentType
                     };
                     _documentRepository.Create(document);
 
@@ -215,10 +224,9 @@ namespace UskudarDenetim.UI.Controllers
                         Profession = model.Profession,
                         Title = model.Title,
                         PhoneNumber = model.PhoneNumber,
-                        Photo = model.Photo,
-                        IsParent = model.IsParent,
                         EmailAddress = model.Email,
-                        DocumentId = document.Id
+                        DocumentId = document.Id,
+                        Order = document.Order,
                     };
                     _employeeRepository.Create(ent);
                     return RedirectToAction("Employees", "Admin");
@@ -233,8 +241,24 @@ namespace UskudarDenetim.UI.Controllers
             }
 
         }
-      
 
+        [HttpPost]
+        public ActionResult DeleteEmployee(string id)
+        {
+            try
+            {
+                var gId = id.ConvertToGuid();
+                var entity = _employeeRepository.GetById(gId);
+                entity.IsActive = false;
+                _employeeRepository.Update(entity);
+                return Json(new { success = true, message = "Başarıyla silinmiştir" });
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false, message = "Beklenmeyen bir hata ile karşılaşıldı." });
+            }
+
+        }
         [HttpGet]
         public ActionResult CreateEmployee()
         {
@@ -242,22 +266,6 @@ namespace UskudarDenetim.UI.Controllers
         }
 
         #endregion
-        public void ConvertToBase64()
-        {
-            //BinaryReader br = new BinaryReader(FileUpload1.PostedFile.InputStream);
-            //byte[] bytes = br.ReadBytes((int)FileUpload1.PostedFile.InputStream.Length);
-
-            ////Convert the Byte Array to Base64 Encoded string.
-            //string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-
-            ////***Save Base64 Encoded string as Image File***//
-
-            ////Convert Base64 Encoded string to Byte Array.
-            //byte[] imageBytes = Convert.FromBase64String(base64String);
-
-            ////Save the Byte Array as Image File.
-            //string filePath = Server.MapPath("~/Files/" + Path.GetFileName(FileUpload1.PostedFile.FileName));
-            //File.WriteAllBytes(filePath, imageBytes);
-        }
+    
     }
 }
