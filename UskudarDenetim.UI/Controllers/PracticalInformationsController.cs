@@ -77,10 +77,11 @@ namespace UskudarDenetim.UI.Controllers
             return Json("Ok");
         }
         [HttpPost]
-        
-        
+
+
         //[Authorize]
-        public ActionResult Update(string id)
+
+        public ActionResult Updates(string id)
         {
             var gId = id.ConvertToGuid();
             var entity = _practicalAreaRepository.GetById(gId);
@@ -91,14 +92,30 @@ namespace UskudarDenetim.UI.Controllers
                 Description = entity.Description,
                 Detail = entity.LongDescription,
                 IsActive = entity.IsActive,
-                Name=entity.Name,
-                Order=entity.Order
+                Name = entity.Name,
+                Order = entity.Order
             };
             return View("AddOrUpdate", viewData);
         }
         //[Authorize]
-        public ActionResult Create()
+        public ActionResult Create(string id = null)
         {
+            if (id != null)
+            {
+                var gId = id.ConvertToGuid();
+                var entity = _practicalAreaRepository.GetById(gId);
+                var viewData = new ModelPracticalInformation()
+                {
+                    Id = entity.Id,
+                    CreatedDate = entity.CreatedDate,
+                    Description = entity.Description,
+                    Detail = entity.LongDescription,
+                    IsActive = entity.IsActive,
+                    Name = entity.Name,
+                    Order = entity.Order
+                };
+                return View("AddOrUpdate", viewData);
+            }
             return View("AddOrUpdate", new ModelPracticalInformation());
         }
         [HttpPost]
@@ -126,16 +143,16 @@ namespace UskudarDenetim.UI.Controllers
 
                 if (model.Id == Guid.Empty || model.Id == null)
                 {
-                  ent = new PracticalInformation()
-                  {
-                      Id = Guid.NewGuid(),
-                      Name = model.Name,
-                      CreatedDate = DateTime.Now,
-                      Description = model.Description,
-                      IsActive = true,
-                      Order = 0,
-                      LongDescription = model.Detail
-                  };
+                    ent = new PracticalInformation()
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = model.Name,
+                        CreatedDate = DateTime.Now,
+                        Description = model.Description,
+                        IsActive = true,
+                        Order = 0,
+                        LongDescription = model.Detail
+                    };
                     _practicalAreaRepository.Create(ent);
                     return Json(new { success = true, message = "Kayıt İşlemi Başarılı." });
 
@@ -164,16 +181,16 @@ namespace UskudarDenetim.UI.Controllers
 
         private List<ModelPracticalInformation> PracticalInformationList()
         {
-            var ent = _practicalAreaRepository.GetAll().Where(x=>x.IsActive).ToList();
+            var ent = _practicalAreaRepository.GetAll().Where(x => x.IsActive).ToList();
             var piModel = ent.Select(x => new ModelPracticalInformation()
             {
                 Id = x.Id,
                 Detail = x.LongDescription,
                 Name = x.Name,
                 Description = x.Description,
-                IsActive=x.IsActive,
-                CreatedDate=x.CreatedDate,
-                Order=x.Order
+                IsActive = x.IsActive,
+                CreatedDate = x.CreatedDate,
+                Order = x.Order
             }).ToList();
             return piModel;
         }

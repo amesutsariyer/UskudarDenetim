@@ -48,7 +48,7 @@
         <div class="inner-wrapper">
             @*@Html.Partial("_TopBar")*@
             @Html.Action("TopBar", "Home")
-            @Html.Partial("_Header")
+            @Html.Action("Header", "Home")
             <div id="main">
                 @RenderBody()
             </div>

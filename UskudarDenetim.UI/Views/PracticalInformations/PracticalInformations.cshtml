@@ -29,7 +29,7 @@
                                 <td>@practicalInformation.Name</td>
                                 <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deletePI('@practicalInformation.Id')" class="dt-sc-button float-inherit" /></td>
                                 <td>
-                                    <input type="button" value="Düzenle" onclick="location.href = '@Url.Action("Update","PracticalInformations",new {id=practicalInformation.Id })';" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="location.href ='@Url.Action("Create","PracticalInformations", new { id = practicalInformation.Id })';" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }

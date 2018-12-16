@@ -10,6 +10,7 @@ using UskudarDenetim.Repository.EF;
 using UskudarDenetim.Repository.Entity;
 using UskudarDenetim.Repository.Interface;
 using UskudarDenetim.UI.Models;
+using Service = UskudarDenetim.Repository.EF.Service;
 
 namespace UskudarDenetim.UI.Controllers
 {
@@ -20,6 +21,8 @@ namespace UskudarDenetim.UI.Controllers
         private Repository.Interface.GenericRepository<Subscribe> _subscribeRepository;
         private Repository.Interface.GenericRepository<Company> _companyRepository;
         private Repository.Interface.GenericRepository<AppointmentRequest> _appointmentRepository;
+        private Repository.Interface.GenericRepository<Service> _serviceRepository;
+  
 
         public HomeController()
         {
@@ -28,6 +31,8 @@ namespace UskudarDenetim.UI.Controllers
             _subscribeRepository = new Repository.GenericRepository<Subscribe>();
             _companyRepository = new Repository.GenericRepository<Company>();
             _appointmentRepository = new Repository.GenericRepository<AppointmentRequest>();
+            _serviceRepository = new Repository.GenericRepository<Service>();
+
         }
         public ActionResult Index()
         {
@@ -96,6 +101,31 @@ namespace UskudarDenetim.UI.Controllers
                 }
 
                 return PartialView("_TopBar", model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public ActionResult Header()
+        {
+            try
+            {
+                var list = _serviceRepository.GetAll().ToList();
+                var serviceModel = list.Where(x => x.IsActive).OrderBy(x => x.Order).Select(x => new ModelService()
+                {
+                    Name = x.Name,
+                    Description = x.Description,
+                    ShortDescription = x.ShortDescription,
+                    Id = x.Id,
+                }).ToList();
+                var model = new ModelHeader()
+                {
+                    Services = serviceModel
+                };
+
+                return PartialView("_Header", model);
             }
             catch (Exception ex)
             {

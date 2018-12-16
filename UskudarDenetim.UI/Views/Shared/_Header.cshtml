@@ -1,4 +1,5 @@
-﻿<div id="header-wrapper">
+﻿@model UskudarDenetim.UI.Models.ModelHeader
+<div id="header-wrapper">
     <header class="header">
         <div class="container">
             <div id="logo">
@@ -16,11 +17,18 @@
                             <a class="dt-menu-expand">+</a>
                         </li>
                         @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-            <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
-            <a class="dt-menu-expand">+</a>
-        </li>*@
+                                <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
+                                <a class="dt-menu-expand">+</a>
+                            </li>*@
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("ServiceDetail")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("Service")? "current_page_item":"") ">
                             <a href="@Url.Action("Index", "Service")">Hizmetlerimiz</a>
+                            <ul class="sub-menu">
+                                @foreach (var item in Model.Services)
+                                {
+                                    <li><a href="@Url.Action("Detail","Service",new { id=item.Id})">@item.Name</a></li>
+                                }
+                            </ul>
+                            <a class="dt-menu-expand">+</a>
                         </li>
 
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("PracticalInformations")? "current_page_item":"")">

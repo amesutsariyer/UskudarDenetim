@@ -34,6 +34,7 @@ namespace UskudarDenetim.UI.Controllers
                 PhoneNumber = x.PhoneNumber,
                 Email = x.EmailAddress,
                 ImgSrc = x.Document.File.ConvertToSrc(),
+                Description =x.Description
                // File = (HttpPostedFileBase)new MemoryPostedFile(x.Document.File)
             }).ToList();
           
@@ -212,6 +213,30 @@ namespace UskudarDenetim.UI.Controllers
         {
             return View("Employee", new ModelEmployee());
         }
+        public ActionResult Detail(string id)
+        {
+            Guid idG = id.ConvertToGuid();
+            var employee = _employeeRepository.GetById(idG);
+            var model = new ModelEmployee()
+            {
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                BirthDate = employee.BirthDate.Value.ConvertToUIDateFormat(),
+                Profession = employee.Profession,
+                Title = employee.Title,
+                PhoneNumber = employee.PhoneNumber,
+                Email = employee.EmailAddress,
+                Order = employee.Order,
+                ImgSrc = employee.Document.File.ConvertToSrc(),
+                Document = new ModelDocument()
+                {
+                    Id = employee.Document.Id
+                },
+                DocumentId = employee.Document.Id
+            };
 
+            return View( model);
+        }
     }
 }

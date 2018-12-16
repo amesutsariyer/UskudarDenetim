@@ -223,6 +223,7 @@
     <Compile Include="Models\ModelDocument.cs" />
     <Compile Include="Models\ModelEmployee.cs" />
     <Compile Include="Models\ModelFooter.cs" />
+    <Compile Include="Models\ModelHeader.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelPracticalInformation.cs" />
     <Compile Include="Models\ModelPracticalInformationViewModel.cs" />
@@ -861,6 +862,7 @@
     <Content Include="Views\Service\Detail.cshtml" />
     <Content Include="Views\PracticalInformations\Index.cshtml" />
     <Content Include="Views\PracticalInformations\AddOrUpdate.cshtml" />
+    <Content Include="Views\TeamMember\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

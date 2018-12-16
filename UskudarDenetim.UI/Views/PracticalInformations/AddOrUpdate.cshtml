@@ -1,6 +1,6 @@
 ﻿@model UskudarDenetim.UI.Models.ModelPracticalInformation
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "PracticalInformation";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="full-width-section parallax full-section-bg">
@@ -29,7 +29,7 @@
     </div>
 @section scripts{
     <script>
-        function OnSuccessUpdateCircular(response) {
+        function OnSuccessUpdatePracticalInformation(response) {
             if (response.success) {
                 openShowSuccessModal(response.message)
             }
@@ -37,7 +37,7 @@
                 openShowErrorModal(response.message)
             }
         }
-        function OnFailureUpdateCircular(response) {
+        function OnFailureUpdatePracticalInformation(response) {
             openShowErrorModal(response.message)
         }
 

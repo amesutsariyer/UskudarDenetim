@@ -1,12 +1,12 @@
-﻿@model UskudarDenetim.UI.Models.ModelPracticalInformation
+﻿@model UskudarDenetim.UI.Models.ModelCircular
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Circular";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="full-width-section parallax full-section-bg">
     <div class="container">
         <div class="form-wrapper register">
-                @using (Ajax.BeginForm("CreateOrUpdate", "PracticalInformations", new AjaxOptions()
+                @using (Ajax.BeginForm("CreateOrUpdate", "Circular", new AjaxOptions()
                 {
                     HttpMethod = "Post",
                     OnSuccess = "OnSuccessUpdateCircular",
