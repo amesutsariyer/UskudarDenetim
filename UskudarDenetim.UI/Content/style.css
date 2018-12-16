@@ -1,7 +1,7 @@
 ﻿@charset "utf-8";
 /* CSS Document */
 
-@import "css/reset.css";
+@import "../Content/css/reset.css";
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
@@ -3075,7 +3075,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 /*----*****---- << 2.4.1. Fullwidth - Page Title >> ----*****----*/
 
 .full-width-bg {
-    background: url(../../Images/bg.jpg) 50% 0 repeat-y fixed;
+    background: url(../Images/bg.jpg) 50% 0 repeat-y fixed;
     height: auto;
     padding: 48px 0px 50px;
 }
