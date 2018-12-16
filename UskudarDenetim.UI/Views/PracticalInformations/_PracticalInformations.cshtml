@@ -26,7 +26,7 @@
                 @foreach (var faq in Model.PracticalInformationList)
                 {
                     <ul class="dt-sc-icon-list">
-                        <li class="animate" data-animation="fadeInUp" data-delay="@(count*100)"><a href="@Url.Action("PracticalInformationDetail","PracticalInformations",new {id=faq.Id})"><i class="fa fa-info"></i>@faq.Description</a></li>
+                        <li class="animate" data-animation="fadeInUp" data-delay="@(count*100)"><a href="@Url.Action("Detail","PracticalInformations",new {id=faq.Id})"><i class="fa fa-info"></i>@faq.Description</a></li>
                     </ul>
                     count++;
                 }

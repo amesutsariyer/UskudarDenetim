@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="musa_UdMainModel.District" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.Document" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.HRApplyForm" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="musa_UdMainModel.PracticalInformation" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.SharedLink" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.SocialMedia" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="musa_UdMainModel.Subscribe" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
@@ -35,6 +34,7 @@
         <EntityTypeShape EntityType="musa_UdMainModel.Service" Width="1.5" PointX="7.375" PointY="11.75" />
         <EntityTypeShape EntityType="musa_UdMainModel.Employee" Width="1.5" PointX="5.25" PointY="15.5" />
         <AssociationConnector Association="musa_UdMainModel.FK_Employees_Document" />
+        <EntityTypeShape EntityType="musa_UdMainModel.PracticalInformation" Width="1.5" PointX="13.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

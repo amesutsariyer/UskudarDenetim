@@ -23,8 +23,13 @@
                             <a href="@Url.Action("Index", "Service")">Hizmetlerimiz</a>
                         </li>
 
-                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"")">
-                            <a href="@Url.Action("Index","Circular")">Sirküler</a>
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("PracticalInformations")? "current_page_item":"")">
+                            <a href="#">Yayınlarımız</a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Index","Circular")">Sirküler</a></li>
+                                <li> <a href="@Url.Action("Index","PracticalInformations")">Faydalı Bilgiler</a></li>
+                            </ul>
+                            <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("Appointment")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">
                             <a href="#">Online İşlemler</a>

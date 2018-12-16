@@ -204,6 +204,9 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="LongDescription" Type="nvarchar(max)" />
           <Property Name="DocumentId" Type="uniqueidentifier" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sector">
           <Key>
@@ -630,16 +633,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="DocumentId" Type="Guid" />
           <NavigationProperty Name="Document" Relationship="Self.FK_HRApplyForm_Document" FromRole="HRApplyForm" ToRole="Document" />
         </EntityType>
-        <EntityType Name="PracticalInformation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DocumentId" Type="Guid" />
-        </EntityType>
         <EntityType Name="SharedLink">
           <Key>
             <PropertyRef Name="Id" />
@@ -769,7 +762,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="Documents" EntityType="Self.Document" />
           <EntitySet Name="HRApplyForms" EntityType="Self.HRApplyForm" />
-          <EntitySet Name="PracticalInformations" EntityType="Self.PracticalInformation" />
           <EntitySet Name="SharedLinks" EntityType="Self.SharedLink" />
           <EntitySet Name="SocialMedias" EntityType="Self.SocialMedia" />
           <EntitySet Name="Subscribes" EntityType="Self.Subscribe" />
@@ -814,6 +806,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="Document" EntitySet="Documents" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="PracticalInformations" EntityType="musa_UdMainModel.PracticalInformation" />
         </EntityContainer>
         <EntityType Name="Circular">
           <Key>
@@ -891,6 +884,19 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PracticalInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentId" Type="Guid" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1062,17 +1068,6 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PracticalInformations">
-            <EntityTypeMapping TypeName="musa_UdMainModel.PracticalInformation">
-              <MappingFragment StoreEntitySet="PracticalInformation">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
-                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SharedLinks">
             <EntityTypeMapping TypeName="musa_UdMainModel.SharedLink">
               <MappingFragment StoreEntitySet="SharedLink">
@@ -1175,6 +1170,20 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticalInformations">
+            <EntityTypeMapping TypeName="musa_UdMainModel.PracticalInformation">
+              <MappingFragment StoreEntitySet="PracticalInformation">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

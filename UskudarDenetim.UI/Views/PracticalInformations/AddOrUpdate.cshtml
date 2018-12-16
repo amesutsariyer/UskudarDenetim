@@ -1,0 +1,47 @@
+﻿@model UskudarDenetim.UI.Models.ModelPracticalInformation
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            @using (Ajax.BeginForm("CreateOrUpdate", "PracticalInformations", new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccessUpdatePracticalInformation",
+                OnFailure = "OnFailureUpdatePracticalInformation"
+            }, new { style = "padding:0px" }))
+            {
+                @Html.HiddenFor(Model => Model.Id)
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(Model => Model.Name, new { placeholder = "Pratik Bilgi Adı", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(Model => Model.Description, new { placeholder = "Kısa Açıklama Giriniz" })
+                </p>
+                @Html.EditorFor(model => model.Detail, new { placeholder = "Detay", @required = "required", @style = "" })
+                <input style="margin:20px" class=" bg-button-color-success" type="submit" value="Kaydet" />
+            }
+
+        </div>
+        </div>
+    </div>
+@section scripts{
+    <script>
+        function OnSuccessUpdateCircular(response) {
+            if (response.success) {
+                openShowSuccessModal(response.message)
+            }
+            else {
+                openShowErrorModal(response.message)
+            }
+        }
+        function OnFailureUpdateCircular(response) {
+            openShowErrorModal(response.message)
+        }
+
+    </script>
+
+}
+

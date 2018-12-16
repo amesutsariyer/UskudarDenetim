@@ -8,14 +8,14 @@
     <div class="container">
         <div class="form-wrapper register">
             <form>
-                <h4>Hizmetlerimiz</h4>
+                <h4>Pratik Bilgiler</h4>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Hizmet Adı</th>
-                            <th scope="col">Açıklama</th>
-                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="CreatePracticalInformation()" class="dt-sc-button float-inherit" /></th>
+                            <th scope="col"></th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="location.href = '@Url.Action("Create","PracticalInformations")';" class="dt-sc-button float-inherit" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,9 +27,9 @@
                             <tr>
                                 <th scope="row">@Html.Raw(++count)</th>
                                 <td>@practicalInformation.Name</td>
-                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteService('@practicalInformation.Id)')" class="dt-sc-button float-inherit" /></td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deletePI('@practicalInformation.Id')" class="dt-sc-button float-inherit" /></td>
                                 <td>
-                                    <input type="button" value="Düzenle" onclick="openUpdatePracticalInformationModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="location.href = '@Url.Action("Update","PracticalInformations",new {id=practicalInformation.Id })';" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }
@@ -39,40 +39,27 @@
         </div>
     </div>
 </div>
-@Html.Partial("PracticalInformationModal", new UskudarDenetim.UI.Models.ModelPracticalInformation())
 @section scripts{
 
     <script type="text/javascript">
-        function openUpdatePracticalInformationModal(model) {
-            debugger;
-            $('#Id').text(model.Id)
-            $('#Name').val(model.Name);
-            $('#Description').val(model.Description);
-            $('#IconClassName').val(model.IconClassName);
-
-            $('#ServiceModal').modal();
-        }
-        function CreatePracticalInformation() {
-            debugger;
-            $('#Id').text('');
-            $('#Name').val('');
-            $('#Description').val('');
-            $('#IconClassName').val('');
-            $('#ServiceModal').modal();
-
-        }
-        function deleteService(id) {
+        function deletePI(id) {
             debugger;
             var request = $.ajax({
-                url: "/PracticalInformation/Delete",
+                url: "/PracticalInformations/Delete",
                 type: "POST",
                 data: { id: id }
             });
 
-            request.done(function (msg) {
+            request.done(function (response) {
+                if (response.success) {
+                    openShowSuccessModal(response.message)
+                } else {
+                    openShowErrorModal(response.message)
+                }
             });
 
-            request.fail(function (jqXHR, textStatus) {
+            request.fail(function (response) {
+                openShowErrorModal(response.message)
             });
     }
     </script>

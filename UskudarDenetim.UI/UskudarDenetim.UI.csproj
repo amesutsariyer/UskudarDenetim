@@ -285,6 +285,7 @@
     <Content Include="Images\1200x800\turmob.png" />
     <Content Include="Images\160x160\ufukpf.png" />
     <Content Include="Images\160x160\Ustad.png" />
+    <Content Include="Images\450x300\info.jpg" />
     <Content Include="Images\kızkulesi\22.jpg" />
     <Content Include="Images\kızkulesi\23.jpg" />
     <Content Include="Images\kızkulesi\24.jpg" />
@@ -844,8 +845,7 @@
     <Content Include="Views\SharedLink\_SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
-    <Content Include="Views\PracticalInformations\PracticalInformationDetail.cshtml" />
-    <Content Include="Views\PracticalInformations\PracticalInformationModal.cshtml" />
+    <Content Include="Views\PracticalInformations\Detail.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformations.cshtml" />
     <Content Include="Views\Home\Appointment.cshtml" />
     <Content Include="Views\Circular\Index.cshtml" />
@@ -859,6 +859,8 @@
     <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Views\Service\AddOrUpdate.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
+    <Content Include="Views\PracticalInformations\Index.cshtml" />
+    <Content Include="Views\PracticalInformations\AddOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

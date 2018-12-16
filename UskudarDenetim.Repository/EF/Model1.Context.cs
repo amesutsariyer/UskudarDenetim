@@ -37,7 +37,6 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<HRApplyForm> HRApplyForms { get; set; }
-        public virtual DbSet<PracticalInformation> PracticalInformations { get; set; }
         public virtual DbSet<SharedLink> SharedLinks { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
         public virtual DbSet<Subscribe> Subscribes { get; set; }
@@ -46,5 +45,6 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<ActivityArea> ActivityAreas { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<PracticalInformation> PracticalInformations { get; set; }
     }
 }

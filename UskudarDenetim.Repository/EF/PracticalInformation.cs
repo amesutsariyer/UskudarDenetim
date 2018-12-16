@@ -19,5 +19,8 @@ namespace UskudarDenetim.Repository.EF
         public string Description { get; set; }
         public string LongDescription { get; set; }
         public Nullable<System.Guid> DocumentId { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public bool IsActive { get; set; }
+        public int Order { get; set; }
     }
 }
