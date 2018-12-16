@@ -21,12 +21,10 @@
         </li>*@
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("ServiceDetail")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("Service")? "current_page_item":"") ">
                             <a href="@Url.Action("Index", "Service")">Hizmetlerimiz</a>
-                            <ul class="sub-menu ">
-                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="02a36bb3-ceba-4a53-b16b-40c07c32718a" })">Kdv İadesi</a></li>
-                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="6546f444-0034-4772-861f-d4eeac51faad" })">Tam Tasdik</a></li>
-                                <li><a href="@Url.Action("ServiceDetail", "Service",new {id="0275149e-ca23-483f-b829-f472e70232cc" })">Teşvik ve Destek projeleri</a></li>
-                            </ul>
-                            <a class="dt-menu-expand">+</a>
+                        </li>
+
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"")">
+                            <a href="@Url.Action("Index","Circular")">Sirküler</a>
                         </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("Appointment")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">
                             <a href="#">Online İşlemler</a>
@@ -36,22 +34,16 @@
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"")">
-                            <a href="@Url.Action("Index","Circular")">Sirküler</a>
-                         
-                        </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("About")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("TeamMember")? "current_page_item":"")">
-                            <a href="#">Hakkımızda</a>
+                            <a href="@Url.Action("About","Home")">Hakkımızda</a>
                             <ul class="sub-menu">
                                 <li><a href="@Url.Action("About","Home")">Hakkımızda</a></li>
                                 <li><a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a></li>
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-
                         <li class="menu-item-simple-parent  @(ViewContext.RouteData.Values["action"].ToString().Equals("Contact")? "current_page_item":"")">
                             <a href="@Url.Action("Contact","Home")">İletişim</a>
-                            <a class="dt-menu-expand">+</a>
                         </li>
                     </ul>
                 </nav>

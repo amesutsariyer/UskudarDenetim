@@ -285,6 +285,11 @@
     <Content Include="Images\1200x800\turmob.png" />
     <Content Include="Images\160x160\ufukpf.png" />
     <Content Include="Images\160x160\Ustad.png" />
+    <Content Include="Images\kızkulesi\22.jpg" />
+    <Content Include="Images\kızkulesi\23.jpg" />
+    <Content Include="Images\kızkulesi\24.jpg" />
+    <Content Include="Images\450x300\bg2.jpg" />
+    <Content Include="Images\450x300\pen.png" />
     <Content Include="Images\450x300\sirku-bg.png" />
     <Content Include="Images\8.gif" />
     <Content Include="Images\160x160\amspf.jpg" />
@@ -318,7 +323,12 @@
     <Content Include="Images\450x300\ihracatta-tl-sözleşmeleri-vdd.jpg" />
     <Content Include="Images\intro-text-bg.jpg" />
     <Content Include="Images\intro-text-bg5.jpg" />
+    <Content Include="Images\kızkulesi\13.jpg" />
+    <Content Include="Images\kızkulesi\14.jpg" />
     <Content Include="Images\kızkulesi\15.png" />
+    <Content Include="Images\kızkulesi\18.jpg" />
+    <Content Include="Images\kızkulesi\20.jpg" />
+    <Content Include="Images\kızkulesi\21.jpg" />
     <Content Include="Images\light-bulb%402x.png" />
     <Content Include="Images\light-bulb.png" />
     <Content Include="Images\logo%402x.png" />
@@ -335,6 +345,7 @@
     <Content Include="Images\paper-plane-icon.png" />
     <Content Include="Images\message-parallax-bg.jpg" />
     <Content Include="Images\pattern-bg.jpg" />
+    <Content Include="Images\pen.png" />
     <Content Include="Images\presentation-bg-dark.jpg" />
     <Content Include="Images\presentation-bg-eski.jpg" />
     <Content Include="Images\presentation-bggg.jpg" />
@@ -344,6 +355,7 @@
     <Content Include="Images\prev-arrow1%402x.png" />
     <Content Include="Images\prev-arrow1.png" />
     <Content Include="Images\product-presentation-bg.jpg" />
+    <Content Include="Images\160x160\qr.png" />
     <Content Include="Images\search%402x.png" />
     <Content Include="Images\search.png" />
     <Content Include="Images\450x300\services-bg.jpg" />

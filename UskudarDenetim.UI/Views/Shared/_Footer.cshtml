@@ -1,8 +1,16 @@
 ﻿@model UskudarDenetim.UI.Models.ModelFooter
+<style>
+
+    .currency {
+        color: white;
+        background-color: #191919 !important;
+        border-bottom: 0px !important
+    }
+</style>
 <footer id="footer">
     <div class="footer-widgets-wrapper">
         <div class="container">
-            <div class="column dt-sc-one-third  first">
+            <div class="column dt-sc-one-fourth  first">
                 <aside class="widget widget_text">
                     <h3 class="widget-title">İletişim  <span class="wlast"> Bilgileri </span><span class="small-line"> </span></h3>
                     <p> <i class="fa fa-phone"></i> <span>Telefon:</span> @Model.PhoneNumber</p>
@@ -16,15 +24,7 @@
 
                 </aside>
             </div>
-            <style>
-
-                .currency {
-                    color: white;
-                    background-color: #191919 !important;
-                    border-bottom: 0px !important
-                }
-            </style>
-            <div class="column dt-sc-one-third">
+            <div class="column dt-sc-one-fourth">
                 <aside class="widget widget_popular_entries">
                     <h3 class="widget-title">Döviz <span class="wlast">Bilgileri</span><span class="small-line"> </span></h3>
                     <div class="column dt-sc-one-fourth">
@@ -60,15 +60,15 @@
                     </div>
                 </aside>
             </div>
-
-            @*<div class="column dt-sc-one-fourth">
-                    <aside class="widget widget_tweetbox">
-                        <h3 class="widget-title">Twitter <span class="wlast">Feeds</span><span class="small-line"> </span></h3>
-                        <div class="tweet_list"> </div>
-                    </aside>
-                </div>*@
-
-            <div class="column dt-sc-one-third">
+            <div class="column dt-sc-one-fourth">
+                <aside class="widget mailchimp">
+                    <h3 class="widget-title">Yandex<span class="wlast"> Harita</span><span class="small-line"> </span></h3>
+                    <div class="image">
+                        <img src="~/Images/160x160/qr.png" style="width:160px; height:auto"/>
+                    </div>
+                </aside>
+            </div>
+            <div class="column dt-sc-one-fourth">
                 <aside class="widget mailchimp">
                     <h3 class="widget-title">Bülten <span class="wlast">Aboneliği</span><span class="small-line"> </span></h3>
                     <p>Üsküdar Denetim Hakkındaki En Son ve Güncel Haberler İçin Abone Olun!</p>
@@ -97,7 +97,7 @@
                             }
                             else
                             {
-                                    
+
                                 <li><a class="dt-sc-tooltip-top @socialMedia.SocialMediaName.ToLower()" href="@socialMedia.Url" target="_blank" title="@socialMedia.SocialMediaName"> <i class="@socialMedia.IconClassName"></i> </a></li>
                             }
 
