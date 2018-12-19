@@ -10,52 +10,64 @@
         transition: .5s ease;
     }
 </style>
-<div id="main">
-    <div class="parallax full-width-bg">
+<link href="~/Content/Datatable/datatable.css" rel="stylesheet" />
+
+<div id="main" class="mb-50">
+    <div class="parallax full-width-bg mb-50" >
         <div class="container">
             <div class="main-title">
                 <h1>Sirküler</h1>
             </div>
         </div>
     </div>
-    <div class="dt-sc-margin100"></div>
-    <div class="container">
-        <!-- Primary Starts -->
-        <section id="primary" class="content-full-width">
-            <div class="blog-items apply-isotope">
-                @if (Model.Count == 0)
-                {
-                    <h3>Henüz Sirkü Eklenmemiştir.</h3>
-                }
-                @foreach (var circular in Model.OrderByDescending(x => x.CreatedDate))
-                {
-                    <div class="column dt-sc-one-half">
-                        <article class="blog-post type3">
-                            <div class="entry-thumb">
-                                <a href="@Url.Action("Detail","Circular",new { id=circular.Id})"><img src="~/Images/450x300/pen.png" class="effect-img" alt="image" style="max-width: 83%;
-    border-radius: 12px;" /></a>
-                            </div> <!-- **entry-thumb - Ends** -->
-                            <!-- **entry-detail - Starts** -->
-                            <div class="entry-detail">
-                                <div class="entry-title">
-                                    <h4><a href="@Url.Action("Detail","Circular",new { id=circular.Id})">@circular.Header</a></h4>
-                                </div>
-                                <!-- **entry-meta-data - Starts** -->
-                                <div class="entry-meta-data">
-                                    <p><span class="fa fa-user"> </span> Yayınlanma Tarihi: <a href="#"> @circular.CreatedDate </a></p>
+    <div class="container" >
+        <table id="circular-list-table" class="table table-striped table-bordered table-sm" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="th-sm">
+                        No
+                    </th>
+                    <th class="th-sm">
+                        Tarih
+                    </th>
+                    <th class="th-sm">
+                        Adı
+                    </th>
 
-                                </div> <!-- **entry-meta-data - Ends** -->
-                                <div class="entry-title">
-                                    <p>@circular.Title<a href="@Url.Action("Detail","Circular",new { id=circular.Id})   ">  devamını oku... </a></p>
-                                </div>
-                            </div> <!-- **entry-detail - Ends** -->
-                        </article>
-                    </div>
-                }
-            </div>
-            <div class="dt-sc-margin50"></div>
-        </section> <!-- **Primary - Ends** -->
+                    <th class="th-sm">
+                        Konu
+                    </th>
+                    <th class="th-sm">
+                        Detay
+                    </th>
 
+                </tr>
+            </thead>
+            <tbody>
+                @{ int count = 0;}
+                @foreach (var item in Model.OrderByDescending(x=>x.CreatedDate.Value))
+                {
+                <tr>
+                    <td>@(++count)</td>
+                    <td>@item.CreatedDate.Value.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)</td>
+                    <td>@item.Name</td>
+                    <td>@item.Header</td>
+                    <td><a href="@Url.Action("Detail","Circular",new { id=item.Id })"><i class="fa fa-edit"></i> Görüntüle</a></td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
     </div> <!-- **container - Ends** -->
-
 </div> <!-- **Main - Ends** -->
+<script src="~/Content/Datatable/datatable.js"></script>
+<script>
+    var $ = jQuery;
+    $(document).ready(function () {
+        $('#circular-list-table').DataTable({
+            language: {
+                url: '/Content/Datatable/tr-datatable.json'
+            }
+        });
+    });
+</script>

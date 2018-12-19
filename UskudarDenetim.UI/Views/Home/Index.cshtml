@@ -10,11 +10,12 @@
 
 
 @Html.Action("AllEmployee", "TeamMember")
-<div class="dt-sc-margin100" style="margin-top:140px;"></div>
+<div class="dt-sc-margin100"></div>
 @Html.Partial("_ReachUS", new UskudarDenetim.UI.Models.ModelContact())
 <div class="dt-sc-margin100"></div>
 <!-- Container starts-->
 @Html.Action("_SharedLinks", "SharedLink")
+
 
 @section scripts {
     <script>

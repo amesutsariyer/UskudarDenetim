@@ -21,10 +21,10 @@
                             <div class="dt-sc-hr-invisible"></div>
                             <!-- **dt-sc-team - Starts** -->
                             <div class="dt-sc-team type4">
-                                <div class="image"><img src="@employee.ImgSrc" alt="iamge" /></div>
+                                <div class="image" onclick="location.href='@Url.Action("Index","TeamMember")'"><img src="@employee.ImgSrc" alt="@employee.FirstName" /></div>
                                 <!-- **team-details - Starts** -->
                                 <div class="team-details">
-                                    <h6><a href="#">@employee.FirstName @employee.LastName</a></h6>
+                                    <h6><a href="@Url.Action("Index","TeamMember")" class="capitalize">@employee.FirstName @employee.LastName</a></h6>
                                     <p>@employee.Title</p>
                                     <p>@employee.Profession</p>
                                 </div> <!-- **team-details - Ends** -->
@@ -39,10 +39,10 @@
                         <div class="column dt-sc-one-half first">
                             <!-- **dt-sc-team - Starts** -->
                             <div class="dt-sc-team type4">
-                                <div class="image"><img src="@employee.ImgSrc" alt="iamge" /></div>
+                                <div class="image" onclick="location.href='@Url.Action("Index","TeamMember")'"><img src="@employee.ImgSrc" alt="@employee.FirstName" /></div>
                                 <!-- **team-details - Starts** -->
                                 <div class="team-details">
-                                    <h6><a href="#">@employee.FirstName @employee.LastName</a></h6>
+                                    <h6><a href="@Url.Action("Index","TeamMember")" class="capitalize">@employee.FirstName @employee.LastName</a></h6>
                                     <p>@employee.Title</p>
                                     <p>@employee.Profession</p>
                                 </div>

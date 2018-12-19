@@ -1,33 +1,35 @@
 ﻿@model List<UskudarDenetim.UI.Models.ModelSharedLink>
 <div class="container">
-    <h2 class="aligncenter">Faydalı Linkler</h2>
-    <section id="primary" class="content-full-width">
-        <div class="dt-sc-margin10"></div>
-        @foreach (var sharedLink in Model)
-        {
-            <div onclick="openInNewTab('@sharedLink.Url')" style="   width: 250px;
-    height: 130px; " class="portfolio dt-sc-one-fourth no-space column all-sort outdoors-sort fashion-sort">
-                <!-- **portfolio-thumb - Starts** -->
-
-                <div class="portfolio-thumb">
-                    <figure>
-                        <img style="   width: 250px;
-    height: 130px; "   src="@sharedLink.ImageUrl" alt="@sharedLink.Name" />
-                        <div class="image-overlay">
-                            <div class="portfolio-content">
-                                <h5> <a href="#"> @sharedLink.Name </a> </h5>
-                                <span class="fa fa-sort-up"></span>
+    <h2 class="aligncenter">Faydalı Bağlantılar</h2>
+    <div class="full-width-section ">
+        <div class="dt-sc-hr-invisible"></div>
+        <!-- **dt-sc-partner-carousel-wrapper - Starts** -->
+        <div class="dt-sc-partner-carousel-wrapper">
+            <ul class="dt-sc-partner-carousel">
+                @foreach (var sharedLink in Model)
+                {
+                    <li>
+                            <div  onclick="openInNewTab('@sharedLink.Url')"  class="portfolio dt-sc-one-fourth no-space column all-sort outdoors-sort fashion-sort cursor-pointer" style="   width: 250px;
+    height: 160px; ">
+                                <div class="portfolio-thumb">
+                                    <figure>
+                                        <img style=" width: 250px;
+    height: 160px" src="@sharedLink.ImageUrl" alt="image" />
+                                        <div class="image-overlay">
+                                            <div class="portfolio-content">
+                                                <h5> <a>@sharedLink.Name</a>    </h5>
+                                                <span class="fa fa-sort-up"></span>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
                             </div>
-                        </div>
-                    </figure>
-                </div> <!-- **portfolio-thumb - Ends** -->
+                    </li>
 
-            </div>
-
-        }
-
-
-        <div class="dt-sc-margin80"></div>
-    </section>
+                }
+            </ul>
+        </div>
+        <div class="dt-sc-hr-invisible-small"></div>
+    </div>
 </div>
 

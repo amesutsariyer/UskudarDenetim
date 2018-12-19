@@ -14,7 +14,6 @@
                     <ul class="menu">
                         <li class=" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index")&& ViewContext.RouteData.Values["controller"].ToString().Equals("Home")? "current_page_item":"") menu-item-simple-parent">
                             <a href="@Url.Action("Index","Home")">Ana Sayfa</a>
-                            <a class="dt-menu-expand">+</a>
                         </li>
                         @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
                                 <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
