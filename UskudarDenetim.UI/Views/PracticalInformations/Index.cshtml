@@ -29,9 +29,7 @@
                     <th class="th-sm">
                         Tarih
                     </th>
-                    <th class="th-sm">
-                        Adı
-                    </th>
+                 
 
                     <th class="th-sm">
                         Konu
@@ -49,9 +47,9 @@
                     <tr>
                         <td>@(++count)</td>
                         <td>@item.CreatedDate.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture)</td>
-                        <td>@item.Name</td>
+                        
                         <td>@item.Description</td>
-                        <td><a href="@Url.Action("Create","PracticalInformations",new { id=item.Id })"><i class="fa fa-edit"></i> Görüntüle</a></td>
+                        <td><a href="@Url.Action("Detail","PracticalInformations",new { id=item.Id })"><i class="fa fa-edit"></i> Görüntüle</a></td>
                     </tr>
                 }
 
