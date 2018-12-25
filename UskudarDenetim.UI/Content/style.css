@@ -6834,3 +6834,51 @@ ul.products li .product-wrapper.product-two-column {
     opacity: 0.3;
     transition: .5s ease;
 }
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.top-bar container ul {
+    color: white !important;
+}
+
+.top-bar .container ul li a {
+    color: white !important;
+}
+
+.top-bar .container ul li i {
+    color: white !important;
+}
+
+.top-bar .container ul li span {
+    color: white !important;
+}
+
+.top-bar {
+    background-color: #478bca !important;
+}
+
+#logo {
+    padding-top: 5px !important;
+}
+#header-wrapper-sticky-wrapper {
+    height: 75px !important;
+}
+.cs-bg-box {
+    padding: 5px;
+    -webkit-box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+    -moz-box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+    box-shadow: 0px 0px 25px 6px rgba(22,69,110,0.59);
+}
+.mb-50{
+    margin-bottom:50px !important;
+}
+.mt-50{
+    margin-top:50px !important;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.cursor-pointer ::after hover{
+    cursor:pointer
+}

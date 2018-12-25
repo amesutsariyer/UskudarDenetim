@@ -740,8 +740,12 @@
 	.blog-post.type3 .date p span { font-size:30px; }
 	.blog-post.type3 .entry-meta .post-comments { padding:10px 5px 5px; }
 	.blog-post.type3 { padding:0 0 20px 75px; }
-	
-	.main-title h1, main-title h2 { width:100%; text-align:center; }
+
+        .main-title h1, main-title h2 {
+            width: 100%;
+            text-align: center;
+            margin-top: 62px;
+        }
 	.breadcrumb { margin:25px auto 0; display:inline-block; float:none; }
 	.full-width-bg, .breadcrumb-wrapper { text-align:center; }
 	

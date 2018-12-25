@@ -25,27 +25,24 @@
             </div>
             <div class="column dt-sc-three-fourth">
                 <!-- **dt-sc-team-carousel-wrapper - Starts** -->
-                <div class="dt-sc-team-carousel-wrapper">
-                    <div class="dt-sc-team-carousel">
+                <div class="dt-sc-partner-carousel-wrapper">
+                    <div class="dt-sc-partner-carousel">
                         @foreach (var emp in Model)
                         {
-                            <div class="column dt-sc-one-fourth" onclick="getExtraDetail('@emp.Id')">
-                                <div class="dt-sc-team">
-                                    <div class="image crop">
+                            <div  class="column dt-sc-one-fourth " onclick="getExtraDetail('@emp.Id')">
+                                <div class="dt-sc-team cursor-pointer">
+                                    <div class="image crop " >
                                         <img src="@emp.ImgSrc" alt="@emp.FirstName @emp.LastName" />
                                     </div>
                                     <div class="team-details">
-                                        <h6><a href="#">@emp.FirstName @emp.LastName</a></h6>
+                                        <h6><a href="#" class="capitalize">@emp.FirstName @emp.LastName</a></h6>
                                         <p>@emp.Title</p>
                                     </div>
                                 </div>
                             </div>
                         }
                     </div>
-                    <div class="carousel-arrows">
-                        <a class="prev" href="#"><span class="fa fa-angle-left"></span> </a>
-                        <a class="next" href="#"><span class="fa fa-angle-right"></span> </a>
-                    </div>
+                 
                 </div><!-- **dt-sc-team-carousel-wrapper - Ends** -->
             </div>
             <div id="emp-main" class="column first" style="display:none">
@@ -53,7 +50,7 @@
                     <h1 id="emp-name"></h1>
                     <h2 id="emp-title"></h2>
                     <p id="emp-description">
-                      
+
                     </p>
                 </div>
             </div>
@@ -63,8 +60,8 @@
 
 
 }
-@section scripts{
-    <script>
+
+<script>
 
         function getExtraDetail(id) {
             debugger;
@@ -85,7 +82,7 @@
                 }
             }
         }
-    </script>
+</script>
 
-}
+
 

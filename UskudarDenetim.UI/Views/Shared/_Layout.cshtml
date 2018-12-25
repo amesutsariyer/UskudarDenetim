@@ -1,68 +1,42 @@
 ﻿<!Doctype html>
-<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-~/Scripts"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-~/Scripts"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-~/Scripts"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<style>
-    h1 ,h2 ,h3,h4,h5,h6 ,p,a{
-        font-family: 'Open Sans', sans-serif !important;
-    }
-    .top-bar  container ul{
-        color:white !important;
-    }
-    .top-bar  .container ul li a {
-        color: white !important;
-    }
-    .top-bar .container ul li i {
-        color: white !important;
-    }
-    .top-bar .container ul li  span {
-        color: white !important;
-    }
-    .top-bar     {
-        background-color: #478bca !important;
-    }
-    #logo {
-        padding-top: 5px !important;
-    }
-    </style>
-<html lang="tr-TR" class="no-js" >
-<!--<![endif]-->
+
+<html lang="tr-TR" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Üsküdar Denetim Yeminli Mali Müşavir</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link runat="server" rel="icon" href="~/favicon.ico" type="image/x-icon" />
-    @Styles.Render("~/bundles/css")
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.~/Scripts"></script>
-    <![endif]-->
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-</head>
-<body>
-
-    <div class="wrapper">
-        <div class="inner-wrapper">
-            @*@Html.Partial("_TopBar")*@
-            @Html.Action("TopBar", "Home")
-            @Html.Action("Header", "Home")
-            <div id="main">
-                @RenderBody()
-            </div>
-            @Html.Action("Footer", "Home")
-            @Html.Partial("../Modal/SuccessMessageModal")
-            @Html.Partial("../Modal/ErrorMessageModal")
-        </div>
-    </div>
-
-    @RenderSection("scripts", required: false)
-    @Scripts.Render("~/bundles/javascript")
-    @Scripts.Render("~/bundles/inputmask")
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/jquery-migrate.min.js"></script>
+    <script src="/Scripts/jquery-easing-1.3.js"></script>
+    <script src="/Scripts/jquery.ui.totop.min.js"></script>
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/layerslider.transitions.js"></script>
+    <script src="/Scripts/layerslider.kreaturamedia.jquery.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/pace.min.js"></script>
+    <script src="/Scripts/jquery.tabs.min.js"></script>
+    <script src="/Scripts/jquery.tipTip.minified.js"></script>
+    <script src="/Scripts/jquery.parallax-1.1.3.js"></script>
+    <script src="/Scripts/jquery.inview.js"></script>
+    <script src="/Scripts/jquery.viewport.js"></script>
+    <script src="/Scripts/jquery.nav.js"></script>
+    <script src="/Scripts/jquery.jcarousel.min.js"></script>
+    <script src="/Scripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script src="/Scripts/jquery.isotope.min.js"></script>
+    <script src="/Scripts/jquery.bxslider.min.js"></script>
+    <script src="/Scripts/jquery.prettyPhoto.js"></script>
+    <script src="/Scripts/masonry.pkgd.min.js"></script>
+    <script src="/Scripts/greensock.js"></script>
+    <script src="/Scripts/responsive-nav.js"></script>
+    <script src="/Scripts/jquery.meanmenu.min.js"></script>
+    <script src="/Scripts/jquery.sticky.js"></script>
+    <script src="/Scripts/jquery.nicescroll.min.js"></script>
+    <script src="/Scripts/custom.js"></script>
+    <script src="/Scripts/inputmask/inputmask.js"></script>
+    <script src="/Scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="/Scripts/inputmask/inputmask.extensions.js"></script>
+    <script src="/Scripts/inputmask/inputmask.date.extensions.js"></script>
+    <script src="/Scripts/inputmask/inputmask.numeric.extensions.js"></script>
     <script data-cfasync="false" type="text/javascript">var lsjQuery = jQuery;</script>
-    <script data-cfasync="false" type="text/javascript">lsjQuery(document).ready(function () { if (typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_11', 'jquery'); } else { lsjQuery("#layerslider_11").layerSlider({ responsiveUnder: 1240, layersContainer: 1170, startInViewport: false, pauseOnHover: false, forceLoopNum: false, autoPlayVideos: false, skinsPath: '../Scripts/layerslider/skins/' }) } });</script>
+    <script data-cfasync="false" type="text/javascript">lsjQuery(document).ready(function () { if (typeof lsjQuery.fn.layerSlider == "undefined") { lsShowNotice('layerslider_11', 'jquery'); } else { lsjQuery("#layerslider_11").layerSlider({ responsiveUnder: 1240, layersContainer: 1170, startInViewport: false, pauseOnHover: false, forceLoopNum: false, autoPlayVideos: false, skinsPath: '/plesk-site-preview/uskudardenetim.com/Scripts/layerslider/skins/' }) } });</script>
     <script>
         Inputmask().mask(document.querySelectorAll("input"));
     </script>
@@ -92,9 +66,81 @@
         function openShowErrorModal(message) {
             jQuery('#error-modal-title').html('HATA')
             jQuery('#error-modal-body').html(message)
-            jQuery('#error-modal').modal();}
+            jQuery('#error-modal').modal();
+        }
 
-        </script>
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Üsküdar Denetim Yeminli Mali Müşavirlik</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link runat="server" rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    @Styles.Render("~/bundles/css")
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="inner-wrapper">
+            @*@Html.Partial("_TopBar")*@
+            @Html.Action("TopBar", "Home")
+            @Html.Action("Header", "Home")
+            <div id="main">
+                @RenderBody()
+            </div>
+            @Html.Action("Footer", "Home")
+            @Html.Partial("../Modal/SuccessMessageModal")
+            @Html.Partial("../Modal/ErrorMessageModal")
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/bundles/javascript")
+        @Scripts.Render("~/bundles/inputmask")*@
+
+    @*
+        <script src="/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="/Scripts/jquery-migrate.min.js"></script>
+        <script src="/Scripts/jquery-easing-1.3.js"></script>
+        <script src="/Scripts/jquery.ui.totop.min.js"></script>
+        <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="/Scripts/jquery.validate.min.js"></script>
+        <script src="/Scripts/layerslider.transitions.js"></script>
+        <script src="/Scripts/layerslider.kreaturamedia.jquery.js"></script>
+        <script src="/Scripts/bootstrap.js"></script>
+        <script src="/Scripts/pace.min.js"></script>
+        <script src="/Scripts/jquery.tabs.min.js"></script>
+        <script src="/Scripts/jquery.tipTip.minified.js"></script>
+        <script src="/Scripts/jquery.parallax-1.1.3.js"></script>
+        <script src="/Scripts/jquery.inview.js"></script>
+        <script src="/Scripts/jquery.viewport.js"></script>
+        <script src="/Scripts/jquery.nav.js"></script>
+        <script src="/Scripts/jquery.jcarousel.min.js"></script>
+        <script src="/Scripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+        <script src="/Scripts/jquery.isotope.min.js"></script>
+        <script src="/Scripts/jquery.bxslider.min.js"></script>
+        <script src="/Scripts/jquery.prettyPhoto.js"></script>
+        <script src="/Scripts/masonry.pkgd.min.js"></script>
+        <script src="/Scripts/greensock.js"></script>
+        <script src="/Scripts/responsive-nav.js"></script>
+        <script src="/Scripts/jquery.meanmenu.min.js"></script>
+        <script src="/Scripts/jquery.sticky.js"></script>
+        <script src="/Scripts/jquery.nicescroll.min.js"></script>
+        <script src="/Scripts/custom.js"></script>
+    *@
+
+
+    @* <script src="/Scripts/inputmask/inputmask.js"></script>
+        <script src="/Scripts/inputmask/jquery.inputmask.js"></script>
+        <script src="/Scripts/inputmask/inputmask.extensions.js"></script>
+        <script src="/Scripts/inputmask/inputmask.date.extensions.js"></script>
+        <script src="/Scripts/inputmask/inputmask.numeric.extensions.js"></script>
+    *@
+    @RenderSection("scripts", required: false)
+
+
 </body>
 </html>
 
