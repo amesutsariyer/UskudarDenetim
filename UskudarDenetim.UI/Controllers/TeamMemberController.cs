@@ -59,6 +59,7 @@ namespace UskudarDenetim.UI.Controllers
             }).ToList();
             return PartialView("_Employees", model);
         }
+        [Authorize]
         public ActionResult Employees()
         {
             //var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
@@ -80,7 +81,8 @@ namespace UskudarDenetim.UI.Controllers
                 Profession = x.Profession,
                 Title = x.Title,
                 PhoneNumber = x.PhoneNumber,
-                Email = x.EmailAddress
+                Email = x.EmailAddress,
+                Description =x.Description
             }).ToList();
             return View(model);
         }
@@ -105,12 +107,15 @@ namespace UskudarDenetim.UI.Controllers
                 {
                     Id = employee.Document.Id
                 },
-                DocumentId = employee.Document.Id
+                DocumentId = employee.Document.Id,
+                Description = employee.Description
             };
 
             return View("Employee", model);
         }
         [HttpPost]
+        [Authorize]
+
         public ActionResult Employee(ModelEmployee model)
         {
             try
@@ -149,7 +154,8 @@ namespace UskudarDenetim.UI.Controllers
                         EmailAddress = model.Email,
                         DocumentId = document.Id,
                         Order = model.Order,
-                        IsActive = true
+                        IsActive = true,
+                        Description = model.Description
                     };
                     _employeeRepository.Update(ent);
                     return RedirectToAction("Employees", "TeamMember");
@@ -182,7 +188,8 @@ namespace UskudarDenetim.UI.Controllers
                         EmailAddress = model.Email,
                         DocumentId = document.Id,
                         Order = model.Order,
-                        IsActive = true
+                        IsActive = true,
+                        Description = model.Description
                     };
                     _employeeRepository.Create(ent);
                     return RedirectToAction("Employees", "TeamMember");
@@ -198,6 +205,8 @@ namespace UskudarDenetim.UI.Controllers
 
         }
         [HttpPost]
+        [Authorize]
+
         public ActionResult DeleteEmployee(string id)
         {
             try
@@ -215,6 +224,8 @@ namespace UskudarDenetim.UI.Controllers
 
         }
         [HttpGet]
+        [Authorize]
+
         public ActionResult CreateEmployee()
         {
             return View("Employee", new ModelEmployee());

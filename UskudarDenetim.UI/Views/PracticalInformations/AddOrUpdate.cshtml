@@ -20,6 +20,9 @@
                 <p class="dt-sc-one-half column ">
                     @Html.TextBoxFor(Model => Model.Description, new { placeholder = "Kısa Açıklama Giriniz" })
                 </p>
+                <p class="dt-sc-one-half column first " style="margin-bottom:25px">
+                    @Html.DropDownListFor(x => x.CatId, Model.CatList, "Seçiniz", new { @required = "required" })
+                </p>
                 @Html.EditorFor(model => model.Detail, new { placeholder = "Detay", @required = "required", @style = "" })
                 <input style="margin:20px" class=" bg-button-color-success" type="submit" value="Kaydet" />
             }

@@ -12,16 +12,11 @@ namespace UskudarDenetim.Repository.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class PracticalInformation
+    public partial class PI_Category
     {
         public System.Guid Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string LongDescription { get; set; }
-        public Nullable<System.Guid> DocumentId { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public bool IsActive { get; set; }
         public int Order { get; set; }
-        public System.Guid CategoryId { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

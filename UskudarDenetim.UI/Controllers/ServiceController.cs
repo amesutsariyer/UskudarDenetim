@@ -40,14 +40,14 @@ namespace UskudarDenetim.UI.Controllers
             });
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public ActionResult Services()
         {
             return View(GetAllServices());
         }
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult DeleteService(string id)
         {
             try
@@ -64,7 +64,7 @@ namespace UskudarDenetim.UI.Controllers
             }
         }
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult Service(ModelService model)
         {
             Service service = new Service();
@@ -94,6 +94,7 @@ namespace UskudarDenetim.UI.Controllers
                 return Json(new { success = true, message = "Kayıt İşlemi Başarıyla Tamamlanılmıştır." });
             }
         }
+        [Authorize]
         public ActionResult Update(string id)
         {
             var gId = id.ConvertToGuid();
@@ -109,6 +110,7 @@ namespace UskudarDenetim.UI.Controllers
             };
             return View("AddOrUpdate", model);
         }
+        [Authorize]
         public ActionResult Create()
         {
             return View("AddOrUpdate", new ModelService());
@@ -126,6 +128,7 @@ namespace UskudarDenetim.UI.Controllers
             return View(viewData);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult CreateOrUpdate(ModelService model)
         {
             try

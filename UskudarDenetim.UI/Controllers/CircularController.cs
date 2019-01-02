@@ -45,12 +45,12 @@ namespace UskudarDenetim.UI.Controllers
             };
             return View(viewData);
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult CircularList()
         {
             return View(GetAllCircular());
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult Update(string id)
         {
             var gId = id.ConvertToGuid();
@@ -68,12 +68,13 @@ namespace UskudarDenetim.UI.Controllers
             };
             return View("AddOrUpdate", viewData);
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult Create()
         {
             return View("AddOrUpdate");
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(string id)
         {
             try
@@ -90,6 +91,7 @@ namespace UskudarDenetim.UI.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public ActionResult CreateOrUpdate(ModelCircular model)
         {
             try
@@ -125,9 +127,6 @@ namespace UskudarDenetim.UI.Controllers
                 return Json(new { success = false, message = "Beklenmedik Bir Hata İle Karşılaşıldı" });
             }
         }
-
-
-
 
         private List<ModelCircular> GetAllCircular()
         {

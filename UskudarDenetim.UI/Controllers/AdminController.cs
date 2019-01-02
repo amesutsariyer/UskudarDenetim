@@ -10,6 +10,7 @@ using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;
 using System.IO;
 using UskudarDenetim.Repository.EF;
+using System.Security.Claims;
 
 namespace UskudarDenetim.UI.Controllers
 {
@@ -24,19 +25,51 @@ namespace UskudarDenetim.UI.Controllers
             _documentRepository = new Repository.GenericRepository<Document>();
         }
         // GET: Admin
+        [Authorize]
         public ActionResult Index()
-        {
-            return View("Home");
-        }
-
-        public ActionResult Login()
         {
             var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
 
-            if (!roleManager.RoleExists("admin"))
-                roleManager.Create(new IDRole("admin"));
-            return View();
+            //if (!roleManager.RoleExists("admin"))
+            //    roleManager.Create(new IDRole("admin"));
+
+            //var user = new IDUser()
+            //{
+            //    UserName = "uskudardenetim",
+            //    Email ="info@uskudardenetim.com"
+
+            //};
+            //var result = userManager.Create(user, "uskudardenetim");
+            //if (result.Succeeded)
+            //{
+            //    userManager.AddToRole(user.Id, "admin");
+            //}
+
+            return View("Home");
+        }
+
+        public ActionResult Login(ModelLogin model)
+        {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+      
+
+            var user = userManager.Find(model.Username, model.Password);
+            if (user!=null)
+            {
+                var identity = new ClaimsIdentity(new[] {
+                new Claim(ClaimTypes.Name, ""),
+                new Claim(ClaimTypes.Email, model.Username),
+                new Claim(ClaimTypes.Country, "Turkey")
+            },
+            "ApplicationCookie");
+                var ctx = Request.GetOwinContext();
+                var authManager = ctx.Authentication;
+
+                authManager.SignIn(identity);
+
+            }
+            return RedirectToAction("Index", "Admin");
         }
         public ActionResult LogOut()
         {
@@ -88,6 +121,6 @@ namespace UskudarDenetim.UI.Controllers
         {
             return Json("ok");
         }
-      
+
     }
 }

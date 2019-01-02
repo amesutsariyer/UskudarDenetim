@@ -15,11 +15,13 @@ namespace UskudarDenetim.UI.Controllers
         private Repository.Interface.GenericRepository<PracticalInformation> _practicalAreaRepository;
         private Repository.Interface.GenericRepository<BoardOfDirector> _directorRepository;
         private Repository.Interface.GenericRepository<Sector> _sectorRepository;
+        private Repository.Interface.GenericRepository<PI_Category> _catRepository;
         public PracticalInformationsController()
         {
             _practicalAreaRepository = new Repository.GenericRepository<PracticalInformation>();
             _directorRepository = new Repository.GenericRepository<BoardOfDirector>();
             _sectorRepository = new Repository.GenericRepository<Sector>();
+            _catRepository = new Repository.GenericRepository<PI_Category>();
         }
         public ActionResult Index()
         {
@@ -78,9 +80,7 @@ namespace UskudarDenetim.UI.Controllers
         }
         [HttpPost]
 
-
-        //[Authorize]
-
+        [Authorize]
         public ActionResult Updates(string id)
         {
             var gId = id.ConvertToGuid();
@@ -93,11 +93,22 @@ namespace UskudarDenetim.UI.Controllers
                 Detail = entity.LongDescription,
                 IsActive = entity.IsActive,
                 Name = entity.Name,
-                Order = entity.Order
+                Order = entity.Order,
+                CatList = GetCatList(),CatId =entity.CategoryId
             };
             return View("AddOrUpdate", viewData);
         }
-        //[Authorize]
+
+        private List<SelectListItem> GetCatList()
+        {
+          return _catRepository.GetAll().Select(x=> new SelectListItem() {
+                Text=x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+         
+        }
+
+        [Authorize]
         public ActionResult Create(string id = null)
         {
             if (id != null)
@@ -112,13 +123,17 @@ namespace UskudarDenetim.UI.Controllers
                     Detail = entity.LongDescription,
                     IsActive = entity.IsActive,
                     Name = entity.Name,
-                    Order = entity.Order
+                    Order = entity.Order,
+                    CatList = GetCatList(),
+                    CatId = entity.CategoryId
                 };
                 return View("AddOrUpdate", viewData);
             }
-            return View("AddOrUpdate", new ModelPracticalInformation());
+            return View("AddOrUpdate", new ModelPracticalInformation() { CatList = GetCatList(), });
         }
+
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(string id)
         {
             try
@@ -135,12 +150,13 @@ namespace UskudarDenetim.UI.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public ActionResult CreateOrUpdate(ModelPracticalInformation model)
         {
             try
             {
-                PracticalInformation ent;
 
+                PracticalInformation ent;
                 if (model.Id == Guid.Empty || model.Id == null)
                 {
                     ent = new PracticalInformation()
@@ -151,7 +167,7 @@ namespace UskudarDenetim.UI.Controllers
                         Description = model.Description,
                         IsActive = true,
                         Order = 0,
-                        LongDescription = model.Detail
+                        LongDescription = model.Detail,CategoryId=model.CatId
                     };
                     _practicalAreaRepository.Create(ent);
                     return Json(new { success = true, message = "Kayıt İşlemi Başarılı." });
@@ -167,7 +183,8 @@ namespace UskudarDenetim.UI.Controllers
                         Description = model.Description,
                         IsActive = true,
                         Order = model.Order,
-                        LongDescription = model.Detail
+                        LongDescription = model.Detail,
+                        CategoryId = model.CatId
                     };
                     _practicalAreaRepository.Update(ent);
                     return Json(new { success = true, message = "Güncelleme İşlemi Başarılı." });

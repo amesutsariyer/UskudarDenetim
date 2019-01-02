@@ -1,14 +1,18 @@
 ﻿using ExhangeRateService.Entity;
 using ExhangeRateService.Service;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using UskudarDenetim.Core.Helper;
 using UskudarDenetim.Repository;
 using UskudarDenetim.Repository.EF;
 using UskudarDenetim.Repository.Entity;
 using UskudarDenetim.Repository.Interface;
+using UskudarDenetim.UI.Identity;
 using UskudarDenetim.UI.Models;
 using Service = UskudarDenetim.Repository.EF.Service;
 
@@ -22,7 +26,9 @@ namespace UskudarDenetim.UI.Controllers
         private Repository.Interface.GenericRepository<Company> _companyRepository;
         private Repository.Interface.GenericRepository<AppointmentRequest> _appointmentRepository;
         private Repository.Interface.GenericRepository<Service> _serviceRepository;
-  
+        private Repository.Interface.GenericRepository<PracticalInformation> _practicalInformationy;
+        private Repository.Interface.GenericRepository<PI_Category> _catpracticalInformationy;
+
 
         public HomeController()
         {
@@ -32,15 +38,13 @@ namespace UskudarDenetim.UI.Controllers
             _companyRepository = new Repository.GenericRepository<Company>();
             _appointmentRepository = new Repository.GenericRepository<AppointmentRequest>();
             _serviceRepository = new Repository.GenericRepository<Service>();
+            _practicalInformationy = new Repository.GenericRepository<PracticalInformation>();
+            _catpracticalInformationy = new Repository.GenericRepository<PI_Category>();
 
         }
         public ActionResult Index()
         {
-            //var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-            //var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
-
-            //if (!roleManager.RoleExists("admin"))
-            //    roleManager.Create(new IDRole("admin"));
+      
 
 
             return View();
@@ -113,6 +117,20 @@ namespace UskudarDenetim.UI.Controllers
             try
             {
                 var list = _serviceRepository.GetAll().ToList();
+                var pi = _practicalInformationy.GetAll().Where(x=>x.IsActive).Select(x=> new ModelPracticalInformation() {
+
+                    Id = x.Id,
+                    Name=x.Name,
+                    CategoryId = x.CategoryId
+                    
+                }).ToList();
+                var catPi = _catpracticalInformationy.GetAll().OrderBy(x=>x.Order).Select(x => new ModelCatPI()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Order=x.Order
+                }).ToList();
+
                 var serviceModel = list.Where(x => x.IsActive).OrderBy(x => x.Order).Select(x => new ModelService()
                 {
                     Name = x.Name,
@@ -122,7 +140,9 @@ namespace UskudarDenetim.UI.Controllers
                 }).ToList();
                 var model = new ModelHeader()
                 {
-                    Services = serviceModel
+                    Services = serviceModel,
+                    CatPI= catPi,
+                    PI=pi
                 };
 
                 return PartialView("_Header", model);
@@ -133,6 +153,7 @@ namespace UskudarDenetim.UI.Controllers
             }
 
         }
+        [OutputCache(Duration =600)]
         public ActionResult Footer()
         {
             try
@@ -157,7 +178,8 @@ namespace UskudarDenetim.UI.Controllers
                     }); 
                 }
                 ExchangeRateService exchangeService = new ExchangeRateService();
-                model.Currency = exchangeService.GetAllCurrency().Result as ExchangeRate;
+                model.Currency  = exchangeService.GetLiveCurrency().Result as List<AlphavantageBaseModel>;
+                model.Currency2 = exchangeService.GetAllCurrency().Result as ExchangeRate;
 
                 return PartialView("_Footer", model);
             }
@@ -222,6 +244,12 @@ namespace UskudarDenetim.UI.Controllers
             {
                 return Json(new { success = false, message = "Kayıt esnasında bir hata ile karşılaşıldı." });
             }
+        }
+        public ActionResult Login()
+        {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<IDRole>>();
+            return View();
         }
         private bool CheckMail(string email)
         {

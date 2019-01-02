@@ -19,37 +19,40 @@
                 @Html.HiddenFor(Model => Model.DocumentId)
                 <h4>Kişi Bilgileri</h4>
                 <p class="dt-sc-one-column">
-                    <div class="image"><img src="@Model.ImgSrc" alt="iamge" /></div>
+                    <div class="image"><img src="@Model.ImgSrc" alt="image" style="height:300px;width:300px" /></div>
                 </p>
-                <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Adı Giriniz", @required = "required" })
-                </p>
-                <p class="dt-sc-one-half column">
-                    @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Soyadı Giriniz", @required = "required" })
-                </p>
-
-
-                <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.Title, new { @placeholder = "Ünvanı Giriniz", @required = "required" })
-                </p>
-                <p class="dt-sc-one-half column">
-                    @Html.TextBoxFor(x => x.Profession, new { @placeholder = "Uzmanlık Alanı Giriniz", @required = "required" })
-                </p>
-
-                <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
-                </p>
-                <p class="dt-sc-one-half column">
-                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required" })
-                </p>
-
-                <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.Order, new { @placeholder = "Öncelik Sırasını Giriniz", @required = "required", @type = "text", @class = "form-control" })
-                </p>
-                <p class="dt-sc-one-half column mt-10">
+                <p class="dt-sc-one-half column mt-10 first">
                     @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", accept = "image/png, image/jpeg, image/gif", @class = "form-control" })
 
                 </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Order, new { @placeholder = "Öncelik Sırasını Giriniz", @required = "required", @type = "text", @class = "form-control" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Adı Giriniz", @required = "required", @class = "form-control" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Soyadı Giriniz", @required = "required", @class = "form-control" })
+                </p>
+
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Title, new { @placeholder = "Ünvanı Giriniz", @required = "required", @class = "form-control" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Description, new { @placeholder = "Hakkında Bilgilerini Giriniz", @required = "required", @class = "form-control" })
+                </p>
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'", @class = "form-control" })
+                </p>
+            
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = "E-Posta Adresini Giriniz", @required = "required", @class = "form-control" })
+                </p>
+
+
+
 
                 <div class="form-wrapper register mt-40">
                     <input class="button bg-button-color-success mt " value="Kaydet" type="submit">

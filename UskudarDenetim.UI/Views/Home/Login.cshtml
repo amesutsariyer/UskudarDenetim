@@ -1,0 +1,56 @@
+﻿@model UskudarDenetim.UI.Models.ModelLogin
+@{
+    ViewBag.Title = "Admin Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="primary" class="content-full-width mt-50">
+    <div class="full-width-section">
+        <div class="container">
+            <div class="page_info">
+                <h3 class="aligncenter">
+                    <span> <i class="fa fa-user"></i></span>
+                   Giriş Yap
+                </h3>
+            </div>
+            <div class="dt-sc-margin20"></div>
+        </div>
+    </div>
+    <div class="full-width-section parallax ">
+        <div class="container">
+            <div class="dt-sc-clear"></div>
+            <div class="form-wrapper login">
+               
+                    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+                    {
+                        <p>
+                          @Html.TextBoxFor(x=>x.Username,new { required="required", placeholder = "Kullanıcı Adı Yada Email" })
+                        </p>
+
+                        <p>
+                            @Html.PasswordFor(x => x.Password, new {  required = "required", placeholder = "Şifre" })
+                        </p>
+
+                        <label>
+                @Html.CheckBoxFor(x=>x.RememberMe, new {style="margin:0px"})
+                Beni Hatırla</label>
+                        <input class="button" value="Giriş" type="submit">
+                    }
+
+</div>
+        </div>
+    </div>
+
+    @*<div class="full-width-section">
+        <div class="container">
+            <div class="dt-sc-margin70"></div>
+            <div class="page_info aligncenter">
+                <h4 class="title">Hesabınıza erişimde problem mi yaşıyorsunuz?</h4>
+                <p>Henüz bir hesabınız yoksa <a href="@Url.Action("Register","Admin")" title="">Kayıt Olun! </a> </p>
+                <p>Şifrenizi unuttunuz yada değiştirmek istiyorsanız <a href="#" title="">Şifremi Unuttum!</a></p>
+            </div>
+        </div>
+    </div>*@
+    <div class="dt-sc-margin100"></div>
+
+</section>

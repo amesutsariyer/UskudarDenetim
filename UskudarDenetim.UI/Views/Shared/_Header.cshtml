@@ -16,9 +16,9 @@
                             <a href="@Url.Action("Index","Home")">Ana Sayfa</a>
                         </li>
                         @*<li class="menu-item-megamenu-parent megamenu-4-columns-group menu-item-depth-0">
-                                <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
-                                <a class="dt-menu-expand">+</a>
-                            </li>*@
+            <a href="@Url.Action("Index","TeamMember")">Ekip Yapısı</a>
+            <a class="dt-menu-expand">+</a>
+        </li>*@
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("ServiceDetail")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("Service")? "current_page_item":"") ">
                             <a href="@Url.Action("Index", "Service")">Hizmetlerimiz</a>
                             <ul class="sub-menu">
@@ -29,13 +29,32 @@
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
+                        <li class="menu-item-megamenu-parent megamenu-5-columns-group menu-item-depth-0">
+                            <a href="@Url.Action("Index","PracticalInformations")">Pratik Bilgiler</a>
+                            <div class="megamenu-child-container">
+                                <ul class="sub-menu">
+                                    @* Kategori foreach *@
+                                    @foreach (var item in Model.CatPI)
+                                    {
+                                        <li>
+                                            <a href="portfolio-1-column-without-space.html" style="color:#2a6496;"> @item.Name</a>
 
+                                            <ul class="sub-menu">
+                                                @foreach (var pi in Model.PI.Where(x=>x.CategoryId==item.Id).ToList())
+                                                {
+                                                    <li><a href="@Url.Action("Detail","PracticalInformations",new { id=pi.Id})">@pi.Name.ToLowerInvariant()</a></li>
+                                                }
+                                            </ul>
+                                            <a class="dt-menu-expand">+</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            <a class="dt-menu-expand">+</a>
+                        </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("PracticalInformations")? "current_page_item":"")">
-                            <a href="#">Yayınlarımız</a>
-                            <ul class="sub-menu">
-                                <li><a href="@Url.Action("Index","Circular")">Sirküler</a></li>
-                                <li> <a href="@Url.Action("Index","PracticalInformations")">Faydalı Bilgiler</a></li>
-                            </ul>
+                            <a href="@Url.Action("Index","Circular")">Sirküler</a>
+                         
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("Appointment")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">

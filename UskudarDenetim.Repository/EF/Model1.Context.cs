@@ -45,6 +45,7 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<ActivityArea> ActivityAreas { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<PI_Category> PI_Category { get; set; }
         public virtual DbSet<PracticalInformation> PracticalInformations { get; set; }
     }
 }

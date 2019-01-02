@@ -18,7 +18,8 @@ namespace UskudarDenetim.UI.Models
         public string Email { get; set; }
         public string EmailSubs { get; set; }
         public List<ModelSocialMedia> SocialMedia { get; set; }
-        public ExchangeRate Currency { get; set; }
+        public ExchangeRate Currency2 { get; set; }
+        public List<AlphavantageBaseModel> Currency { get; set; }
     }
     public class ModelCurrency
     {

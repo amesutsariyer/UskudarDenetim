@@ -207,6 +207,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="CreatedDate" Type="date" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Sector">
           <Key>
@@ -270,6 +271,15 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="IsDelete" Type="bit" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DocumentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PI_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Address_District">
           <End Role="District" Type="Self.District" Multiplicity="0..1" />
@@ -413,6 +423,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <EntitySet Name="SocialMedia" EntityType="Self.SocialMedia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Circular" EntityType="Self.Circular" Schema="ud_main_user" store:Type="Tables" />
+          <EntitySet Name="PI_Category" EntityType="Self.PI_Category" Schema="ud_main_user" store:Type="Tables" />
           <EntitySet Name="CompanyDocument" EntityType="Self.CompanyDocument" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CompanyDocument].[CompanyId] AS [CompanyId], 
@@ -806,6 +817,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             <End Role="Document" EntitySet="Documents" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="PI_Category" EntityType="musa_UdMainModel.PI_Category" />
           <EntitySet Name="PracticalInformations" EntityType="musa_UdMainModel.PracticalInformation" />
         </EntityContainer>
         <EntityType Name="Circular">
@@ -884,6 +896,15 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PI_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="PracticalInformation">
           <Key>
             <PropertyRef Name="Id" />
@@ -896,6 +917,7 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1174,9 +1196,20 @@ warning 6002: The table/view 'musa_UdMain.dbo.CompanyDocument' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PI_Category">
+            <EntityTypeMapping TypeName="musa_UdMainModel.PI_Category">
+              <MappingFragment StoreEntitySet="PI_Category">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PracticalInformations">
             <EntityTypeMapping TypeName="musa_UdMainModel.PracticalInformation">
               <MappingFragment StoreEntitySet="PracticalInformation">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

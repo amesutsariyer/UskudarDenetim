@@ -18,6 +18,9 @@ namespace UskudarDenetim.UI.Models
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
         public int Order { get; set; }
+        public Guid CategoryId { get; set; }
+        public List<SelectListItem> CatList { get; set; }
+        public Guid CatId { get; set; }
 
     }
 }
