@@ -29,7 +29,7 @@
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-megamenu-parent megamenu-5-columns-group menu-item-depth-0">
+                        <li class="menu-item-megamenu-parent megamenu-5-columns-group ">
                             <a href="@Url.Action("Index","PracticalInformations")">Pratik Bilgiler</a>
                             <div class="megamenu-child-container">
                                 <ul class="sub-menu">
@@ -37,10 +37,10 @@
                                     @foreach (var item in Model.CatPI)
                                     {
                                         <li>
-                                            <a href="portfolio-1-column-without-space.html" style="color:#2a6496;"> @item.Name</a>
+                                            <a href="#" style="color:#2a6496;"> @item.Name</a>
 
                                             <ul class="sub-menu">
-                                                @foreach (var pi in Model.PI.Where(x=>x.CategoryId==item.Id).ToList())
+                                                @foreach (var pi in Model.PI.Where(x => x.CategoryId == item.Id).ToList())
                                                 {
                                                     <li><a href="@Url.Action("Detail","PracticalInformations",new { id=pi.Id})">@pi.Name.ToLowerInvariant()</a></li>
                                                 }
@@ -54,7 +54,7 @@
                         </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"") @(ViewContext.RouteData.Values["controller"].ToString().Equals("PracticalInformations")? "current_page_item":"")">
                             <a href="@Url.Action("Index","Circular")">Sirküler</a>
-                         
+
                             <a class="dt-menu-expand">+</a>
                         </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("Appointment")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">
@@ -65,7 +65,7 @@
                             </ul>
                             <a class="dt-menu-expand">+</a>
                         </li>
-                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("About")? "current_page_item":"")   @(ViewContext.RouteData.Values["controller"].ToString().Equals("TeamMember")? "current_page_item":"")">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("About")? "current_page_item":"")">
                             <a href="@Url.Action("About","Home")">Hakkımızda</a>
                             <ul class="sub-menu">
                                 <li><a href="@Url.Action("About","Home")">Hakkımızda</a></li>
@@ -76,6 +76,8 @@
                         <li class="menu-item-simple-parent  @(ViewContext.RouteData.Values["action"].ToString().Equals("Contact")? "current_page_item":"")">
                             <a href="@Url.Action("Contact","Home")">İletişim</a>
                         </li>
+                     
+
                     </ul>
                 </nav>
             </div>

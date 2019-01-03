@@ -24,14 +24,16 @@
         <!-- Primary Starts -->
         <section id="primary" class="content-full-width">
             <div class="blog-items apply-isotope">
-           
+
                 @foreach (var service in Model)
                 {
                     <div class="column dt-sc-one-half">
                         <article class="blog-post type3">
                             <div class="entry-thumb">
-                                <a href="@Url.Action("Detail","Service",new { id=service.Id})"><img src="~/Images/450x300/bg2.jpg" class="effect-img" alt="image"  style="max-width: 50%;
-    border-radius: 12px;" /></a>
+                                <a href="@Url.Action("Detail","Service",new { id=service.Id})">
+                                    <img src="~/Images/450x300/bg2.jpg" class="effect-img" alt="image" style="max-width: 50%;
+    border-radius: 12px;" />
+                                </a>
                             </div> <!-- **entry-thumb - Ends** -->
                             <!-- **entry-detail - Starts** -->
                             <div class="entry-detail">
@@ -52,3 +54,12 @@
     </div> <!-- **container - Ends** -->
 
 </div> <!-- **Main - Ends** -->
+
+@section scripts{
+
+
+    <script type="text/javascript">
+
+    </script>
+
+}
