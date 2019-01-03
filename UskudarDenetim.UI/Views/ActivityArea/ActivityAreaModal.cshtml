@@ -32,11 +32,22 @@
 </div><!-- /.modal -->
 
 <script>
-    function OnSuccessUpdateActivityArea() {
+    function OnSuccessUpdateActivityArea(response) {
 
+        if (response.Success) {
+            $('#Id').text('')
+            $('#Name').val('');
+            $('#Description').val('');
+            $('#IconClassName').val('');
+
+            $('#ActivityAreaModal').modal('hide');
+        }
+        else {
+            alert('Hata oluştu')
+        }
     }
     function OnFailureUpdateActivityArea() {
-
+        alert('Hata oluştu')
     }
 
 </script>

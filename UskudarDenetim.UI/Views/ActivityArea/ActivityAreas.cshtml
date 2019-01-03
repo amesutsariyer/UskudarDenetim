@@ -27,9 +27,9 @@
                             <tr>
                                 <th scope="row">@Html.Raw(++count)</th>
                                 <td>@activityArea.Name</td>
-                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id)')" class="dt-sc-button float-inherit" /></td>
+                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id')" class="dt-sc-button float-inherit" /></td>
                                 <td>
-                                    <input type="button" value="Düzenle" onclick="openUpdateActivityAreaModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle" onclick="openUpdateActivityAreaModal(@Json.Encode(activityArea))" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }
@@ -69,10 +69,18 @@
                 data: { id: id }
             });
 
-            request.done(function (msg) {
+            request.done(function (response) {
+                if (response.Success) {
+                    openShowSuccessModal(response.Message)
+
+                }
+                else {
+                    alert('Hata oluştu')
+                }
             });
 
             request.fail(function (jqXHR, textStatus) {
+                alert('Hata oluştu')
             });
     }
     </script>

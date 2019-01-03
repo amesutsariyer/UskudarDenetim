@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
 using UskudarDenetim.Repository.EF;
 using UskudarDenetim.UI.Models;
 
@@ -32,23 +33,53 @@ namespace UskudarDenetim.UI.Controllers
         [HttpPost]
         public ActionResult ActiviyArea(ModelActivityArea model)
         {
-            if (model.Id !=Guid.Empty)
+            try
             {
-                //update işlemi yap
-            }
-            else
-            {
-                //create İşlemi Yap
-            }
+                if (model.Id != Guid.Empty)
+                {
+                    _activityAreaRepository.Update(new ActivityArea()
+                    {
 
-            return Json("OK");
+                        Id = model.Id,
+                        Description = model.Description,
+                        IconName = model.IconClassName,
+                        Name = model.Name
+                    });
+                }
+                else
+                {
+                    _activityAreaRepository.Create(new ActivityArea()
+                    {
+                        Id = Guid.NewGuid(),
+                        Description = model.Description,
+                        IconName = model.IconClassName,
+                        Name = model.Name
+                    });
+                }
+
+                return Json(new { Success = true, Message = "Kayıt İşlemi Başarılı" });
+            }
+            catch (Exception)
+            {
+                return Json(new { Success = false, Message = "Kayıt İşlemi Sırasında Bir Hata Oluştu" });
+            }
+        
         }
      
         //[Authorize]
         [HttpPost]
         public ActionResult DeleteActivityArea(string id)
         {
-            return Json("Ok");
+            try
+            {
+                var ent = _activityAreaRepository.GetById(id.ConvertToGuid());
+                _activityAreaRepository.Delete(ent);
+                return Json(new { Success = true, Message = "Silme İşlemi Başarılı" });
+            }
+            catch (Exception)
+            {
+                return Json(new { Success = false, Message = "Silme İşlemi Sırasında Bir Hata Oluştu" });
+            }
         }
         #region PrivateMethods
         private List<ModelActivityArea> GetAllActivity()
