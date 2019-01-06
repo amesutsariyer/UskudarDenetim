@@ -7,18 +7,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="social-label"></h4>
             </div>
-            @using (Ajax.BeginForm("UpdateSocialMedia", "Admin", new AjaxOptions()
+            @using (Ajax.BeginForm("AddOrUpdate", "SocialMedia", new AjaxOptions()
             {
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessUpdateSocialMedia",
                 OnFailure = "OnFailureUpdateSocialMedia",
-                OnBegin = "OnBeginUpdateSocialMedia"
             }))
             {
-                <div class="modal-body">
-                    @Html.HiddenFor(x => x.SocialMediaId)
-                    @Html.TextBoxFor(x => x.Url, new { @placeholder = "URL" })
-                </div>
+            <div class="modal-body">
+                @Html.HiddenFor(x => x.SocialMediaId)
+                @Html.TextBoxFor(x => x.SocialMediaName, new { @placeholder = "Adı Giriniz" ,@required="required"})
+                @Html.TextBoxFor(x => x.Url, new { @placeholder = "URL" , @required = "required" })
+                @Html.TextBoxFor(x => x.IconClassName, new { @placeholder = "Icon Class Name", @required = "required" })
+
+            </div>
 
                 <div class="modal-footer">
                     <button type="button" class="button bg-button-color-danger" style="margin-left:5px !important" data-dismiss="modal">Kapat</button>

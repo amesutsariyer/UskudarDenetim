@@ -8,6 +8,7 @@ namespace UskudarDenetim.Core.Helper
 {
     public static class UskudarDenetimHelper
     {
+        
         public static bool IsValidEmail(this string email)
         {
             try

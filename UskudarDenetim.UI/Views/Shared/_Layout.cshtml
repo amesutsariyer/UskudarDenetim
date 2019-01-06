@@ -62,11 +62,18 @@
             jQuery('#success-modal-title').html('BAŞARILI')
             jQuery('#success-modal-body').html(message)
             jQuery('#success-modal').modal();
+            jQuery('#success-modal').on('hidden.bs.modal', function () {
+                debugger;
+                location.reload();
+            });
         }
         function openShowErrorModal(message) {
             jQuery('#error-modal-title').html('HATA')
             jQuery('#error-modal-body').html(message)
             jQuery('#error-modal').modal();
+            jQuery('#error-modal').on('hidden.bs.modal', function () {
+                location.reload();
+            });
         }
 
     </script>

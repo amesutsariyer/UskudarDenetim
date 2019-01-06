@@ -15,7 +15,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Ad</th>
                             <th scope="col">Url</th>
-                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="createSharedLink()" class="dt-sc-button float-inherit" /></th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt"  onclick="location.href='@Url.Action("AddSharedLink","SharedLink",new { id=""})'"  class="dt-sc-button float-inherit" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,8 +29,8 @@
                                 <td>@links.Name</td>
                                 <td> @links.Url </td>
                                 <td>
-                                    <input type="button" style="background-color:red !important" value="Sil" onclick="deleteSharedLink('@links.Id)')" class="dt-sc-button float-inherit" />
-                                    <input type="button" value="Düzenle" onclick="openSharedLinkModal('@Html.Raw(Model)')" class="dt-sc-button float-inherit" />
+                                    <input type="button" style="background-color:red !important" value="Sil" onclick="deleteSharedLink('@links.Id')" class="dt-sc-button float-inherit" />
+                                    <input type="button" value="Düzenle"  onclick="location.href='@Url.Action("AddSharedLink","SharedLink",new { id= @links.Id})'" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
                         }
@@ -40,27 +40,9 @@
         </div>
     </div>
 </div>
-@Html.Partial("SharedLinkModal", new UskudarDenetim.UI.Models.ModelSharedLink())
-@section scripts{
 
     <script type="text/javascript">
-        function openSharedLinkModal(model) {
-            debugger;
-            $('#Id').text('');
-            $('#Name').val('');
-            $('#Url').val('');
-            $('#ImageUrl').val('');
-            $('#SharedLinkModal').modal();
-        }
-        function createSharedLink() {
-            debugger;
-            $('#Id').text('');
-            $('#Name').val('');
-            $('#Url').val('');
-            $('#ImageUrl').val('');
-            $('#SharedLinkModal').modal();
-
-        }
+        
         function deleteSharedLink(id) {
             debugger;
             var request = $.ajax({
@@ -69,13 +51,25 @@
                 data: { id: id }
             });
 
-            request.done(function (msg) {
+            request.done(function (response) {
+                if (response.Success) {
+                    openShowSuccessModal(response.Message)
+                    jQuery('#success-modal').on('hidden.bs.modal', function () {
+                        debugger;
+                        location.reload();
+                    });
+                }
+                else {
+                    alert('Hata oluştu')
+                }
             });
 
             request.fail(function (jqXHR, textStatus) {
+                alert('Hata oluştu')
             });
     }
     </script>
+
 }
 
 

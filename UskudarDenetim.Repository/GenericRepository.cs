@@ -49,6 +49,7 @@ namespace UskudarDenetim.Repository
                     _dbContext.Set<T>().Attach(entity);
                     _dbContext.Set<T>().Remove(entity);
                 }
+                _dbContext.SaveChanges();
             }
         }
 

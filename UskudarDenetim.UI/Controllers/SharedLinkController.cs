@@ -18,7 +18,7 @@ namespace UskudarDenetim.UI.Controllers
         {
             _sharedLinkRepository = new Repository.GenericRepository<SharedLink>();
         }
-        //[Authorize]
+        [Authorize]
         public ActionResult SharedLinks()
         {
             return View(SharedLinkList());
@@ -40,15 +40,36 @@ namespace UskudarDenetim.UI.Controllers
             };
             return View(model);
         }
+        public ActionResult AddSharedLink(string id)
+        {
+         
+            if (!string.IsNullOrEmpty(id))
+            {
+                var gid = id.ConvertToGuid();
+                var model = _sharedLinkRepository.GetById(gid);
+                return View("AddSharedLink", new ModelSharedLink() {
+                    Id = model.Id,
+                    ImageUrl = model.ImageUrl,
+                    Name = model.Name,
+                    Url=model.Url
+                });
+            }
+            else
+            {
+                return View("AddSharedLink", new ModelSharedLink());
+            }
+        }
         [HttpPost]
         public ActionResult SharedLink(ModelSharedLink model)
         {
+
+            var filePath = UploadFile(model.FileOne);
             SharedLink entity = new SharedLink()
             {
                 Id = model.Id,
                 Name = model.Name,
                 Url = model.Url,
-                ImageUrl = model.ImageUrl
+                ImageUrl = filePath,
                 //ImageUrl Burayı unutma db güncellenince gelecek burası
             };
             if (entity.Id != Guid.Empty)
@@ -57,14 +78,25 @@ namespace UskudarDenetim.UI.Controllers
             }
             else
             {
+                entity.Id = Guid.NewGuid();
                 _sharedLinkRepository.Create(entity);
             }
-            return Json("Ok");
+            return RedirectToAction("SharedLinks","SharedLink");
         }
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteSharedLink(string id)
         {
-            return Json("Ok");
+            try
+            {
+                var ent = _sharedLinkRepository.GetById(id.ConvertToGuid());
+                _sharedLinkRepository.Delete(ent);
+                return Json(new { Success = true, Message = "Silme İşlemi Başarılı" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, Message = "Silme İşlemi Sırasında Bir Hata Oluştu" });
+            }
         }
 
         private List<ModelSharedLink> SharedLinkList()

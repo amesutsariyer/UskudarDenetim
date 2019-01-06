@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Faydalı Link Ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model UskudarDenetim.UI.Models.ModelSharedLink
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+
+            <div class="modal-body">
+
+            </div>
+            @using (Html.BeginForm("SharedLink", "SharedLink", FormMethod.Post, new
+            { enctype = "multipart/form-data" }))
+            {
+                <div class="dt-sc-clear"></div>
+
+                @*Adres Tablosuyla alakalı inputlar*@
+                @Html.HiddenFor(x => x.Id)
+                <h4>Bağlantı Ekle/Güncelle</h4>
+                @*<div style="background:url(@Model.ImageUrl) ;width:200px;height:200px">
+                        <p class="dt-sc-one-half column mt-10 first">
+                            @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", accept = "image/png, image/jpeg, image/gif", @class = "form-control" })
+                        </p>
+                    </div>*@
+                <p class="dt-sc-one-column first">
+                    <div class="form-file-upload">
+                        <div class="form-file-upload-inner">
+                            <label for="FileOne" style="background-image: url('@Model.ImageUrl');"><span>Fotoğraf Seç</span></label><span class="wpcf7-form-control-wrap FileOne"><input accept="image/png, image/jpeg, image/gif" type="file" name="FileOne" size="40" class="wpcf7-form-control wpcf7-file" id="FileOne" aria-invalid="false" /></span><button class="close" type="button"></button>
+                        </div>
+                    </div>
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Name, new { @placeholder = "Ad" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Url, new { @placeholder = "Url" })
+                </p>
+            
+                <div class="form-wrapper register mt-40">
+                    <input class="button bg-button-color-success mt " value="Kaydet" type="submit">
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="dt-sc-clear"></div>
         <div class="form-wrapper register">
-            @using (Ajax.BeginForm("CreateApplyForm", "HR", new AjaxOptions()
+            @using (Ajax.BeginForm("CreateApplyForm", "HR",null, new AjaxOptions()
             {
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessCreateHR",
@@ -59,7 +59,7 @@
                 </p>
 
                 <p class="dt-sc-one-half column ">
-                    <input type="file" accept="*" alt="" value="Cv Yükle" />
+                    @Html.TextBoxFor(x => x.File, new { @type = "file", @name = "file", @class = "form-control" })
                 </p>
 
                 <p class="dt-sc-one-half column">

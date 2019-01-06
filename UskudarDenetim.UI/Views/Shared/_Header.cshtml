@@ -38,11 +38,20 @@
                                     {
                                         <li>
                                             <a href="#" style="color:#2a6496;"> @item.Name</a>
-
                                             <ul class="sub-menu">
+                                                @{ 
+                                                   int count = 0;
+                                                }
                                                 @foreach (var pi in Model.PI.Where(x => x.CategoryId == item.Id).ToList())
                                                 {
-                                                    <li><a href="@Url.Action("Detail","PracticalInformations",new { id=pi.Id})">@pi.Name.ToLowerInvariant()</a></li>
+                                                    
+                                                    <li ><a style="text-transform:capitalize;padding-bottom:3px " href="@Url.Action("Detail","PracticalInformations",new { id=pi.Id})">@pi.Name</a></li>
+
+                                                    count++;
+                                                    if (count == 12)
+                                                    {
+                                                        break;
+                                                    }
                                                 }
                                             </ul>
                                             <a class="dt-menu-expand">+</a>

@@ -31,7 +31,7 @@
                                 <td>@apply.Name @apply.Surname</td>
                                 <td>@apply.Position </td>
                                 <td>@apply.Birthdate </td>
-                                <td> <input type="button" value="Detay" onclick="@Url.Action("ApplyDetail","HR",new { id=apply.Id})" class="dt-sc-button float-inherit" /></td>
+                                <td> <input type="button" value="Detay" onclick="location.href='@Url.Action("ApplyDetail","HR",new { id=apply.Id})'" class="dt-sc-button float-inherit" /></td>
                                 <td> <input type="button" value="Sil" style="background-color:red !important" onclick="deleteApply('@apply.Id')" class="dt-sc-button float-inherit" /></td>
                             </tr>
                         }
@@ -47,7 +47,7 @@
 
 @section scripts{
     <script>
-        function deleteAplly(id) {
+        function deleteApply(id) {
                 debugger;
                 var request = $.ajax({
                     url: "/HR/DeleteApply",
@@ -55,11 +55,22 @@
                     data: { id: id }
                 });
 
-                request.done(function (msg) {
-                });
+            request.done(function (response) {
+                if (response.Success) {
+                    openShowSuccessModal(response.Message)
+                    jQuery('#success-modal').on('hidden.bs.modal', function () {
+                        debugger;
+                        location.reload();
+                    });
+                }
+                else {
+                    alert('Hata oluştu')
+                }
+            });
 
-                request.fail(function (jqXHR, textStatus) {
-                });
+            request.fail(function (jqXHR, textStatus) {
+                alert('Hata oluştu')
+            });
         }
     </script>
 

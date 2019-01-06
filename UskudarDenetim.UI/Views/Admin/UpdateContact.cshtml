@@ -12,8 +12,7 @@
             {
                 HttpMethod = "Post",
                 OnSuccess = "OnSuccessUpdateContact",
-                OnFailure = "OnFailureUpdateContact",
-                OnBegin = "OnBegiUpdateContact"
+                OnFailure = "OnFailureUpdateContact"
             }))
             {
                 @*Adres Tablosuyla alakalı inputlar*@
@@ -25,30 +24,23 @@
                 <p class="dt-sc-one-half column">
                     @Html.TextBoxFor(x => x.Address.Header, new { @placeholder = "Adres Açıklamasını Giriniz", @required = "required" })
                 </p>
-                <div class="row-wrapper" style="background-color:transparent !important">
-                    <p class="dt-sc-one-half column first">
-                        @Html.DropDownListFor(x => x.Address.CityId, Model.Address.CitySelectList, "Seçiniz", new { @required = "required" })
-                    </p>
-                    <p class="dt-sc-one-half column">
-                        @Html.DropDownListFor(x => x.Address.DistrictId, Model.Address.DistrictSelectList, "Seçiniz", new { @required = "required" })
-                    </p>
-
-                </div>
+            
                 <p class="dt-sc-one-column">
                     @Html.TextAreaFor(x => x.Address.AddressDetail, new {@class="mt-10", @placeholder = "Adresi Giriniz", @required = "required" })
                 </p>
 
                 @Html.HiddenFor(x => x.Id)
-                @Html.HiddenFor(x => x.AddressId)
                 <h4>İletişim Bilgileri</h4>
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Cep Telefon Numarasını Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "İş yeri Numarasını Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
                 </p>
                 <p class="dt-sc-one-half column">
-                    @Html.TextBoxFor(x => x.LocalePhoneNumber, new { @placeholder = "Telefon Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                    @Html.TextBoxFor(x => x.FaxNumber, new { @placeholder = "Fax Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+
                 </p>
                 <p class="dt-sc-one-half column first">
-                    @Html.TextBoxFor(x => x.FaxNumber, new { @placeholder = "Fax Numarasını Giriniz", @required = "required", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+                    @Html.TextBoxFor(x => x.LocalePhoneNumber, new { @placeholder = "Cep Telefonu Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
+
                 </p>
                 <p class="dt-sc-one-half column">
                     @Html.TextBoxFor(x => x.EmailAddress, new { @placeholder = "Birincil E-Posta Adresi", @required = "required" })
@@ -63,24 +55,21 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Ad</th>
-                            <th scope="col">İşlem</th>
+                            <th scope="col">Link</th>
+                            <th scope="col"> <input type="button" value="Yeni Kayıt" onclick="openUpdateSocialMediaModal();" class="dt-sc-button float-inherit" /></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @{
-                            int count = 0;
-                        }
                         @foreach (var socialMediaModel in Model.ContactSocialMedias)
                         {
-                            <tr>
-                                <th scope="row">@Html.Raw(++count)</th>
-                                <td>@socialMediaModel.SocialMediaName</td>
-                                <td>
-                                    <input type="button" value="Değiştir" onclick="openUpdateSocialMediaModal('@socialMediaModel.SocialMediaId','@socialMediaModel.SocialMediaName','@socialMediaModel.Url')" class="dt-sc-button float-inherit" />
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>@socialMediaModel.SocialMediaName</td>
+                            <td>@socialMediaModel.Url</td>
+                            <td>
+                                <input type="button" style="background-color:red !important" value="Sil" onclick="deleteSocialMedia('@socialMediaModel.SocialMediaId')" class="dt-sc-button float-inherit" />  <input type="button" value="Değiştir" onclick="openUpdateSocialMediaModal('@socialMediaModel.SocialMediaId','@socialMediaModel.SocialMediaName','@socialMediaModel.IconClassName','@socialMediaModel.Url')" class="dt-sc-button float-inherit" />
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -94,33 +83,97 @@
     <script type="text/javascript">
 
         function OnSuccessUpdateContact(response) {
-            debugger;
+            if (response.Success) {
+              //  jQuery('#updateSocialMedia').modal('hide');
+                openShowSuccessModal(response.Message);
+                jQuery('#success-modal').on('hidden.bs.modal', function () {
+                    debugger;
+                    location.reload();
+                });
+
+            }
+            else {
+                openShowErrorModal(response.Message)
+                jQuery('#error-modal').on('hidden.bs.modal', function () {
+                    debugger;
+                    location.reload();
+                });
+            }
         }
         function OnFailureUpdateContact(response) {
-            debugger;
+            openShowErrorModal(response.Message)
+            jQuery('#error-modal').on('hidden.bs.modal', function () {
+                debugger;
+                location.reload();
+            });
         }
-        function OnBegiUpdateContact() {
-
-        }
-        function OnSuccessUpdateSocialMedia() {
-
+      
+        function OnSuccessUpdateSocialMedia(response) {
+            if (response.Success) {
+                openShowSuccessModal(response.Message);
+                jQuery('#success-modal').on('hidden.bs.modal', function () {
+                    debugger;
+                    location.reload();
+                });
+            }
+            else {
+                openShowErrorModal(response.Message)
+                jQuery('#error-modal').on('hidden.bs.modal', function () {
+                    debugger;
+                    location.reload();
+                });
+            }
         }
         function OnFailureUpdateSocialMedia() {
-
+            openShowErrorModal(response.Message)
+            jQuery('#error-modal').on('hidden.bs.modal', function () {
+                debugger;
+                location.reload();
+            });
         }
-        function OnBeginUpdateSocialMedia() {
-
-        }
-        function openUpdateSocialMediaModal(id,name,url) {
+      
+        function openUpdateSocialMediaModal(id,name,icon,url) {
             debugger; 
+            if (id==null) {
+                $('#social-label').text('Sosyal Medya Hesabı Ekle')
+                $('#Url').val('');
+                $('#SocialMediaId').val('');
+                $('#SocialMediaName').val('');
+                $('#IconClassName').val('');
+            }
             $('#social-label').text(name)
             $('#Url').val(url);
             $('#SocialMediaId').val(id);
-
+            $('#SocialMediaName').val(name);
+            $('#IconClassName').val(icon);
             $('#updateSocialMedia').modal();
 
         }
+        function deleteSocialMedia(id) {
+            debugger;
+            var request = $.ajax({
+                url: "/SocialMedia/Delete",
+                type: "POST",
+                data: { id: id }
+            });
 
+            request.done(function (response) {
+                if (response.Success) {
+                    openShowSuccessModal(response.Message)
+                    jQuery('#success-modal').on('hidden.bs.modal', function () {
+                        debugger;
+                        location.reload();
+                    });
+                }
+                else {
+                    alert('Hata oluştu')
+                }
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert('Hata oluştu')
+            });
+        }
     </script>
 
 }

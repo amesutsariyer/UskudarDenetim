@@ -36,16 +36,16 @@ namespace UskudarDenetim.Repository.EF
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
-        public virtual DbSet<HRApplyForm> HRApplyForms { get; set; }
-        public virtual DbSet<SharedLink> SharedLinks { get; set; }
         public virtual DbSet<SocialMedia> SocialMedias { get; set; }
         public virtual DbSet<Subscribe> Subscribes { get; set; }
         public virtual DbSet<Circular> Circulars { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
-        public virtual DbSet<ActivityArea> ActivityAreas { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<PI_Category> PI_Category { get; set; }
         public virtual DbSet<PracticalInformation> PracticalInformations { get; set; }
+        public virtual DbSet<ActivityArea> ActivityAreas { get; set; }
+        public virtual DbSet<SharedLink> SharedLinks { get; set; }
+        public virtual DbSet<HRApplyForm> HRApplyForms { get; set; }
     }
 }

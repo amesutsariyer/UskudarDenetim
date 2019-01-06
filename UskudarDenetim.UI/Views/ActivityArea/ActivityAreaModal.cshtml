@@ -35,12 +35,17 @@
     function OnSuccessUpdateActivityArea(response) {
 
         if (response.Success) {
-            $('#Id').text('')
+            $('#Id').val('')
             $('#Name').val('');
             $('#Description').val('');
             $('#IconClassName').val('');
 
             $('#ActivityAreaModal').modal('hide');
+            openShowSuccessModal(response.Message);
+            jQuery('#success-modal').on('hidden.bs.modal', function () {
+                debugger;
+                location.reload();
+            });
         }
         else {
             alert('Hata oluştu')

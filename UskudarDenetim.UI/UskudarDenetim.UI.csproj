@@ -198,6 +198,7 @@
     <Compile Include="Controllers\SectorController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SharedLinkController.cs" />
+    <Compile Include="Controllers\SocialMediaController.cs" />
     <Compile Include="Controllers\TeamMemberController.cs" />
     <Compile Include="Controllers\_BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -864,7 +865,7 @@
     <Content Include="Views\HR\ApplyDetail.cshtml" />
     <Content Include="Views\SharedLink\_SharedLinks.cshtml" />
     <Content Include="Views\SharedLink\SharedLinks.cshtml" />
-    <Content Include="Views\SharedLink\SharedLinkModal.cshtml" />
+    <Content Include="Views\SharedLink\AddSharedLink.cshtml" />
     <Content Include="Views\PracticalInformations\Detail.cshtml" />
     <Content Include="Views\PracticalInformations\PracticalInformations.cshtml" />
     <Content Include="Views\Home\Appointment.cshtml" />
@@ -885,8 +886,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadFiles\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Blog\" />
+    <Folder Include="Views\SocialMedia\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

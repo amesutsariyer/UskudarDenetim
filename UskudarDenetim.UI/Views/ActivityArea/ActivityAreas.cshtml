@@ -27,8 +27,9 @@
                             <tr>
                                 <th scope="row">@Html.Raw(++count)</th>
                                 <td>@activityArea.Name</td>
-                                <td>  <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id')" class="dt-sc-button float-inherit" /></td>
+                                <td>@activityArea.Description  </td>
                                 <td>
+                                    <input type="button" style="background-color:red !important" value="Sil" onclick="deleteActivityArea('@activityArea.Id')" class="dt-sc-button float-inherit" />
                                     <input type="button" value="Düzenle" onclick="openUpdateActivityAreaModal(@Json.Encode(activityArea))" class="dt-sc-button float-inherit" />
                                 </td>
                             </tr>
@@ -45,7 +46,7 @@
     <script type="text/javascript">
         function openUpdateActivityAreaModal(model) {
             debugger;
-            $('#Id').text(model.Id)
+            $('#Id').val(model.Id)
             $('#Name').val(model.Name);
             $('#Description').val(model.Description);
             $('#IconClassName').val(model.IconClassName);
@@ -54,7 +55,7 @@
         }
         function CreateActivityArea() {
             debugger;
-            $('#Id').text('');
+            $('#Id').val('');
             $('#Name').val('');
             $('#Description').val('');
             $('#IconClassName').val('');
@@ -72,7 +73,10 @@
             request.done(function (response) {
                 if (response.Success) {
                     openShowSuccessModal(response.Message)
-
+                    jQuery('#success-modal').on('hidden.bs.modal', function () {
+                        debugger;
+                        location.reload();
+                    });
                 }
                 else {
                     alert('Hata oluştu')

@@ -3,64 +3,61 @@
     ViewBag.Title = "Başvuru Detayı";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="full-width-section parallax full-section-bg">
-    <div class="container">
-        <div class="dt-sc-clear"></div>
-        <div class="form-wrapper register">
 
-            <h4>IK Aday Başvuru Detayı </h4>
-            <p class="dt-sc-one-half column first">
-                @Html.TextBoxFor(x => x.Name)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Surname)
-            </p>
-            <p class="dt-sc-one-half column first">
-                @Html.TextBoxFor(x => x.IdentityNumber)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Email, new { @placeholder = " E-Posta Adresi", @required = "required" })
-            </p>
-            <p class="dt-sc-one-half column first">
-                @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Cep Telefon Numarasını Giriniz", @data_inputmask = "'mask':'(0999)-999-99-99'" })
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Gender)
-            </p>
-            <p class="dt-sc-one-half column first">
-                @Html.TextBoxFor(x => x.Birthdate)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Address)
-            </p>
-            <p class="dt-sc-one-half column first">
-                @Html.TextBoxFor(x => x.CityName)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.ExternalPhoneNumber)
-            </p>
+        <div class="full-width-section parallax full-section-bg">
+            <div class="container">
+                <div class="dt-sc-clear"></div>
+                <div class="form-wrapper register">
+                    <form>
+                        <h4>IK Aday Başvuru Detayı </h4>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.Name,new  {@readonly="readonly" ,@class="form-control"})
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.Surname, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.IdentityNumber, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.Email, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.PhoneNumber, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.Gender, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.Birthdate, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.Address, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.CityName, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.ExternalPhoneNumber, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
 
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.EducationStatus)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Note)
-            </p>
-            <p class="dt-sc-one-half column ">
-                @Html.TextBoxFor(x => x.Position)
-            </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.EducationStatus, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column ">
+                            @Html.TextBoxFor(x => x.Note, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column first">
+                            @Html.TextBoxFor(x => x.Position, new { @readonly = "readonly", @class = "form-control" })
+                        </p>
+                        <p class="dt-sc-one-half column">
 
-            <p class="dt-sc-one-half column first">
-                <input type="file" accept="*" alt="" value="Cv Yükle" />
-            </p>
-
-            <p class="dt-sc-one-half column">
-
-            </p>
-            <input class="button bg-button-color-success " value="Kaydet" type="submit">
+                        </p>
+                        <input class="button bg-button-color-success " value="Cv İndir" type="button">
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 @section scripts{
 
 }
