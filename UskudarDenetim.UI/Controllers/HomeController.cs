@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UskudarDenetim.Core.Extensions;
 using UskudarDenetim.Core.Helper;
 using UskudarDenetim.Repository;
 using UskudarDenetim.Repository.EF;
@@ -245,6 +246,59 @@ namespace UskudarDenetim.UI.Controllers
                 return Json(new { success = false, message = "Kayıt esnasında bir hata ile karşılaşıldı." });
             }
         }
+        [Authorize]
+        public ActionResult AllAppointment()
+        {
+          var list =   _appointmentRepository.GetAll().ToList();
+          var model =   list.Select(x => new ModelAppointmentRequest() {
+                Id =x.Id,
+                AppointmentDate = x.AppointmentDate,
+                CompanyName = x.CompanyName,
+                Description = x.Description,
+                Email = x.Email,
+                FullName = x.FullName,
+                PhoneNumber = x.PhoneNumber,
+                PreferPlace = x.PreferPlace,
+                RequestNumber = x.RequestNumber
+
+            }).ToList();
+            return View(model);
+        }
+        [Authorize]
+        public ActionResult AppointmentDetail(string id ) {
+            var model = _appointmentRepository.GetById(id.ConvertToGuid());
+       
+            var appointment = new ModelAppointmentRequest()
+            {
+                Id = model.Id,
+                AppointmentDate = model.AppointmentDate.Value.ConvertToUIDateFormat(),
+                CompanyName = model.CompanyName,
+                Description = model.Description,
+                Email = model.Email,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber,
+                PreferPlace = model.PreferPlace,
+                RequestNumber = model.RequestNumber
+            };
+            return View(appointment);
+        }
+        [Authorize]
+        public ActionResult DeleteAppointment(string id)
+        {
+            try
+            {
+                var entity = _appointmentRepository.GetById(id.ConvertToGuid());
+                _appointmentRepository.Delete(entity);
+                return Json(new { Success = true, Message = "Silme İşlemi Başarılı." });
+            }
+            catch (Exception)
+            {
+                return Json(new { Success = false, Message = "Silme İşlemi Başarısız." });
+                throw;
+            }
+        
+        }
+
         public ActionResult Login()
         {
             var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();

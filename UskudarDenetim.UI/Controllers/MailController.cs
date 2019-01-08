@@ -68,11 +68,11 @@ namespace UskudarDenetim.UI.Controllers
             try
             {
                 var response = SendMailHelper(request);
-                return Json(new { Status = true, Message = "Email Atma İşlemi Başarılı." });
+                return Json(new { Success = response.Success, Message = response.Message });
             }
             catch (Exception ex)
             {
-                return Json(new { Status = false, Message = "Hata Oluştu." + ex.Message });
+                return Json(new { Success = false, Message = "Hata Oluştu." + ex.Message });
             }
         }
         [Authorize]

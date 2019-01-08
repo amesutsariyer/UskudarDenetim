@@ -16,9 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExhangeRateService", "..\..\..\Desktop\ExchangeRateLibrary-master\ExhangeRateService\ExhangeRateService.csproj", "{D3982BC6-D4D1-4330-B3AA-01FAA67C3F3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExhangeRateService", "..\..\Desktop\ExchangeRateLibrary-master\ExhangeRateService\ExhangeRateService.csproj", "{D3982BC6-D4D1-4330-B3AA-01FAA67C3F3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailReceiver.Base", "..\..\..\Desktop\MailReceiver-master\MailReceiver.Base\MailReceiver.Base.csproj", "{A458C96D-C94F-44D0-9566-2871D5C4619C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailReceiver.Base", "..\..\Desktop\MailReceiver-master\MailReceiver.Base\MailReceiver.Base.csproj", "{A458C96D-C94F-44D0-9566-2871D5C4619C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

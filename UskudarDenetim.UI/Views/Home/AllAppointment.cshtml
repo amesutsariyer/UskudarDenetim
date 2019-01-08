@@ -1,0 +1,77 @@
+﻿@model List<UskudarDenetim.UI.Models.ModelAppointmentRequest > 
+
+@{
+    ViewBag.Title = "Gelen Başvurular";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="form-wrapper register">
+            <form>
+                <h4>Başvuru Listesi</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ad/Soyad</th>
+                            <th scope="col">Şirket/Kurum</th>
+                            <th scope="col">Description</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var ar in Model)
+                        {
+                            <tr>
+                                <th scope="row">@Html.Raw(++count)</th>
+                                <td>@ar.FullName</td>
+                                <td>@ar.CompanyName</td>
+                                <td>@ar.Description </td>
+                                <td> <input type="button" value="Detay" onclick="location.href='@Url.Action("AppointmentDetail","Home",new { id=ar.Id})'" class="dt-sc-button float-inherit" /></td>
+                                <td> <input type="button" value="Sil" style="background-color:red !important" onclick="deleteAppointment('@ar.Id')" class="dt-sc-button float-inherit" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+    <script>
+        function deleteAppointment(id) {
+                debugger;
+                var request = $.ajax({
+                    url: "/Home/DeleteAppointment",
+                    type: "POST",
+                    data: { id: id }
+                });
+
+            request.done(function (response) {
+                if (response.Success) {
+                    openShowSuccessModal(response.Message)
+                    jQuery('#success-modal').on('hidden.bs.modal', function () {
+                        debugger;
+                        location.reload();
+                    });
+                }
+                else {
+                    alert('Hata oluştu')
+                }
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert('Hata oluştu')
+            });
+        }
+    </script>
+
+}

@@ -1,0 +1,48 @@
+﻿@model UskudarDenetim.UI.Models.ModelAppointmentRequest
+@{
+    ViewBag.Title = "Appointment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="dt-sc-clear"></div>
+        <div class="form-wrapper register">
+            <form>
+                <h4>Görüşme Talep Formu</h4>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.FullName, new { @placeholder = "Adınız/Soyadınız*", @readonly = "readonly" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @placeholder = "Telefon Numaranız", @data_inputmask = "'mask':'(0999)-999-99-99'", @readonly = "readonly" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.CompanyName, new { @placeholder = "Firma Adı", @required = "required", @readonly = "readonly" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Email, new { @placeholder = " E-Posta Adresi", @required = "required", @readonly = "readonly" })
+                </p>
+
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.AppointmentDate, new { @placeholder = "Randevu Tarihi", @required = "required", type = "date", @readonly = "readonly" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.PreferPlace, new { @placeholder = "Tercih Ettiğiniz Görüşme Yeri", @required = "required", @readonly = "readonly" })
+                </p>
+                <p class="dt-sc-full-width column first">
+                    @Html.TextAreaFor(x => x.Description, new { @placeholder = "Not/Mesaj", @required = "required", @readonly = "readonly" })
+                </p>
+                <div class="dt-sc-margin30"></div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        var x = '@Model.AppointmentDate';
+        debugger;
+        document.getElementById("AppointmentDate").value = x;
+     
+
+    </script>
+}

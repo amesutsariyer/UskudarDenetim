@@ -54,7 +54,7 @@ namespace UskudarDenetim.UI.Controllers
             }
             catch (Exception)
             {
-                return Json(new { success = false, message = "Kayıt İşlemi Esnasında Bir Hata İle Karşılaşıldı" });
+                return Json(new { success = false, message = "Lütfen Dokuman Seçiniz" });
             }
         }
         [Authorize]

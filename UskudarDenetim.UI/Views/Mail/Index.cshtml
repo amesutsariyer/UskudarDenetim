@@ -48,7 +48,6 @@
 @section scripts{
     <script type="text/javascript">
         var x = @Html.Raw(Json.Encode(Model.ToArrayString)) ;
-        alert(x); debugger;
                  document.getElementById("ToArrayString").value = x;
         function OnSuccessSendMail(response) {
             if (response.Success) {
