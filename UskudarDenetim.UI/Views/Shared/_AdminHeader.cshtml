@@ -17,40 +17,44 @@
             <a href="@Url.Action("Index","Admin")">Ana Sayfaya Git</a>
             <a class="dt-menu-expand">+</a>
         </li>*@
+
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Home")? "current_page_item":"")">
+                            <a class="custom-font" href="@Url.Action("Index","Home")">Siteye Geri Dön</a>
+                        </li>
                         <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Circular")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("CircularList","Circular")">Sirküler</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Service")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("Services","Service")">Hizmetler</a>
                         </li>
-                        <li class="menu-item-simple-parent mce_backcolor">
+                        <li class="menu-item-simple-parent mce_backcolor @(ViewContext.RouteData.Values["controller"].ToString().Equals("TeamMember")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("Employees","TeamMember")">Çalışanlar</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("PracticalInformations")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("PracticalInformations","PracticalInformations")">Pratik Bilgiler</a>
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("ActivityArea")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("ActivityAreas","ActivityArea")">Faailiyet Alanları</a>
 
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("SharedLink")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("SharedLinks","SharedLink")">Faydalı Linkler</a>
 
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("UpdateContact")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("UpdateContact","Admin")">İletişim</a>
                             <a class="dt-menu-expand">+</a>
                         </li>
 
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("HR")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("Applys","HR")">IK Başvurular</a>
 
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["action"].ToString().Equals("AllAppointment")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("AllAppointment","Home")">Randevu Talepleri</a>
 
                         </li>
-                        <li class="menu-item-simple-parent">
+                        <li class="menu-item-simple-parent @(ViewContext.RouteData.Values["controller"].ToString().Equals("Mail")? "current_page_item":"")">
                             <a class="custom-font" href="@Url.Action("Index","Mail")">Mail Gönder</a>
 
                         </li>
