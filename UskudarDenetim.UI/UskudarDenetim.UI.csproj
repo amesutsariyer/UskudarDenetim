@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HRController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\PracticalInformationsController.cs" />
     <Compile Include="Controllers\SectorController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="Models\ModelHeader.cs" />
     <Compile Include="Models\ModelHRApplyForm.cs" />
     <Compile Include="Models\ModelLogin.cs" />
+    <Compile Include="Models\ModelMail.cs" />
     <Compile Include="Models\ModelPracticalInformation.cs" />
     <Compile Include="Models\ModelPracticalInformationViewModel.cs" />
     <Compile Include="Models\ModelSector.cs" />
@@ -883,6 +885,7 @@
     <Content Include="Views\PracticalInformations\Index.cshtml" />
     <Content Include="Views\PracticalInformations\AddOrUpdate.cshtml" />
     <Content Include="Views\TeamMember\Detail.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -895,9 +898,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Desktop\ExchangeRateLibrary-master\ExhangeRateService\ExhangeRateService.csproj">
+    <ProjectReference Include="..\..\..\..\Desktop\ExchangeRateLibrary-master\ExhangeRateService\ExhangeRateService.csproj">
       <Project>{d3982bc6-d4d1-4330-b3aa-01faa67c3f3d}</Project>
       <Name>ExhangeRateService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Desktop\MailReceiver-master\MailReceiver.Base\MailReceiver.Base.csproj">
+      <Project>{a458c96d-c94f-44d0-9566-2871d5c4619c}</Project>
+      <Name>MailReceiver.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\UskudarDenetim.Core\UskudarDenetim.Core.csproj">
       <Project>{0e50e19b-da09-42fd-bf46-2def406bdb53}</Project>

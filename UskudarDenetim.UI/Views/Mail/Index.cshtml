@@ -1,0 +1,68 @@
+﻿@model UskudarDenetim.UI.Models.ModelMail
+@{
+    ViewBag.Title = "Mail Gönder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="full-width-section parallax full-section-bg">
+    <div class="container">
+        <div class="dt-sc-clear"></div>
+        <div class="form-wrapper register">
+            @using (Ajax.BeginForm("SendMail", "Mail", new AjaxOptions()
+            {
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccessSendMail",
+                OnFailure = "OnFailureSendMail"
+            }))
+            {
+                <h4>Mail Gönder</h4>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Credential.UserName, new { @placeholder = "Kullanıcı Adı", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.PasswordFor(x => x.Credential.Password, new { @placeholder = "Şifre", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextBoxFor(x => x.Content.Header, new { @placeholder = "Mail Başlık Yazısı", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextBoxFor(x => x.Content.Link, new { @placeholder = "Yönlendirilecek URL", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    @Html.TextAreaFor(x => x.Content.SubHeader, new { @placeholder = "İçerik" })
+                </p>
+                <p class="dt-sc-one-half column ">
+                    @Html.TextAreaFor(x => x.Content.StrongSubHeader, new { @placeholder = "İçerik Başlangıç Yazısı", @required = "required" })
+                </p>
+                <p class="dt-sc-one-half column first">
+                    <label style="color :red">Mail adreslerini yazarken adreslerin arasına noktalı virgül koyarak işleme devam ediniz.</label>
+                    @Html.TextAreaFor(x => x.ToArrayString, new { @placeholder = "Gönderilecek mail adresleri", @required = "required" })
+                </p>
+                <input class="button bg-button-color-success mt-50 " value="Gönder" type="submit">
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        var x = @Html.Raw(Json.Encode(Model.ToArrayString)) ;
+        alert(x); debugger;
+                 document.getElementById("ToArrayString").value = x;
+        function OnSuccessSendMail(response) {
+            if (response.Success) {
+                openShowSuccessModal(response.Message)
+            }
+            else {
+                openShowErrorModal(response.message)
+            }
+        }
+        function OnFailureSendMail(response) {
+            openShowErrorModal(response.Message)
+        }
+
+    </script>
+}
+
+

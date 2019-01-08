@@ -55,8 +55,8 @@
                 }
             }
         });
+    
         $("input[name='FileOne']").on("change", function (event1) {
-            debugger;
             src1 = URL.createObjectURL(event1.target.files[0]);
             document.querySelector("[for=FileOne]").style.backgroundImage = 'url(' + src1 + ')';
         });
