@@ -47,3 +47,16 @@ db store images => Varbinary(max)
             return Path.Combine("/uploads", fileName).Replace('\\', '/');
         }
     }
+
+
+
+
+	TODO : 
+
+	for (int i = 0; i < toArray.Length; i++)
+                {
+                    if (string.IsNullOrEmpty(toArray[i]))
+                    {
+                        toArray[i].;
+                    }
+                }
